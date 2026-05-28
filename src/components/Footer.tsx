@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleScroll("home")}>
               <div className="w-9 h-9 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center">
-                <img src="/logo.png" alt="Nexavora Logo" className="w-full h-full object-cover scale-110" />
+                <img src="/Nexavora-Technologies/logo.png" alt="Nexavora Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-white">Nexavora</span>
