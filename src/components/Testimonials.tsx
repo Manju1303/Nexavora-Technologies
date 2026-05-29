@@ -93,7 +93,7 @@ export default function Testimonials() {
 
                   {/* Review Text */}
                   <p className="text-text-secondary text-sm leading-relaxed font-light mb-8 italic">
-                    "{test.content}"
+                    &quot;{test.content}&quot;
                   </p>
                 </div>
 

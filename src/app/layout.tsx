@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Nexavora Technologies | Building Smart Digital Solutions",
@@ -46,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className="scroll-smooth">
       <body className="bg-bg-dark text-text-primary antialiased min-h-screen">
         {children}
       </body>

@@ -8,9 +8,19 @@ import {
   Cpu,
   LayoutTemplate,
   Lightbulb,
-  Terminal as TermIcon,
+  Terminal,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import InteractiveConsole from "@/components/InteractiveConsole";
+
+const heightKeyframes = [
+  ["30%", "70%", "30%"],
+  ["50%", "90%", "50%"],
+  ["40%", "75%", "40%"],
+  ["60%", "45%", "60%"],
+  ["35%", "80%", "35%"],
+  ["45%", "85%", "45%"],
+];
 
 export default function WhyChooseUs() {
   const [speedVal, setSpeedVal] = useState(0);
@@ -79,18 +89,22 @@ export default function WhyChooseUs() {
                 </p>
               </div>
 
-              {/* Styled mini coding console */}
-              <div className="w-full md:w-64 bg-black/50 border border-white/10 rounded-xl p-3 font-mono text-[9px] text-slate-300 shadow-inner shrink-0 relative overflow-hidden">
-                <div className="flex items-center gap-1.5 border-b border-white/5 pb-2 mb-2 text-slate-400">
-                  <TermIcon className="w-3.5 h-3.5 text-accent-cyan" />
-                  <span>nexavora_ai_agent.py</span>
+              {/* Polished IDE console */}
+              <div className="w-full md:w-64 bg-[#0a061e] border border-white/10 rounded-xl overflow-hidden shadow-inner shrink-0 relative">
+                <div className="flex items-center justify-between px-3 py-2 bg-white/5 border-b border-white/5 text-slate-400">
+                  <div className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500/80" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500/80" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[8px] font-mono tracking-wider">nexavora_ai_agent.py</span>
                 </div>
-                <div className="space-y-1 text-slate-400">
-                  <p className="text-emerald-400">import nexavora_core as nc</p>
-                  <p>agent = nc.Agent(model="aurora-v1")</p>
-                  <p>agent.add_memory(store="chromadb")</p>
-                  <p className="text-accent-cyan">agent.deploy(host="vercel")</p>
-                  <p className="text-slate-500">// Output: Uplink Active [2ms]</p>
+                <div className="p-3 font-mono text-[9px] leading-normal space-y-1 select-none">
+                  <p><span className="text-purple-400 font-semibold">import</span> nexavora_core <span className="text-purple-400 font-semibold">as</span> nc</p>
+                  <p>agent = nc.<span className="text-blue-400">Agent</span>(model=<span className="text-amber-300">&quot;aurora-v1&quot;</span>)</p>
+                  <p>agent.<span className="text-yellow-400">add_memory</span>(store=<span className="text-amber-300">&quot;chromadb&quot;</span>)</p>
+                  <p>agent.<span className="text-yellow-400">deploy</span>(host=<span className="text-amber-300">&quot;vercel&quot;</span>)</p>
+                  <p className="text-emerald-400 mt-2 font-semibold">{"// Output: Uplink Active [2ms]"}</p>
                 </div>
               </div>
             </div>
@@ -106,7 +120,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-8 rounded-3xl glass-card border border-white/5 flex flex-col justify-between min-h-[300px] group relative"
+            className="p-8 rounded-3xl glass-card border border-white/5 flex flex-col justify-between min-h-[300px] group relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-36 h-36 bg-accent-blue/5 blur-2xl rounded-full pointer-events-none" />
 
@@ -120,8 +134,9 @@ export default function WhyChooseUs() {
               </p>
             </div>
 
-            {/* Performance gauge visual */}
-            <div className="flex items-center gap-4 border border-white/5 bg-white/5 rounded-2xl p-4 mt-6">
+            {/* Performance gauge visual with glow backdrop */}
+            <div className="flex items-center gap-4 border border-white/5 bg-white/5 rounded-2xl p-4 mt-6 relative overflow-hidden">
+              <div className="absolute -left-2 -bottom-2 w-16 h-16 rounded-full bg-accent-cyan/10 blur-xl pointer-events-none" />
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
@@ -139,7 +154,7 @@ export default function WhyChooseUs() {
                 </svg>
                 <span className="absolute text-[10px] text-white font-bold">{speedVal}%</span>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col relative z-10">
                 <span className="text-[10px] font-bold text-white uppercase tracking-wider">Speed Index</span>
                 <span className="text-[9px] text-emerald-400">Excellent (A+)</span>
               </div>
@@ -209,7 +224,7 @@ export default function WhyChooseUs() {
                       <div key={idx} className="h-6 w-full rounded bg-accent-pink/20 relative overflow-hidden">
                         <motion.div
                           className="absolute bottom-0 left-0 right-0 bg-accent-pink"
-                          animate={{ height: [`${30 + Math.random() * 40}%`, `${60 + Math.random() * 40}%`, `${30 + Math.random() * 40}%`] }}
+                          animate={{ height: heightKeyframes[(idx - 1) % heightKeyframes.length] }}
                           transition={{ duration: 3 + idx * 0.5, repeat: Infinity, ease: "easeInOut" }}
                         />
                       </div>
@@ -279,7 +294,7 @@ export default function WhyChooseUs() {
                   <span>99% SIMILARITY</span>
                 </div>
                 <div className="space-y-1">
-                  <p>QUERY: "ai agency bangalore"</p>
+                  <p>QUERY: &quot;ai agency bangalore&quot;</p>
                   <p className="text-white">MATCH_01: id_8429 [Dist: 0.984]</p>
                   <p className="text-white">MATCH_02: id_3920 [Dist: 0.892]</p>
                 </div>
@@ -289,6 +304,31 @@ export default function WhyChooseUs() {
             <span className="text-[10px] text-accent-purple uppercase tracking-widest font-bold mt-6 group-hover:translate-x-1.5 transition-transform duration-300 block">
               Read integration guides →
             </span>
+          </motion.div>
+
+          {/* Card 7: Command Line Uplink (Full width md:col-span-3) */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="md:col-span-3 p-8 rounded-3xl glass-card border border-white/5 flex flex-col lg:flex-row gap-8 items-center justify-between min-h-[300px] group relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent-cyan/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="space-y-4 max-w-lg relative z-10">
+              <div className="p-3 rounded-2xl bg-accent-cyan/10 text-accent-cyan w-fit">
+                <Terminal className="w-6 h-6" />
+              </div>
+              <h4 className="font-extrabold text-white text-2xl">Virtual Uplink Control Console</h4>
+              <p className="text-text-secondary text-sm font-light leading-relaxed">
+                Interact directly with our system services. Click the quick query controls below to scan active ERP matrices, core tech stacks, organizational missions, and verified communication lines in real-time.
+              </p>
+            </div>
+
+            <div className="w-full lg:w-[500px] shrink-0 relative z-10">
+              <InteractiveConsole />
+            </div>
           </motion.div>
 
         </div>

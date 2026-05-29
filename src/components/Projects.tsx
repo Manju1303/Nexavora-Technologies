@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Layers, ArrowRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const categories = ["All", "AI Systems", "Health Tech", "SaaS & Utilities"];
 
@@ -26,7 +26,7 @@ const projects = [
         <div className="space-y-1.5 my-2">
           <div className="flex justify-between text-xs text-white">
             <span>Voice Input:</span>
-            <span className="text-accent-cyan font-bold">"Hello Aurora..."</span>
+            <span className="text-accent-cyan font-bold">&quot;Hello Aurora...&quot;</span>
           </div>
           <div className="flex gap-0.5 justify-center items-end h-8">
             <div className="w-1 bg-accent-cyan h-4 animate-pulse" />
@@ -71,7 +71,7 @@ const projects = [
           </div>
         </div>
         <div className="bg-white/5 p-1.5 rounded border border-white/5 text-center text-[7px] text-accent-purple">
-          QUERY: "User preferences"
+          QUERY: &quot;User preferences&quot;
         </div>
       </div>
     ),

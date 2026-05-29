@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, Send, CheckCircle, AlertCircle, Globe } from "lucide-react";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -39,19 +39,40 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Mock API submission latency
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/ceo.nexavora@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Service: form.service,
+          Message: form.message,
+          _subject: `New Nexavora Lead: ${form.name} (${form.service})`,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setForm({ name: "", email: "", service: "AI Solutions", message: "" });
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        alert("Form submission failed. Please try again or email us directly at ceo.nexavora@gmail.com");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("An error occurred during submission. Please try again or email us directly.");
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      setForm({ name: "", email: "", service: "AI Solutions", message: "" });
-      // Clear success banner after 5s
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+    }
   };
 
   return (
@@ -232,8 +253,8 @@ export default function Contact() {
                   <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
                     Sales & Support
                   </span>
-                  <a href="mailto:manjunathkaids23@jkkmct.edu.in" className="text-white hover:text-accent-cyan text-sm transition-colors mt-0.5 block font-medium">
-                    manjunathkaids23@jkkmct.edu.in
+                  <a href="mailto:ceo.nexavora@gmail.com" className="text-white hover:text-accent-cyan text-sm transition-colors mt-0.5 block font-medium">
+                    ceo.nexavora@gmail.com
                   </a>
                 </div>
               </div>
@@ -253,25 +274,25 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Address */}
+              {/* Global Workspace */}
               <div className="flex gap-4 items-start">
                 <div className="p-3 rounded-xl bg-accent-purple/10 text-accent-purple border border-accent-purple/10">
-                  <MapPin className="w-5 h-5" />
+                  <Globe className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
-                    Headquarters
+                    Global Ecosystem
                   </span>
                   <span className="text-white text-sm mt-0.5 block font-light leading-relaxed">
-                    Nexavora Tech Office,<br />
-                    Kallakurichi, Tamil Nadu,<br />
-                    India
+                    100% Remote-First Startup<br />
+                    Distributed Network & Agile Teams<br />
+                    Collaborating Worldwide
                   </span>
                 </div>
               </div>
             </motion.div>
 
-            {/* Radar Coordinates map overlay */}
+            {/* Global Coordinates map overlay */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -289,36 +310,111 @@ export default function Contact() {
 
               {/* Custom SVG Location Map Vector */}
               <svg viewBox="0 0 300 150" className="w-full h-full relative z-10 opacity-70">
-                {/* Simulated geographic nodes */}
-                <path d="M 30,80 Q 50,60 80,75 T 120,40 T 160,80 T 220,50 T 270,70" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="3 3" />
-                <path d="M 40,110 Q 90,130 140,110 T 240,120" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                {/* Grid dots/stars background */}
+                <g fill="rgba(255,255,255,0.05)">
+                  <circle cx="20" cy="20" r="1" />
+                  <circle cx="60" cy="30" r="1" />
+                  <circle cx="100" cy="20" r="1" />
+                  <circle cx="140" cy="30" r="1" />
+                  <circle cx="180" cy="20" r="1" />
+                  <circle cx="220" cy="30" r="1" />
+                  <circle cx="260" cy="20" r="1" />
+                  
+                  <circle cx="40" cy="60" r="1" />
+                  <circle cx="80" cy="70" r="1" />
+                  <circle cx="120" cy="60" r="1" />
+                  <circle cx="160" cy="70" r="1" />
+                  <circle cx="200" cy="60" r="1" />
+                  <circle cx="240" cy="70" r="1" />
+                  <circle cx="280" cy="60" r="1" />
 
-                {/* Grid intersection ticks */}
-                <circle cx="80" cy="75" r="2" fill="white" opacity="0.3" />
-                <circle cx="120" cy="40" r="2" fill="white" opacity="0.3" />
-                <circle cx="220" cy="50" r="2" fill="white" opacity="0.3" />
+                  <circle cx="20" cy="100" r="1" />
+                  <circle cx="60" cy="110" r="1" />
+                  <circle cx="100" cy="100" r="1" />
+                  <circle cx="140" cy="110" r="1" />
+                  <circle cx="180" cy="100" r="1" />
+                  <circle cx="220" cy="110" r="1" />
+                  <circle cx="260" cy="100" r="1" />
+                </g>
 
-                {/* HQ Glowing Coordinate */}
-                <motion.g
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  {/* Radar sweep */}
-                  <circle cx="150" cy="75" r="24" fill="none" stroke="#00f2fe" strokeWidth="0.5" opacity="0.2" className="animate-ping" style={{ animationDuration: "3s" }} />
-                  <circle cx="150" cy="75" r="12" fill="none" stroke="#00f2fe" strokeWidth="1" opacity="0.4" />
-                  <circle cx="150" cy="75" r="4" fill="#00f2fe" />
-                </motion.g>
+                {/* Interconnecting pathways */}
+                <g stroke="rgba(0, 242, 254, 0.15)" strokeWidth="0.8" fill="none">
+                  {/* SF to NYC */}
+                  <path d="M 50,50 Q 70,42 90,45" strokeDasharray="2 2" />
+                  {/* NYC to LDN */}
+                  <path d="M 90,45 Q 120,30 155,38" />
+                  {/* LDN to FRA */}
+                  <path d="M 155,38 L 165,42" />
+                  {/* FRA to IND */}
+                  <path d="M 165,42 Q 190,55 215,75" />
+                  {/* IND to SGP */}
+                  <path d="M 215,75 L 235,90" />
+                  {/* SGP to NRT */}
+                  <path d="M 235,90 Q 250,70 265,55" />
+                  {/* SGP to SYD */}
+                  <path d="M 235,90 Q 260,110 280,125" />
+                </g>
 
-                {/* Coordinates text */}
-                <text x="160" y="80" fill="#00f2fe" fontSize="7" fontFamily="monospace" fontWeight="bold">
-                  HQ: 11.7380° N, 78.9639° E
-                </text>
+                {/* Animated Global Packets */}
+                <motion.circle
+                  r="1.5"
+                  fill="#00f2fe"
+                  animate={{
+                    cx: [50, 90, 155, 165, 215, 235],
+                    cy: [50, 45, 38, 42, 75, 90]
+                  }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                />
+                <motion.circle
+                  r="1.5"
+                  fill="#9d4edd"
+                  animate={{
+                    cx: [235, 265, 50, 90],
+                    cy: [90, 55, 50, 45]
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: 2.5 }}
+                />
+
+                {/* Nodes */}
+                {/* SF */}
+                <circle cx="50" cy="50" r="2.5" fill="#00f2fe" />
+                
+                {/* NYC */}
+                <circle cx="90" cy="45" r="2.5" fill="#3b82f6" />
+                
+                {/* LDN */}
+                <circle cx="155" cy="38" r="2.5" fill="#3b82f6" />
+
+                {/* FRA */}
+                <circle cx="165" cy="42" r="2.5" fill="#9d4edd" />
+
+                {/* India (Main hub) */}
+                <g>
+                  <circle cx="215" cy="75" r="3.5" fill="#f72585" />
+                  <circle cx="215" cy="75" r="8" fill="none" stroke="#f72585" strokeWidth="0.5" className="animate-ping" style={{ animationDuration: "2s" }} />
+                </g>
+
+                {/* SGP */}
+                <circle cx="235" cy="90" r="2.5" fill="#00f2fe" />
+                
+                {/* NRT */}
+                <circle cx="265" cy="55" r="2.5" fill="#9d4edd" />
+
+                {/* SYD */}
+                <circle cx="280" cy="125" r="2.5" fill="#3b82f6" />
+
+                {/* Node Labels */}
+                <text x="38" y="52" fill="#94a3b8" fontSize="5" fontFamily="monospace">SF</text>
+                <text x="94" y="47" fill="#94a3b8" fontSize="5" fontFamily="monospace">NYC</text>
+                <text x="143" y="36" fill="#94a3b8" fontSize="5" fontFamily="monospace">LDN</text>
+                <text x="210" y="70" fill="#f72585" fontSize="5.5" fontFamily="monospace" fontWeight="bold">IND</text>
+                <text x="240" y="93" fill="#94a3b8" fontSize="5" fontFamily="monospace">SGP</text>
               </svg>
 
               {/* Location Scan indicator */}
               <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 flex items-center gap-1.5 font-mono text-[9px] text-accent-cyan">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" />
-                <span>SCANNING HQ LATENCY: 2ms</span>
+                <span>REMOTE LINK ESTABLISHED: ~12ms</span>
               </div>
             </motion.div>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Compass, Eye, Users } from "lucide-react";
+import { Compass, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const stats = [
@@ -105,6 +105,15 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-text-secondary leading-relaxed font-light"
             >
+              As a fully remote, globally distributed startup, we dismantle geographical boundaries to assemble elite engineering talent. Operating without physical offices allows us to run a lean, agile workflow that provides round-the-clock development and deployment cycles.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-text-secondary leading-relaxed font-light"
+            >
               Fueled by intelligence and driven by performance, we partner with visionary companies to build secure, highly scalable, cloud-native infrastructures. Our mission is to accelerate digital growth through clean engineering and premium user experience design.
             </motion.p>
 
@@ -174,7 +183,7 @@ export default function About() {
 
               {/* CEO Quote */}
               <p className="text-sm text-text-secondary mt-6 italic font-light relative px-4">
-                "My mission is to engineer AI-driven products that simplify technology, accelerate learning, and automate complex digital workflows, converting technical intricacy into guided, accessible intelligent experiences."
+                &quot;My mission is to engineer AI-driven products that simplify technology, accelerate learning, and automate complex digital workflows, converting technical intricacy into guided, accessible intelligent experiences.&quot;
               </p>
 
               {/* Signature lookalike */}
