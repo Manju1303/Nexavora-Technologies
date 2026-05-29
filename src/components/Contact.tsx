@@ -45,7 +45,7 @@ export default function Contact() {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formsubmit.co/ajax/ceo.nexavora@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/2c0abcf6c78b00c64dd0bbad21dd56bc", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
