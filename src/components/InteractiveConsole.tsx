@@ -12,7 +12,7 @@ interface LogLine {
 
 export default function InteractiveConsole() {
   const [logs, setLogs] = useState<LogLine[]>([
-    { text: "Initializing Nexavora Global Uplink Core...", type: "system" },
+    { text: "Initializing Nexavaro Global Uplink Core...", type: "system" },
     { text: "Connection established with 7 global edge nodes.", type: "system" },
     { text: "Type or click a command below to query our systems.", type: "system" },
   ]);
@@ -40,7 +40,7 @@ export default function InteractiveConsole() {
     setIsTyping(true);
 
     // Append the command log
-    setLogs((prev) => [...prev, { text: `guest@nexavora:~$ run --action=${cmdName}`, type: "command" }]);
+    setLogs((prev) => [...prev, { text: `guest@nexavaro:~$ run --action=${cmdName}`, type: "command" }]);
 
     await new Promise((resolve) => setTimeout(resolve, 600));
 
@@ -52,7 +52,7 @@ export default function InteractiveConsole() {
           { text: "Available CLI commands:", type: "output" },
           { text: "  services  - Print out active technology and ERP offerings.", type: "output" },
           { text: "  stack     - List our frontend, backend, and AI stacks.", type: "output" },
-          { text: "  mission   - Print Nexavora's remote-first founding core values.", type: "output" },
+          { text: "  mission   - Print Nexavaro's remote-first founding core values.", type: "output" },
           { text: "  contact   - Display instant communication links and sales inbox.", type: "output" },
           { text: "  clear     - Wipe terminal logs.", type: "output" },
         ];
@@ -68,7 +68,7 @@ export default function InteractiveConsole() {
         break;
       case "stack":
         output = [
-          { text: "▶ CURRENT NEXAVORA CORE TECH MATRIX:", type: "system" },
+          { text: "▶ CURRENT NEXAVARO CORE TECH MATRIX:", type: "system" },
           { text: "• Frontend: React 19, Next.js, Framer Motion, Tailwind CSS v4", type: "output" },
           { text: "• Backend: FastAPI, Node.js, Express, Python", type: "output" },
           { text: "• Database: PostgreSQL, MongoDB, vector indexing (ChromaDB/Pinecone)", type: "output" },
@@ -77,7 +77,7 @@ export default function InteractiveConsole() {
         break;
       case "mission":
         output = [
-          { text: "▶ NEXAVORA FOUNDING PRINCIPLES:", type: "system" },
+          { text: "▶ NEXAVARO FOUNDING PRINCIPLES:", type: "system" },
           { text: "• 100% Remote-First: Sourcing the highest caliber engineers globally.", type: "output" },
           { text: "• Hyper-Performance: Zero bloat. We optimize core web vitals for 100% scores.", type: "output" },
           { text: "• Clean Architecture: Scalable, testable, and strictly audited enterprise code.", type: "output" },
@@ -88,7 +88,7 @@ export default function InteractiveConsole() {
           { text: "▶ OUTBOUND COMMUNICATIONS HUB:", type: "system" },
           { text: "• Primary Inbox: ceo.nexavora@gmail.com [Unlimited direct submissions]", type: "output" },
           { text: "• Direct Line: +91 91599 26553", type: "output" },
-          { text: "• Global Workspace: remote.nexavora.com [Operating Globally]", type: "output" },
+          { text: "• Global Workspace: remote.nexavaro.com [Operating Globally]", type: "output" },
         ];
         break;
       case "clear":
@@ -113,7 +113,7 @@ export default function InteractiveConsole() {
           <div className="w-3 h-3 rounded-full bg-amber-500/80" />
           <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
           <span className="text-[10px] text-text-secondary font-mono ml-2 tracking-wider uppercase font-semibold">
-            Nexavora Console v1.2
+            Nexavaro Console v1.2
           </span>
         </div>
         <div className="flex items-center gap-1.5 font-mono text-[9px] text-emerald-400">

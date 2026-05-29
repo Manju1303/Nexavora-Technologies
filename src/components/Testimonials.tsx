@@ -9,7 +9,7 @@ const testimonials = [
     role: "Director of Operations",
     company: "Stanford Student Housing Alliance",
     content:
-      "The Hostel Mess ERP designed by Nexavora Technologies has completely overhauled our meal operations. Billing disputes dropped to zero, and the inventory forecasting feature alone has reduced food waste by 35%. Exceptional code quality.",
+      "The Hostel Mess ERP designed by Nexavaro Technologies has completely overhauled our meal operations. Billing disputes dropped to zero, and the inventory forecasting feature alone has reduced food waste by 35%. Exceptional code quality.",
     rating: 5,
     initials: "VR",
     color: "cyan",
@@ -19,7 +19,7 @@ const testimonials = [
     role: "Chief Technology Officer",
     company: "EduSphere Learning Systems",
     content:
-      "Integrating Nexavora's College Management Portal was the best architecture decision we made this year. The transition to their cloud database was completely seamless, and parents are praising the simplified digital grade book interface.",
+      "Integrating Nexavaro's College Management Portal was the best architecture decision we made this year. The transition to their cloud database was completely seamless, and parents are praising the simplified digital grade book interface.",
     rating: 5,
     initials: "ES",
     color: "purple",
@@ -29,7 +29,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "Aether Analytics Labs",
     content:
-      "We needed a world-class front-end to showcase our machine learning predictions. Nexavora built an AI Analytics Dashboard that is incredibly fast, visually stunning, and highly responsive. Investors were immediately impressed.",
+      "We needed a world-class front-end to showcase our machine learning predictions. Nexavaro built an AI Analytics Dashboard that is incredibly fast, visually stunning, and highly responsive. Investors were immediately impressed.",
     rating: 5,
     initials: "DM",
     color: "blue",

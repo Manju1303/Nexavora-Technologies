@@ -63,7 +63,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed font-light"
           >
-            Nexavora Technologies designs and engineers high-end software solutions, from enterprise-grade ERP systems and scalable SaaS applications to advanced AI solutions and high-performance mobile apps.
+            Nexavaro Technologies designs and engineers high-end software solutions, from enterprise-grade ERP systems and scalable SaaS applications to advanced AI solutions and high-performance mobile apps.
           </motion.p>
 
           {/* CTAs */}
@@ -242,7 +242,7 @@ export default function Hero() {
               <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10 flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-accent-cyan shrink-0 animate-pulse" />
                 <div className="text-[10px] text-emerald-400 font-mono overflow-hidden whitespace-nowrap text-ellipsis">
-                  nexavora@root:~$ start --service=ai_network_active
+                  nexavaro@root:~$ start --service=ai_network_active
                 </div>
               </div>
             </div>

@@ -64,11 +64,11 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 group">
           <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-accent-cyan/15 group-hover:scale-105 transition-transform duration-300">
-            <img src="/Nexavora-Technologies/logo.png" alt="Nexavora Logo" className="w-full h-full object-cover scale-110" />
+            <img src="/Nexavora-Technologies/logo.png" alt="Nexavaro Logo" className="w-full h-full object-cover scale-110" />
           </div>
           <div className="flex flex-col">
             <span className="font-extrabold text-xl tracking-tight text-white group-hover:text-accent-cyan transition-colors">
-              Nexavora
+              Nexavaro
             </span>
             <span className="text-[10px] text-accent-purple tracking-widest uppercase font-semibold">
               Technologies

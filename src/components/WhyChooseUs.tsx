@@ -97,10 +97,10 @@ export default function WhyChooseUs() {
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500/80" />
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="text-[8px] font-mono tracking-wider">nexavora_ai_agent.py</span>
+                  <span className="text-[8px] font-mono tracking-wider">nexavaro_ai_agent.py</span>
                 </div>
                 <div className="p-3 font-mono text-[9px] leading-normal space-y-1 select-none">
-                  <p><span className="text-purple-400 font-semibold">import</span> nexavora_core <span className="text-purple-400 font-semibold">as</span> nc</p>
+                  <p><span className="text-purple-400 font-semibold">import</span> nexavaro_core <span className="text-purple-400 font-semibold">as</span> nc</p>
                   <p>agent = nc.<span className="text-blue-400">Agent</span>(model=<span className="text-amber-300">&quot;aurora-v1&quot;</span>)</p>
                   <p>agent.<span className="text-yellow-400">add_memory</span>(store=<span className="text-amber-300">&quot;chromadb&quot;</span>)</p>
                   <p>agent.<span className="text-yellow-400">deploy</span>(host=<span className="text-amber-300">&quot;vercel&quot;</span>)</p>

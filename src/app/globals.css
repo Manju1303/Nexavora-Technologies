@@ -5,9 +5,9 @@
   --color-bg-dark: #030014;
   --color-bg-card: rgba(255, 255, 255, 0.02);
   --color-accent-cyan: #00f2fe;
-  --color-accent-purple: #9d4edd;
-  --color-accent-blue: #3b82f6;
-  --color-accent-pink: #f72585;
+  --color-accent-purple: #fbbf24;
+  --color-accent-blue: #00d4ff;
+  --color-accent-pink: #f97316;
   --color-text-primary: #f8fafc;
   --color-text-secondary: #94a3b8;
   
@@ -108,8 +108,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card-purple:hover {
-  border-color: rgba(157, 78, 221, 0.25);
-  box-shadow: 0 10px 40px rgba(157, 78, 221, 0.08);
+  border-color: rgba(251, 191, 36, 0.25);
+  box-shadow: 0 10px 40px rgba(251, 191, 36, 0.08);
 }
 
 .glass-input {
@@ -132,11 +132,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-light-purple {
-  background: radial-gradient(circle, rgba(157, 78, 221, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .bg-light-blue {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 /* Hover effects */

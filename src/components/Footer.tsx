@@ -49,10 +49,10 @@ export default function Footer() {
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleScroll("home")}>
               <div className="w-9 h-9 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center">
-                <img src="/Nexavora-Technologies/logo.png" alt="Nexavora Logo" className="w-full h-full object-cover scale-110" />
+                <img src="/Nexavora-Technologies/logo.png" alt="Nexavaro Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-white">Nexavora</span>
+                <span className="font-extrabold text-lg text-white">Nexavaro</span>
                 <span className="text-[9px] text-accent-purple tracking-widest uppercase font-semibold">
                   Technologies
                 </span>
@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Footer Base */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <span className="text-[11px] text-text-secondary font-light">
-            © {new Date().getFullYear()} Nexavora Technologies. All Rights Reserved. Designed for Manjunath.
+            © {new Date().getFullYear()} Nexavaro Technologies. All Rights Reserved. Designed for Manjunath.
           </span>
 
           {/* Socials & Top Scroll */}

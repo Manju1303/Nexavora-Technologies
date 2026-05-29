@@ -96,7 +96,7 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              Nexavora Technologies is a world-class IT software engineering and digital consulting company. We craft next-generation enterprise SaaS architectures, implement powerful ERP workflows, and deploy high-performance mobile and web products optimized for the digital era.
+              Nexavaro Technologies is a world-class IT software engineering and digital consulting company. We craft next-generation enterprise SaaS architectures, implement powerful ERP workflows, and deploy high-performance mobile and web products optimized for the digital era.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
