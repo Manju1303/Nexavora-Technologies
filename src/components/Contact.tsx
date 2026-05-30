@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#05021a]">
+    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark">
       {/* Background glow layers */}
       <div className="absolute top-1/4 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
@@ -301,7 +301,7 @@ export default function Contact() {
               className="flex-grow min-h-[220px] rounded-3xl bg-bg-dark border border-white/10 relative overflow-hidden flex items-center justify-center p-6"
             >
               {/* Radial scanner */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,242,254,0.05)_0%,rgba(0,0,0,0)_70%)] pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.05)_0%,rgba(0,0,0,0)_70%)] pointer-events-none" />
               <div className="absolute w-[90%] h-[90%] rounded-full border border-white/5 animate-spin-slow" />
               <div className="absolute w-[60%] h-[60%] rounded-full border border-dashed border-white/5 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "12s" }} />
 
@@ -338,7 +338,7 @@ export default function Contact() {
                 </g>
 
                 {/* Interconnecting pathways */}
-                <g stroke="rgba(0, 242, 254, 0.15)" strokeWidth="0.8" fill="none">
+                <g stroke="rgba(6, 182, 212, 0.15)" strokeWidth="0.8" fill="none">
                   {/* SF to NYC */}
                   <path d="M 50,50 Q 70,42 90,45" strokeDasharray="2 2" />
                   {/* NYC to LDN */}
@@ -358,7 +358,7 @@ export default function Contact() {
                 {/* Animated Global Packets */}
                 <motion.circle
                   r="1.5"
-                  fill="#00f2fe"
+                  fill="#06B6D4"
                   animate={{
                     cx: [50, 90, 155, 165, 215, 235],
                     cy: [50, 45, 38, 42, 75, 90]
@@ -377,7 +377,7 @@ export default function Contact() {
 
                 {/* Nodes */}
                 {/* SF */}
-                <circle cx="50" cy="50" r="2.5" fill="#00f2fe" />
+                <circle cx="50" cy="50" r="2.5" fill="#06B6D4" />
                 
                 {/* NYC */}
                 <circle cx="90" cy="45" r="2.5" fill="#3b82f6" />
@@ -395,7 +395,7 @@ export default function Contact() {
                 </g>
 
                 {/* SGP */}
-                <circle cx="235" cy="90" r="2.5" fill="#00f2fe" />
+                <circle cx="235" cy="90" r="2.5" fill="#06B6D4" />
                 
                 {/* NRT */}
                 <circle cx="265" cy="55" r="2.5" fill="#9d4edd" />

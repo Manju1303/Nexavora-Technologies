@@ -111,7 +111,7 @@ export default function Hero() {
               >
                 <defs>
                   <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#00f2fe" />
+                    <stop offset="0%" stopColor="#06B6D4" />
                     <stop offset="100%" stopColor="#9d4edd" />
                   </linearGradient>
                   <linearGradient id="blue-pink-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -139,7 +139,7 @@ export default function Hero() {
                 {/* Light particles running along the paths */}
                 <motion.circle
                   r="3.5"
-                  fill="#00f2fe"
+                  fill="#06B6D4"
                   animate={{
                     cx: [200, 80, 80, 200],
                     cy: [200, 120, 280, 200]
@@ -167,8 +167,8 @@ export default function Hero() {
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 />
-                <circle cx="200" cy="200" r="14" fill="#030014" />
-                <circle cx="200" cy="200" r="6" fill="#00f2fe" />
+                <circle cx="200" cy="200" r="14" fill="#0A192F" />
+                <circle cx="200" cy="200" r="6" fill="#06B6D4" />
 
                 {/* Satellite Nodes */}
                 {/* Node 1: AI (Top) */}
@@ -179,7 +179,7 @@ export default function Hero() {
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
                   <circle cx="200" cy="60" r="16" fill="rgba(255,255,255,0.03)" stroke="url(#cyan-purple-grad)" strokeWidth="1.5" />
-                  <circle cx="200" cy="60" r="8" fill="#00f2fe" />
+                  <circle cx="200" cy="60" r="8" fill="#06B6D4" />
                 </motion.g>
 
                 {/* Node 2: Mobile (Left-Top) */}

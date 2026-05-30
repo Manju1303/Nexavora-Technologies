@@ -49,7 +49,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-[#05021a]">
+    <section id="about" className="py-24 relative overflow-hidden bg-bg-dark">
       {/* Background glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-light-purple blur-3xl opacity-20 pointer-events-none" />
 
@@ -160,7 +160,7 @@ export default function About() {
                     <path d="M50 60C30 60 10 72 10 90H90C90 72 70 60 50 60Z" fill="url(#founder-grad-dark)" />
                     <defs>
                       <linearGradient id="founder-grad-light" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#00f2fe" />
+                        <stop offset="0%" stopColor="#06B6D4" />
                         <stop offset="100%" stopColor="#3b82f6" />
                       </linearGradient>
                       <linearGradient id="founder-grad-dark" x1="0" y1="0" x2="1" y2="1">

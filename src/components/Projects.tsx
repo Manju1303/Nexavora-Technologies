@@ -4,203 +4,144 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
-const categories = ["All", "AI Systems", "Health Tech", "SaaS & Utilities"];
+const categories = ["All", "Healthcare", "Education", "ERP & SaaS"];
 
 const projects = [
   {
-    title: "AURORA (AI Conversational Avatar)",
-    category: "AI Systems",
+    title: "Arockia Medical Centre",
+    category: "Healthcare",
     description:
-      "A next-generation 3D conversational agent leveraging large language models and real-time speech processing. Built for context-aware natural interactions with high-fidelity speech-to-avatar rendering.",
-    tech: ["Python", "LLM", "Speech APIs", "NLP"],
-    link: "https://github.com/Manju1303",
+      "A premium multi-speciality hospital platform featuring real-time doctor appointment bookings, clinical department directory management, emergency speed links, and NABH-compliant presentations.",
+    tech: ["React", "Next.js", "Tailwind CSS", "SEO Tools"],
+    link: "https://arockiamedicalcentre.in/?utm_source=chatgpt.com",
     color: "cyan",
     preview: (
       <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
         <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>AURORA_AGENT_v1.0</span>
-          <span className="text-accent-cyan flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" /> LISTENING
+          <span>AROCKIA_MED_PORTAL</span>
+          <span className="text-accent-cyan flex items-center gap-1 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" /> 24/7 ER ACTIVE
           </span>
         </div>
         <div className="space-y-1.5 my-2">
           <div className="flex justify-between text-xs text-white">
-            <span>Voice Input:</span>
-            <span className="text-accent-cyan font-bold">&quot;Hello Aurora...&quot;</span>
+            <span>Appointments:</span>
+            <span className="text-accent-cyan font-bold">14 Active</span>
           </div>
-          <div className="flex gap-0.5 justify-center items-end h-8">
-            <div className="w-1 bg-accent-cyan h-4 animate-pulse" />
-            <div className="w-1 bg-accent-cyan h-6 animate-pulse" style={{ animationDelay: "0.2s" }} />
-            <div className="w-1 bg-accent-cyan h-2 animate-pulse" style={{ animationDelay: "0.4s" }} />
-            <div className="w-1 bg-accent-cyan h-8 animate-pulse" style={{ animationDelay: "0.1s" }} />
-            <div className="w-1 bg-accent-cyan h-5 animate-pulse" style={{ animationDelay: "0.3s" }} />
+          <div className="bg-white/5 p-1.5 rounded border border-white/5 space-y-1">
+            <div className="flex justify-between text-[7px]">
+              <span>Dr. Sarah (Cardiology)</span>
+              <span className="text-emerald-400 font-bold">ON DUTY</span>
+            </div>
+            <div className="flex justify-between text-[7px]">
+              <span>Dr. Vignesh (Orthopedic)</span>
+              <span className="text-emerald-400 font-bold">ON DUTY</span>
+            </div>
           </div>
         </div>
         <div className="bg-white/5 p-1 rounded border border-white/5 text-center text-[7px] text-accent-cyan">
-          NLP RESPONSE: LATENCY 140ms
+          NABH PRESENTATION: COMPLIANT
         </div>
       </div>
     ),
   },
   {
-    title: "Memora (AI Agent)",
-    category: "AI Systems",
+    title: "Insta Educational Guidance Platform",
+    category: "Education",
     description:
-      "An intelligent RAG-based search agent with persistent semantic memory across user sessions, utilizing vectorized embeddings and ChromaDB index retrieval pipelines.",
-    tech: ["Python", "Vector DB", "ChromaDB", "Semantic Search"],
-    link: "https://github.com/Manju1303/Memora",
-    color: "purple",
-    preview: (
-      <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
-        <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>MEMORA_RAG_DB</span>
-          <span className="text-accent-purple">EMBEDDINGS: ACTIVE</span>
-        </div>
-        <div className="space-y-1 my-2">
-          <div className="flex justify-between">
-            <span>Vector Dimensions:</span>
-            <span className="text-white">1536</span>
-          </div>
-          <div className="flex justify-between">
-            <span>ChromaDB Index:</span>
-            <span className="text-white font-bold">12,480 Nodes</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Retrieval Hits:</span>
-            <span className="text-emerald-400 font-bold">99.2% Relevance</span>
-          </div>
-        </div>
-        <div className="bg-white/5 p-1.5 rounded border border-white/5 text-center text-[7px] text-accent-purple">
-          QUERY: &quot;User preferences&quot;
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "HealthGuard AI",
-    category: "Health Tech",
-    description:
-      "A healthcare audit automation dashboard utilizing predictive data analytics for medical compliance scoring and NABH pre-entry facility pre-assessments.",
-    tech: ["FastAPI", "React", "PostgreSQL", "Data Analytics"],
-    link: "https://nabh.vercel.app",
-    color: "blue",
-    preview: (
-      <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
-        <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>NABH_AUDIT_SYSTEM</span>
-          <span className="text-accent-blue">AUDITING</span>
-        </div>
-        <div className="space-y-1.5 my-2">
-          <div className="flex justify-between">
-            <span>Compliance Score:</span>
-            <span className="text-white font-bold">92.4%</span>
-          </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-            <div className="w-[92%] h-full bg-accent-blue" />
-          </div>
-          <div className="flex justify-between text-[8px]">
-            <span>Gaps Identified:</span>
-            <span className="text-rose-400">4 / 250 checked</span>
-          </div>
-        </div>
-        <div className="bg-white/5 p-1.5 rounded border border-white/5 text-center text-[8px] text-emerald-400">
-          REPORT GENERATED
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "Air Canva",
-    category: "AI Systems",
-    description:
-      "An immersive spatial creativity canvas powered by Computer Vision. Tracks real-time hand coordinates and finger gestures for zero-touch digital drawing using MediaPipe.",
-    tech: ["JavaScript", "MediaPipe", "Canvas API", "Computer Vision"],
-    link: "https://manju1303.github.io/Air-canva/",
-    color: "pink",
-    preview: (
-      <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
-        <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>MEDIAPIPE_CANVA</span>
-          <span className="text-accent-pink">GESTURE: ON</span>
-        </div>
-        <div className="flex items-center justify-center h-14 relative">
-          <div className="absolute w-1.5 h-1.5 rounded-full bg-accent-pink top-3 left-5" />
-          <div className="absolute w-1.5 h-1.5 rounded-full bg-accent-pink top-5 left-10" />
-          <div className="absolute w-1.5 h-1.5 rounded-full bg-accent-pink top-7 left-14" />
-          <div className="absolute w-2 h-2 rounded-full bg-white top-1 left-12" />
-          <svg className="w-full h-full stroke-accent-pink/30" strokeWidth="1">
-            <line x1="20" y1="12" x2="40" y2="20" />
-            <line x1="40" y1="20" x2="60" y2="28" />
-            <line x1="60" y1="28" x2="52" y2="6" />
-          </svg>
-        </div>
-        <div className="flex justify-between text-[8px] text-slate-400">
-          <span>BRUSH COORDS:</span>
-          <span className="text-accent-pink font-bold">X:124, Y:58</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "Theft Detection System",
-    category: "AI Systems",
-    description:
-      "An AI-powered video security monitoring engine. Analyzes streams in real time utilizing custom-trained Computer Vision models to flag suspicious activities and trigger warnings.",
-    tech: ["Python", "OpenCV", "TensorFlow", "Threat Alerting"],
+      "A comprehensive educational counseling and guidance platform supporting college listing directories, study abroad support systems, student lead generation tools, and career guidance paths.",
+    tech: ["React", "Tailwind CSS", "Next.js", "Lead Analytics"],
     link: "https://github.com/Manju1303",
     color: "pink",
     preview: (
       <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
         <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>THEFT_DETECT_CV</span>
-          <span className="text-rose-500 font-bold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" /> SCANNING
-          </span>
+          <span>INSTA_GUIDANCE_HUB</span>
+          <span className="text-accent-pink font-bold">LEADS UPLINK: OK</span>
         </div>
-        <div className="relative h-12 border border-dashed border-rose-500/20 my-1 rounded flex items-center justify-center">
-          <div className="absolute inset-0 bg-rose-500/5 animate-pulse" />
-          <div className="border border-rose-500 w-16 h-8 flex flex-col items-start p-1 text-[5px] text-rose-500 font-bold relative">
-            <span className="absolute -top-3 left-0">SUSPECT_A: 98%</span>
-            <div className="w-1 h-1 border-t border-l border-rose-500 absolute top-0 left-0" />
-            <div className="w-1 h-1 border-b border-r border-rose-500 absolute bottom-0 right-0" />
+        <div className="space-y-1.5 my-2">
+          <div className="flex justify-between text-xs text-white">
+            <span>Student Inquiries:</span>
+            <span className="text-accent-pink font-bold">154+ Today</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Universities Listed:</span>
+            <span className="text-white font-bold">150+ Global</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Active Admissions:</span>
+            <span className="text-emerald-400 font-bold">42 Transmitting</span>
           </div>
         </div>
-        <div className="text-[6px] text-rose-400 flex justify-between">
-          <span>INTRUSION:</span>
-          <span>WARNING_TRIGGERED</span>
+        <div className="bg-white/5 p-1 rounded border border-white/5 text-center text-[7px] text-accent-pink">
+          STUDY ABROAD: UPLINK ACTIVE
         </div>
       </div>
     ),
   },
   {
-    title: "Step Count",
-    category: "Health Tech",
+    title: "STEPCOUNT Staff Monitoring System",
+    category: "ERP & SaaS",
     description:
-      "Real-time pedometer and health analyzer tracking native device motion sensor data and accelerometers, styled with highly reactive and low-latency metrics.",
-    tech: ["JavaScript", "Sensors API", "Vercel", "Mobile Web"],
+      "An advanced college administration and employee tracking dashboard monitoring real-time check-ins, staff attendance records, dashboard statistics, and administrative workflows.",
+    tech: ["FastAPI", "React", "PostgreSQL", "Dashboard Analytics"],
     link: "https://stepcount-eight.vercel.app/",
-    color: "cyan",
+    color: "blue",
     preview: (
       <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
         <div className="flex justify-between items-center border-b border-white/10 pb-2">
-          <span>STEPCOUNT_API</span>
-          <span className="text-accent-cyan">DEVICE_LINKED</span>
+          <span>STEPCOUNT_STAFF_ERP</span>
+          <span className="text-accent-blue font-bold">TRACKING ACTIVE</span>
         </div>
         <div className="space-y-1.5 my-2">
           <div className="flex justify-between">
-            <span>Steps Today:</span>
-            <span className="text-white font-bold">8,421 / 10k</span>
+            <span>Staff Present:</span>
+            <span className="text-white font-bold">94.8%</span>
           </div>
           <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-            <div className="w-[84%] h-full bg-accent-cyan" />
+            <div className="w-[94%] h-full bg-accent-blue" />
           </div>
           <div className="flex justify-between text-[8px]">
-            <span>Active Calories:</span>
-            <span className="text-accent-cyan">340 kcal</span>
+            <span>Activity Log Speed:</span>
+            <span className="text-accent-blue font-bold">12ms Sync</span>
           </div>
         </div>
-        <div className="bg-white/5 p-1 rounded text-center text-[7px] text-slate-400 border border-white/5">
-          ACCELEROMETER: ACTIVE
+        <div className="bg-white/5 p-1.5 rounded border border-white/5 text-center text-[8px] text-emerald-400">
+          ATTENDANCE MONITORED
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "NABH Documentation & Digital Support",
+    category: "Healthcare",
+    description:
+      "A specialized hospital accreditation digitization and documentation management platform offering automated checklists, secure records storage, and database compliance checking.",
+    tech: ["React", "PostgreSQL", "Compliance Checkers", "Docker"],
+    link: "https://nabh.vercel.app",
+    color: "purple",
+    preview: (
+      <div className="w-full h-full p-4 flex flex-col justify-between font-mono text-[9px] text-slate-300">
+        <div className="flex justify-between items-center border-b border-white/10 pb-2">
+          <span>NABH_COMPLIANCE_SYS</span>
+          <span className="text-accent-purple font-bold">MONITORING</span>
+        </div>
+        <div className="space-y-1 my-2">
+          <div className="flex justify-between">
+            <span>Accreditation Docs:</span>
+            <span className="text-white font-bold">42/42 Verified</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Audit Readiness:</span>
+            <span className="text-emerald-400 font-bold">100% Score</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Compliance Sync:</span>
+            <span className="text-white">Active Node</span>
+          </div>
+        </div>
+        <div className="bg-white/5 p-1.5 rounded border border-white/5 text-center text-[7px] text-accent-purple">
+          COMPLIANCE SECURED (AES-256)
         </div>
       </div>
     ),
@@ -215,7 +156,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-[#05021a]">
+    <section id="projects" className="py-24 relative overflow-hidden bg-bg-dark">
       {/* Background neon lights */}
       <div className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />

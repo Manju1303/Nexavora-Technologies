@@ -44,9 +44,9 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="why-us" className="py-24 relative overflow-hidden bg-[#05021a]">
+    <section id="why-us" className="py-24 relative overflow-hidden bg-bg-dark">
       {/* Vercel-style background radial neon rays */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70rem] h-[35rem] bg-[radial-gradient(ellipse_at_top,rgba(0,242,254,0.06)_0%,rgba(157,78,221,0.03)_50%,transparent_100%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70rem] h-[35rem] bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.06)_0%,rgba(157,78,221,0.03)_50%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -145,7 +145,7 @@ export default function WhyChooseUs() {
                     cy="24"
                     r="20"
                     fill="none"
-                    stroke="#00f2fe"
+                    stroke="#06B6D4"
                     strokeWidth="4"
                     strokeDasharray={125}
                     strokeDashoffset={125 - (125 * speedVal) / 100}
