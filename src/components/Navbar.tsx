@@ -63,7 +63,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-accent-cyan/15 group-hover:scale-105 transition-transform duration-300">
+          <div className="w-10 h-10 rounded-xl overflow-hidden bg-white border border-white/10 shadow-lg shadow-accent-cyan/15 group-hover:scale-105 transition-transform duration-300">
             <img src="/Nexavora-Technologies/logo.png" alt="Nexavaro Logo" className="w-full h-full object-cover scale-110" />
           </div>
           <div className="flex flex-col">

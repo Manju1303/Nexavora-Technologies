@@ -258,6 +258,8 @@ export default function Projects() {
                     {/* View Button */}
                     <a
                       href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white group-hover:text-accent-cyan transition-colors"
                     >
                       View Live Project
@@ -266,7 +268,12 @@ export default function Projects() {
                   </div>
 
                   {/* Right Column (Visual Mockup Grid) */}
-                  <div className="w-full md:w-[35%] min-h-[160px] rounded-2xl bg-bg-dark/80 border border-white/10 relative overflow-hidden flex items-center justify-center self-center shadow-inner group-hover:border-white/15 transition-all">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full md:w-[35%] min-h-[160px] rounded-2xl bg-bg-dark/80 border border-white/10 relative overflow-hidden flex items-center justify-center self-center shadow-inner group-hover:border-white/15 transition-all cursor-pointer"
+                  >
                     {/* Background glow node */}
                     <div
                       className={`absolute w-24 h-24 rounded-full blur-2xl opacity-10 pointer-events-none ${
@@ -280,7 +287,7 @@ export default function Projects() {
                       }`}
                     />
                     {project.preview}
-                  </div>
+                  </a>
                 </motion.div>
               );
             })}
