@@ -38,7 +38,7 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 text-accent-cyan animate-pulse" />
             <span className="text-xs font-semibold tracking-wider bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent uppercase">
-              Next-Gen Enterprise Solutions
+              Building Technology. Empowering Innovation.
             </span>
           </motion.div>
 
