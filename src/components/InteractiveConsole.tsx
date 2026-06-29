@@ -1,15 +1,15 @@
 "use client";
-
+ 
 import { useState, useRef, useEffect } from "react";
 import { Shield, Sparkles, Send, RefreshCw, Cpu, Layers, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
+ 
 interface LogLine {
   text: string;
   type: "command" | "output" | "system" | "error";
   delay?: number;
 }
-
+ 
 export default function InteractiveConsole() {
   const [logs, setLogs] = useState<LogLine[]>([
     { text: "Initializing Nexavaro Global Uplink Core...", type: "system" },
@@ -18,7 +18,7 @@ export default function InteractiveConsole() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const terminalEndRef = useRef<HTMLDivElement>(null);
-
+ 
   const commands = [
     { name: "help", desc: "List all commands", icon: HelpCircle },
     { name: "services", desc: "Show core services", icon: Layers },
@@ -26,26 +26,26 @@ export default function InteractiveConsole() {
     { name: "mission", desc: "Display company mission", icon: Sparkles },
     { name: "contact", desc: "Get direct contact link", icon: Send },
   ];
-
+ 
   const scrollToBottom = () => {
     terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
+ 
   useEffect(() => {
     scrollToBottom();
   }, [logs, isTyping]);
-
+ 
   const executeCommand = async (cmdName: string) => {
     if (isTyping) return;
     setIsTyping(true);
-
+ 
     // Append the command log
     setLogs((prev) => [...prev, { text: `guest@nexavaro:~$ run --action=${cmdName}`, type: "command" }]);
-
+ 
     await new Promise((resolve) => setTimeout(resolve, 600));
-
+ 
     let output: LogLine[] = [];
-
+ 
     switch (cmdName) {
       case "help":
         output = [
@@ -87,7 +87,7 @@ export default function InteractiveConsole() {
         output = [
           { text: "▶ OUTBOUND COMMUNICATIONS HUB:", type: "system" },
           { text: "• Primary Inbox: ceo.nexavora@gmail.com [Unlimited direct submissions]", type: "output" },
-          { text: "• Direct Line: +91 91599 26553", type: "output" },
+          { text: "• Direct Hotline: +91 91599 26553", type: "output" },
           { text: "• Global Workspace: remote.nexavaro.com [Operating Globally]", type: "output" },
         ];
         break;
@@ -98,30 +98,32 @@ export default function InteractiveConsole() {
       default:
         output = [{ text: `Error: Command '${cmdName}' not found. Type 'help' for options.`, type: "error" }];
     }
-
+ 
     setLogs((prev) => [...prev, ...output]);
     setIsTyping(false);
   };
-
+ 
   return (
     <div className="w-full rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col h-[320px] relative">
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/5 shrink-0">
-        <div className="flex items-center gap-2">
-          {/* OS Circle Buttons */}
-          <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-          <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-          <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-          <span className="text-[10px] text-text-secondary font-mono ml-2 tracking-wider uppercase font-semibold">
-            Nexavaro Console v1.2
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5 font-mono text-[9px] text-emerald-400">
-          <Shield className="w-3.5 h-3.5" />
-          <span className="tracking-wide">SECURE LINK</span>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-2">
+            {/* OS Circle Buttons */}
+            <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+            <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+            <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+            <span className="text-[10px] text-text-secondary font-mono ml-2 tracking-wider uppercase font-semibold">
+              Nexavaro Console v1.2
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5 font-mono text-[9px] text-emerald-400">
+            <Shield className="w-3.5 h-3.5" />
+            <span className="tracking-wide">SECURE LINK</span>
+          </div>
         </div>
       </div>
-
+ 
       {/* Terminal Display */}
       <div className="flex-grow p-4 overflow-y-auto font-mono text-[10px] sm:text-xs leading-relaxed space-y-2 scrollbar-thin select-text">
         <AnimatePresence initial={false}>
@@ -145,7 +147,7 @@ export default function InteractiveConsole() {
             </motion.div>
           ))}
         </AnimatePresence>
-
+ 
         {isTyping && (
           <div className="text-accent-cyan flex items-center gap-1.5 font-bold">
             <RefreshCw className="w-3 h-3 animate-spin" />
@@ -154,7 +156,7 @@ export default function InteractiveConsole() {
         )}
         <div ref={terminalEndRef} />
       </div>
-
+ 
       {/* Command Shortcuts overlay */}
       <div className="p-3 border-t border-white/5 bg-white/5 flex flex-wrap gap-2 shrink-0 items-center justify-center">
         <span className="text-[8px] sm:text-[9px] text-text-secondary uppercase tracking-widest font-bold font-mono mr-1">

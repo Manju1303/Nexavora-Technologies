@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Nexavaro Technologies | Building Smart Digital Solutions",
-  description: "Nexavaro Technologies is a premium, futuristic IT company specializing in custom Software Development, AI Solutions, ERP Systems, SaaS Platforms, Cloud Solutions, and Mobile App Development. Leading digital transformation with next-gen architectures.",
-  keywords: "Nexavaro Technologies, Software Development, AI Solutions, ERP Systems, SaaS Platforms, Web Development, Mobile Apps, Cloud Solutions, digital transformation, Silicon Valley tech, Manjunath CEO",
+  description: "Nexavaro Technologies is a premium, futuristic IT company based in Kallakurichi, Tamil Nadu, specializing in custom Software Development, AI Solutions, ERP Systems, SaaS Platforms, Cloud Solutions, and Mobile App Development. Leading digital transformation with next-gen architectures.",
+  keywords: "Nexavaro Technologies, Software Development Kallakurichi, AI Solutions Tamil Nadu, ERP Systems, SaaS Platforms, Web Development Kallakurichi, Mobile Apps, Cloud Solutions, digital transformation, Tamil Nadu tech startup, Manjunath CEO",
   authors: [{ name: "Manjunath", url: "https://nexavaro.com" }],
   creator: "Nexavaro Technologies",
   publisher: "Nexavaro Technologies",

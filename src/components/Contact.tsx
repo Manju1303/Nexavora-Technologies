@@ -1,30 +1,33 @@
 "use client";
-
+ 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, Send, CheckCircle, AlertCircle, Globe } from "lucide-react";
-
+import { Mail, Phone, Send, CheckCircle, AlertCircle, Globe, X } from "lucide-react";
+ 
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    service: "AI Solutions",
-    message: "",
+    service: "Web Development",
   });
-
+  
+  // Explicitly separate message state since it is textarea
+  const [message, setMessage] = useState("");
+ 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
+ 
   const servicesList = [
-    "AI Solutions",
-    "ERP Development",
     "Web Development",
-    "Mobile Apps",
-    "SaaS Platforms",
-    "UI/UX Design",
+    "App Development",
+    "UI / UX Design",
+    "Branding & Identity",
+    "Digital Marketing",
+    "Tech Consulting",
+    "Other",
   ];
-
+ 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
@@ -33,16 +36,16 @@ export default function Contact() {
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
       newErrors.email = "Please enter a valid email";
     }
-    if (!form.message.trim()) newErrors.message = "Message is required";
+    if (!message.trim()) newErrors.message = "Message is required";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-
+ 
     setIsSubmitting(true);
     try {
       const response = await fetch("https://formsubmit.co/ajax/2c0abcf6c78b00c64dd0bbad21dd56bc", {
@@ -55,32 +58,32 @@ export default function Contact() {
           Name: form.name,
           Email: form.email,
           Service: form.service,
-          Message: form.message,
+          Message: message,
           _subject: `New Nexavaro Lead: ${form.name} (${form.service})`,
         }),
       });
-
+ 
       if (response.ok) {
         setIsSuccess(true);
-        setForm({ name: "", email: "", service: "AI Solutions", message: "" });
-        setTimeout(() => setIsSuccess(false), 5000);
+        setForm({ name: "", email: "", service: "Web Development" });
+        setMessage("");
       } else {
         alert("Form submission failed. Please try again or email us directly at ceo.nexavora@gmail.com");
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("An error occurred during submission. Please try again or email us directly.");
+      alert("An error occurred during submission. Please try again or email us directly at ceo.nexavora@gmail.com");
     } finally {
       setIsSubmitting(false);
     }
   };
-
+ 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark">
+    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
       {/* Background glow layers */}
       <div className="absolute top-1/4 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
-
+ 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -88,11 +91,11 @@ export default function Contact() {
             Get In Touch
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Initiate Your Engineering Cycle
+            Let's Build Something World-Class
           </h3>
           <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
         </div>
-
+ 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           {/* Left Column: Form */}
           <div className="lg:col-span-7">
@@ -101,38 +104,21 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="p-8 md:p-10 rounded-3xl glass-card border border-white/5 shadow-2xl relative"
+              className="p-8 md:p-10 rounded-3xl glass-card border border-white/5 shadow-2xl relative bg-white/5"
             >
-              {/* Form Success Banner */}
-              <AnimatePresence>
-                {isSuccess && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="absolute top-6 left-6 right-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-3 z-20 backdrop-blur-md"
-                  >
-                    <CheckCircle className="w-5 h-5 shrink-0" />
-                    <span className="text-sm font-semibold">
-                      Transmission Successful! Our tech coordinators will reply within 4 hours.
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name field */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                      Your Name
+                    <label htmlFor="name" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
+                      Your Name *
                     </label>
                     <input
                       id="name"
                       type="text"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="e.g. John Doe"
+                      placeholder="e.g. Rahul Sharma"
                       className={`px-4 py-3 rounded-xl text-sm font-light glass-input ${
                         errors.name ? "border-rose-500/40" : ""
                       }`}
@@ -143,18 +129,18 @@ export default function Contact() {
                       </span>
                     )}
                   </div>
-
+ 
                   {/* Email field */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                      Business Email
+                    <label htmlFor="email" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
+                      Business Email *
                     </label>
                     <input
                       id="email"
                       type="email"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="e.g. john@company.com"
+                      placeholder="e.g. rahul@company.com"
                       className={`px-4 py-3 rounded-xl text-sm font-light glass-input ${
                         errors.email ? "border-rose-500/40" : ""
                       }`}
@@ -166,10 +152,10 @@ export default function Contact() {
                     )}
                   </div>
                 </div>
-
+ 
                 {/* Service choice */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="service" className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  <label htmlFor="service" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
                     Select Target Service
                   </label>
                   <select
@@ -185,18 +171,18 @@ export default function Contact() {
                     ))}
                   </select>
                 </div>
-
+ 
                 {/* Message field */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                    Project Requirements
+                  <label htmlFor="message" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
+                    Project Requirements *
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Describe your goals, tech stack preferences, timelines, etc..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Describe your goals, timelines, and business model..."
                     className={`px-4 py-3 rounded-xl text-sm font-light glass-input resize-none ${
                       errors.message ? "border-rose-500/40" : ""
                     }`}
@@ -207,7 +193,7 @@ export default function Contact() {
                     </span>
                   )}
                 </div>
-
+ 
                 {/* Submit button */}
                 <button
                   type="submit"
@@ -229,8 +215,8 @@ export default function Contact() {
               </form>
             </motion.div>
           </div>
-
-          {/* Right Column: Details & Radar scan */}
+ 
+          {/* Right Column: Details & Map overlay */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-8">
             {/* Info panel */}
             <motion.div
@@ -238,12 +224,12 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="p-8 rounded-3xl glass-card border border-white/5 space-y-6"
+              className="p-8 rounded-3xl glass-card border border-white/5 space-y-6 bg-white/5 text-left"
             >
               <h4 className="font-extrabold text-white text-lg border-b border-white/5 pb-3">
                 Communications Hub
               </h4>
-
+ 
               {/* Email */}
               <div className="flex gap-4 items-start">
                 <div className="p-3 rounded-xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/10">
@@ -258,7 +244,7 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-
+ 
               {/* Phone */}
               <div className="flex gap-4 items-start">
                 <div className="p-3 rounded-xl bg-accent-blue/10 text-accent-blue border border-accent-blue/10">
@@ -266,14 +252,14 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
-                    Direct Hotline
+                    Response Window
                   </span>
-                  <a href="tel:+919159926553" className="text-white hover:text-accent-blue text-sm transition-colors mt-0.5 block font-medium">
-                    +91 91599 26553
-                  </a>
+                  <span className="text-white text-sm mt-0.5 block font-medium">
+                    Within 24 Hours
+                  </span>
                 </div>
               </div>
-
+ 
               {/* Global Workspace */}
               <div className="flex gap-4 items-start">
                 <div className="p-3 rounded-xl bg-accent-purple/10 text-accent-purple border border-accent-purple/10">
@@ -281,17 +267,15 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
-                    Global Ecosystem
+                    We Serve
                   </span>
                   <span className="text-white text-sm mt-0.5 block font-light leading-relaxed">
-                    100% Remote-First Startup<br />
-                    Distributed Network & Agile Teams<br />
-                    Collaborating Worldwide
+                    Kallakurichi · Tamil Nadu · Pan India
                   </span>
                 </div>
               </div>
             </motion.div>
-
+ 
             {/* Global Coordinates map overlay */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -304,10 +288,10 @@ export default function Contact() {
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.05)_0%,rgba(0,0,0,0)_70%)] pointer-events-none" />
               <div className="absolute w-[90%] h-[90%] rounded-full border border-white/5 animate-spin-slow" />
               <div className="absolute w-[60%] h-[60%] rounded-full border border-dashed border-white/5 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "12s" }} />
-
+ 
               {/* Grid background */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
-
+ 
               {/* Custom SVG Location Map Vector */}
               <svg viewBox="0 0 300 150" className="w-full h-full relative z-10 opacity-70">
                 {/* Grid dots/stars background */}
@@ -327,99 +311,119 @@ export default function Contact() {
                   <circle cx="200" cy="60" r="1" />
                   <circle cx="240" cy="70" r="1" />
                   <circle cx="280" cy="60" r="1" />
-
-                  <circle cx="20" cy="100" r="1" />
-                  <circle cx="60" cy="110" r="1" />
-                  <circle cx="100" cy="100" r="1" />
-                  <circle cx="140" cy="110" r="1" />
-                  <circle cx="180" cy="100" r="1" />
-                  <circle cx="220" cy="110" r="1" />
-                  <circle cx="260" cy="100" r="1" />
                 </g>
-
-                {/* Interconnecting pathways */}
-                <g stroke="rgba(6, 182, 212, 0.15)" strokeWidth="0.8" fill="none">
-                  {/* SF to NYC */}
-                  <path d="M 50,50 Q 70,42 90,45" strokeDasharray="2 2" />
-                  {/* NYC to LDN */}
-                  <path d="M 90,45 Q 120,30 155,38" />
-                  {/* LDN to FRA */}
-                  <path d="M 155,38 L 165,42" />
-                  {/* FRA to IND */}
-                  <path d="M 165,42 Q 190,55 215,75" />
-                  {/* IND to SGP */}
-                  <path d="M 215,75 L 235,90" />
-                  {/* SGP to NRT */}
-                  <path d="M 235,90 Q 250,70 265,55" />
-                  {/* SGP to SYD */}
-                  <path d="M 235,90 Q 260,110 280,125" />
-                </g>
-
-                {/* Animated Global Packets */}
-                <motion.circle
-                  r="1.5"
-                  fill="#06B6D4"
-                  animate={{
-                    cx: [50, 90, 155, 165, 215, 235],
-                    cy: [50, 45, 38, 42, 75, 90]
-                  }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.circle
-                  r="1.5"
-                  fill="#9d4edd"
-                  animate={{
-                    cx: [235, 265, 50, 90],
-                    cy: [90, 55, 50, 45]
-                  }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: 2.5 }}
-                />
-
-                {/* Nodes */}
-                {/* SF */}
-                <circle cx="50" cy="50" r="2.5" fill="#06B6D4" />
-                
-                {/* NYC */}
-                <circle cx="90" cy="45" r="2.5" fill="#3b82f6" />
-                
-                {/* LDN */}
-                <circle cx="155" cy="38" r="2.5" fill="#3b82f6" />
-
-                {/* FRA */}
-                <circle cx="165" cy="42" r="2.5" fill="#9d4edd" />
-
+ 
                 {/* India (Main hub) */}
                 <g>
                   <circle cx="215" cy="75" r="3.5" fill="#f72585" />
                   <circle cx="215" cy="75" r="8" fill="none" stroke="#f72585" strokeWidth="0.5" className="animate-ping" style={{ animationDuration: "2s" }} />
                 </g>
-
-                {/* SGP */}
-                <circle cx="235" cy="90" r="2.5" fill="#06B6D4" />
-                
-                {/* NRT */}
-                <circle cx="265" cy="55" r="2.5" fill="#9d4edd" />
-
-                {/* SYD */}
-                <circle cx="280" cy="125" r="2.5" fill="#3b82f6" />
-
-                {/* Node Labels */}
-                <text x="38" y="52" fill="#94a3b8" fontSize="5" fontFamily="monospace">SF</text>
-                <text x="94" y="47" fill="#94a3b8" fontSize="5" fontFamily="monospace">NYC</text>
-                <text x="143" y="36" fill="#94a3b8" fontSize="5" fontFamily="monospace">LDN</text>
+ 
                 <text x="210" y="70" fill="#f72585" fontSize="5.5" fontFamily="monospace" fontWeight="bold">IND</text>
-                <text x="240" y="93" fill="#94a3b8" fontSize="5" fontFamily="monospace">SGP</text>
               </svg>
-
+ 
               {/* Location Scan indicator */}
               <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 flex items-center gap-1.5 font-mono text-[9px] text-accent-cyan">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" />
-                <span>REMOTE LINK ESTABLISHED: ~12ms</span>
+                <span>Kallakurichi Location Link Active</span>
               </div>
             </motion.div>
           </div>
         </div>
       </div>
+ 
+      {/* ── SUCCESS POPUP MODAL OVERLAY ── */}
+      <AnimatePresence>
+        {isSuccess && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Modal backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSuccess(false)}
+              className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+            />
+ 
+            {/* Confetti simulation particles */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+              {[...Array(20)].map((_, i) => {
+                const randomDelay = Math.random() * 2;
+                const randomX = Math.random() * 100;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ y: -20, x: `${randomX}%`, scale: 0.5 + Math.random(), rotate: 0, opacity: 1 }}
+                    animate={{ y: "105vh", rotate: 360 * (Math.random() > 0.5 ? 1 : -1), opacity: 0 }}
+                    transition={{ duration: 3 + Math.random() * 2, delay: randomDelay, ease: "easeOut" }}
+                    className={`absolute w-3 h-3 rounded-sm ${
+                      i % 3 === 0 ? "bg-accent-cyan" : i % 3 === 1 ? "bg-accent-purple" : "bg-accent-pink"
+                    }`}
+                  />
+                );
+              })}
+            </div>
+ 
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="w-full max-w-md bg-bg-dark border border-white/10 rounded-3xl p-8 text-center shadow-2xl relative z-10 overflow-hidden"
+            >
+              {/* Outer decorative light */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-accent-cyan/10 blur-xl pointer-events-none" />
+ 
+              {/* Close X Button */}
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="absolute top-4 right-4 p-2 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close success popup"
+              >
+                <X className="w-4 h-4" />
+              </button>
+ 
+              {/* Animated checkmark circle */}
+              <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mx-auto mb-6">
+                <CheckCircle className="w-8 h-8 animate-pulse" />
+              </div>
+ 
+              {/* Success title */}
+              <div className="text-white text-2xl font-extrabold mb-2 tracking-tight">
+                We Got Your<br />
+                <span className="bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent">
+                  Message!
+                </span>
+              </div>
+ 
+              {/* Success description */}
+              <p className="text-text-secondary text-sm font-light leading-relaxed mb-6">
+                Thank you for reaching out. Our team will review your project and get back to you shortly.
+              </p>
+ 
+              {/* Committed Details badges */}
+              <div className="flex justify-center gap-3 mb-6">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-cyan tracking-wide">
+                  <CheckCircle className="w-3 h-3 text-emerald-400" />
+                  Response in 24h
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-purple tracking-wide">
+                  <CheckCircle className="w-3 h-3 text-emerald-400" />
+                  Email Confirmation
+                </div>
+              </div>
+ 
+              {/* CTA Back to site */}
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-lg hover:shadow-accent-cyan/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
+              >
+                Back to Site ✦
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

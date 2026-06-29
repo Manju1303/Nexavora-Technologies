@@ -59,10 +59,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-text-secondary text-xs leading-relaxed font-light max-w-sm">
-              Engineering premium, enterprise-grade digital infrastructures. Specializing in AI-driven automation, secure ERP frameworks, and custom SaaS platforms.
+              Engineering premium, enterprise-grade digital infrastructures. Specializing in custom website development, digital marketing, SEO, e-commerce, AI solutions, and training programs in Kallakurichi and surrounding areas.
             </p>
           </div>
-
+ 
           {/* Quick Links */}
           <div className="md:col-span-3 md:col-start-6 space-y-4">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-cyan">
@@ -71,10 +71,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { name: "Home", id: "home" },
-                { name: "About Company", id: "about" },
+                { name: "About Us", id: "about" },
                 { name: "Services", id: "services" },
-                { name: "Case Studies", id: "projects" },
+                { name: "Clients", id: "clients" },
                 { name: "Why Partner Us", id: "why-us" },
+                { name: "Testimonials", id: "testimonials" },
+                { name: "Careers", id: "careers" },
                 { name: "Contact Hub", id: "contact" },
               ].map((item) => (
                 <li key={item.name}>
@@ -88,7 +90,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
+ 
           {/* Services Links */}
           <div className="md:col-span-3 space-y-4">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-purple">
@@ -96,12 +98,12 @@ export default function Footer() {
             </h5>
             <ul className="space-y-2">
               {[
-                "AI Solutions",
-                "ERP Development",
-                "Web Engineering",
-                "Mobile App Dev",
-                "Cloud Systems",
-                "SaaS Frameworks",
+                "Web Development",
+                "Digital Marketing",
+                "SEO Optimization",
+                "E-Commerce Solutions",
+                "ERP & SaaS Systems",
+                "Training & Internships",
               ].map((srv) => (
                 <li key={srv}>
                   <button

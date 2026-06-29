@@ -96,7 +96,7 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              Nexavaro Technologies is a software development and digital solutions company specializing in web applications, mobile applications, healthcare technology solutions, educational platforms, ERP systems, business automation, professional training, and internship programs. The company delivers innovative, scalable, and industry-focused technology solutions while empowering students through practical learning and real-world project experience.
+              Nexavaro Technologies is a software development and digital solutions company based in Kallakurichi, Tamil Nadu. We specialize in web applications, mobile applications, healthcare technology solutions, educational platforms, ERP systems, business automation, professional training, and internship programs. The company delivers innovative, scalable, and industry-focused technology solutions while empowering students through practical learning and real-world project experience.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -105,7 +105,7 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              As a fully remote, globally distributed startup, we dismantle geographical boundaries to assemble elite engineering talent. Operating without physical offices allows us to run a lean, agile workflow that provides round-the-clock development and deployment cycles.
+              As a remote-first, distributed technology startup, we coordinate high-caliber engineering teams globally. Operating without heavy physical offices allows us to run a lean, agile workflow that provides round-the-clock development and deployment cycles.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -114,7 +114,7 @@ export default function About() {
               transition={{ delay: 0.3 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              Fueled by intelligence and driven by performance, we partner with visionary companies to build secure, highly scalable, cloud-native infrastructures. Our mission is to accelerate digital growth through clean engineering and premium user experience design.
+              Fueled by intelligence and driven by performance, we partner with visionary clients to build secure, highly scalable, cloud-native infrastructures. Our mission is to accelerate digital growth through clean engineering, custom branding, and premium user experience design.
             </motion.p>
 
             {/* Stats row */}
