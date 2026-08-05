@@ -158,11 +158,16 @@ export default function About() {
                 <div className="w-full h-full rounded-full bg-bg-dark flex items-center justify-center overflow-hidden relative">
                   {!founderImgError ? (
                     <img
-                      src="/Nexavora-Technologies/founder.jpg"
+                      src="/Nexavora-Technologies/about-image.jpeg"
                       alt="Manjunath - Founder & CEO of Nexavora Technologies"
                       onError={(e) => {
-                        if (e.currentTarget.src.includes("/Nexavora-Technologies/founder.jpg")) {
-                          e.currentTarget.src = "/founder.jpg";
+                        const target = e.currentTarget;
+                        if (target.src.includes("/Nexavora-Technologies/about-image.jpeg")) {
+                          target.src = "/Nexavora-Technologies/founder.jpg";
+                        } else if (target.src.includes("/Nexavora-Technologies/founder.jpg")) {
+                          target.src = "/about-image.jpeg";
+                        } else if (target.src.includes("/about-image.jpeg")) {
+                          target.src = "/founder.jpg";
                         } else {
                           setFounderImgError(true);
                         }
