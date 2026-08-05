@@ -59,7 +59,7 @@ export default function Contact() {
           Email: form.email,
           Service: form.service,
           Message: message,
-          _subject: `New Nexavaro Lead: ${form.name} (${form.service})`,
+          _subject: `New Nexavora Lead: ${form.name} (${form.service})`,
         }),
       });
  

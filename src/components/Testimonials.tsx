@@ -10,7 +10,7 @@ const testimonials = [
     role: "Director of Operations",
     company: "Stanford Student Housing Alliance",
     content:
-      "The Hostel Mess ERP designed by Nexavaro Technologies has completely overhauled our meal operations. Billing disputes dropped to zero, and the inventory forecasting feature alone has reduced food waste by 35%. Exceptional code quality.",
+      "The Hostel Mess ERP designed by Nexavora Technologies has completely overhauled our meal operations. Billing disputes dropped to zero, and the inventory forecasting feature alone has reduced food waste by 35%. Exceptional code quality.",
     rating: 5,
     initials: "VR",
     color: "cyan",
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Chief Technology Officer",
     company: "EduSphere Learning Systems",
     content:
-      "Integrating Nexavaro's College Management Portal was the best architecture decision we made this year. The transition to their cloud database was completely seamless, and parents are praising the simplified digital grade book interface.",
+      "Integrating Nexavora's College Management Portal was the best architecture decision we made this year. The transition to their cloud database was completely seamless, and parents are praising the simplified digital grade book interface.",
     rating: 5,
     initials: "ES",
     color: "purple",
@@ -30,7 +30,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "Aether Analytics Labs",
     content:
-      "We needed a world-class front-end to showcase our machine learning predictions. Nexavaro built an AI Analytics Dashboard that is incredibly fast, visually stunning, and highly responsive. Investors were immediately impressed.",
+      "We needed a world-class front-end to showcase our machine learning predictions. Nexavora built an AI Analytics Dashboard that is incredibly fast, visually stunning, and highly responsive. Investors were immediately impressed.",
     rating: 5,
     initials: "DM",
     color: "blue",
@@ -40,7 +40,7 @@ const testimonials = [
     role: "Founder & Owner",
     company: "Aura Beauty Studio",
     content:
-      "The custom website and digital marketing setup built by Nexavaro Technologies has completely transformed our brand visibility. Our client booking volume increased by over 45% in just two months. Their creativity is unmatched.",
+      "The custom website and digital marketing setup built by Nexavora Technologies has completely transformed our brand visibility. Our client booking volume increased by over 45% in just two months. Their creativity is unmatched.",
     rating: 5,
     initials: "PS",
     color: "pink",
@@ -50,7 +50,7 @@ const testimonials = [
     role: "Head of Growth",
     company: "Radhe Developers",
     content:
-      "Nexavaro's SEO audits and organic ranking strategies placed our luxury housing project page on the first page of Google searches. The digital lead flow has doubled our sales inquiries. Highly professional technology consulting!",
+      "Nexavora's SEO audits and organic ranking strategies placed our luxury housing project page on the first page of Google searches. The digital lead flow has doubled our sales inquiries. Highly professional technology consulting!",
     rating: 5,
     initials: "RP",
     color: "purple",
@@ -60,7 +60,7 @@ const testimonials = [
     role: "Managing Director",
     company: "Shree Krishnam Rubtech",
     content:
-      "We needed a custom SaaS workflow console to monitor factory staff attendance and metrics across three plant locations. Nexavaro delivered a lightweight, responsive ERP system that works seamlessly. Exceptional engineering team.",
+      "We needed a custom SaaS workflow console to monitor factory staff attendance and metrics across three plant locations. Nexavora delivered a lightweight, responsive ERP system that works seamlessly. Exceptional engineering team.",
     rating: 5,
     initials: "JS",
     color: "cyan",

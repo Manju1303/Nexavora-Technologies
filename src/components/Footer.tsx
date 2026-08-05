@@ -49,10 +49,10 @@ export default function Footer() {
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleScroll("home")}>
               <div className="w-9 h-9 rounded-xl overflow-hidden bg-white border border-white/10 flex items-center justify-center">
-                <img src="/Nexavora-Technologies/logo.png" alt="Nexavaro Logo" className="w-full h-full object-cover scale-110" />
+                <img src="/Nexavora-Technologies/logo.png" onError={(e) => { e.currentTarget.src = "/logo.png"; }} alt="Nexavora Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-white">Nexavaro</span>
+                <span className="font-extrabold text-lg text-white">Nexavora</span>
                 <span className="text-[9px] text-accent-purple tracking-widest uppercase font-semibold">
                   Technologies
                 </span>
@@ -62,7 +62,7 @@ export default function Footer() {
               Engineering premium, enterprise-grade digital infrastructures. Specializing in custom website development, digital marketing, SEO, e-commerce, AI solutions, and training programs in Kallakurichi and surrounding areas.
             </p>
           </div>
- 
+
           {/* Quick Links */}
           <div className="md:col-span-3 md:col-start-6 space-y-4">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-cyan">
@@ -90,7 +90,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
- 
+
           {/* Services Links */}
           <div className="md:col-span-3 space-y-4">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-purple">
@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Footer Base */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <span className="text-[11px] text-text-secondary font-light">
-            © {new Date().getFullYear()} Nexavaro Technologies. All Rights Reserved. Designed for Manjunath.
+            © {new Date().getFullYear()} Nexavora Technologies. All Rights Reserved. Designed for Manjunath.
           </span>
 
           {/* Socials & Top Scroll */}
@@ -133,6 +133,8 @@ export default function Footer() {
                   <a
                     key={soc.label}
                     href={soc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={soc.label}
                     className="p-2 rounded-lg bg-white/5 border border-white/5 text-text-secondary hover:text-accent-cyan hover:border-accent-cyan/20 transition-all duration-300"
                   >

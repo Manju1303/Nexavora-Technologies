@@ -19,6 +19,8 @@ export default function About() {
     support: 0,
   });
 
+  const [founderImgError, setFounderImgError] = useState(false);
+
   useEffect(() => {
     const duration = 2000; // 2 seconds
     const steps = 50;
@@ -96,7 +98,7 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              Nexavaro Technologies is a software development and digital solutions company based in Kallakurichi, Tamil Nadu. We specialize in web applications, mobile applications, healthcare technology solutions, educational platforms, ERP systems, business automation, professional training, and internship programs. The company delivers innovative, scalable, and industry-focused technology solutions while empowering students through practical learning and real-world project experience.
+              Nexavora Technologies is a software development and digital solutions company based in Kallakurichi, Tamil Nadu. We specialize in web applications, mobile applications, healthcare technology solutions, educational platforms, ERP systems, business automation, professional training, and internship programs. The company delivers innovative, scalable, and industry-focused technology solutions while empowering students through practical learning and real-world project experience.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -151,24 +153,38 @@ export default function About() {
               {/* Outer decorative light */}
               <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-accent-purple/20 blur-xl" />
 
-              {/* Founder Avatar Placeholder with premium neon border */}
-              <div className="relative w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-accent-cyan via-accent-blue to-accent-purple mb-6 shadow-lg shadow-accent-cyan/10">
-                <div className="w-full h-full rounded-full bg-bg-dark flex items-center justify-center overflow-hidden">
-                  {/* Premium vector portrait avatar */}
-                  <svg viewBox="0 0 100 100" className="w-20 h-20 text-text-secondary" fill="currentColor">
-                    <path d="M50 10A20 20 0 1 0 50 50A20 20 0 1 0 50 10Z" fill="url(#founder-grad-light)" />
-                    <path d="M50 60C30 60 10 72 10 90H90C90 72 70 60 50 60Z" fill="url(#founder-grad-dark)" />
-                    <defs>
-                      <linearGradient id="founder-grad-light" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#06B6D4" />
-                        <stop offset="100%" stopColor="#3b82f6" />
-                      </linearGradient>
-                      <linearGradient id="founder-grad-dark" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#3b82f6" />
-                        <stop offset="100%" stopColor="#9d4edd" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+              {/* Founder Avatar with neon gradient border */}
+              <div className="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-accent-cyan via-accent-blue to-accent-purple mb-6 shadow-xl shadow-accent-cyan/15 group">
+                <div className="w-full h-full rounded-full bg-bg-dark flex items-center justify-center overflow-hidden relative">
+                  {!founderImgError ? (
+                    <img
+                      src="/Nexavora-Technologies/founder.jpg"
+                      alt="Manjunath - Founder & CEO of Nexavora Technologies"
+                      onError={(e) => {
+                        if (e.currentTarget.src.includes("/Nexavora-Technologies/founder.jpg")) {
+                          e.currentTarget.src = "/founder.jpg";
+                        } else {
+                          setFounderImgError(true);
+                        }
+                      }}
+                      className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <svg viewBox="0 0 100 100" className="w-20 h-20 text-text-secondary" fill="currentColor">
+                      <path d="M50 10A20 20 0 1 0 50 50A20 20 0 1 0 50 10Z" fill="url(#founder-grad-light)" />
+                      <path d="M50 60C30 60 10 72 10 90H90C90 72 70 60 50 60Z" fill="url(#founder-grad-dark)" />
+                      <defs>
+                        <linearGradient id="founder-grad-light" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#06B6D4" />
+                          <stop offset="100%" stopColor="#3b82f6" />
+                        </linearGradient>
+                        <linearGradient id="founder-grad-dark" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#3b82f6" />
+                          <stop offset="100%" stopColor="#9d4edd" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  )}
                 </div>
               </div>
 
