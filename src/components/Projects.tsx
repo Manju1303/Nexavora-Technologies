@@ -158,20 +158,20 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-bg-dark">
       {/* Background neon lights */}
-      <div className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-violet blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <h2 className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
               Case Studies
             </h2>
             <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
               Featured Engineering Projects
             </h3>
-            <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mt-4 rounded-full" />
+            <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mt-4 rounded-full" />
           </div>
 
           {/* Categories Tab selector */}
@@ -182,7 +182,7 @@ export default function Projects() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   activeCategory === cat
-                    ? "bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-md shadow-accent-cyan/10"
+                    ? "bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-md shadow-accent-violet/10"
                     : "text-text-secondary hover:text-white"
                 }`}
               >

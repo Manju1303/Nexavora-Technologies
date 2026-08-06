@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, Eye } from "lucide-react";
+import { Compass, Eye, Target, Rocket, Users, Shield, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const stats = [
@@ -9,6 +9,14 @@ const stats = [
   { value: 15, label: "Technologies Used", suffix: "+", id: "tech" },
   { value: 99, label: "Client Satisfaction", suffix: "%", id: "satisfaction" },
   { value: 24, label: "Support Response", suffix: "/7", id: "support" },
+];
+
+const missionPoints = [
+  { icon: Target, text: "Deliver high-quality software tailored to client needs." },
+  { icon: Rocket, text: "Build AI-powered solutions that simplify complex business processes." },
+  { icon: BookOpen, text: "Foster innovation through modern technologies and continuous learning." },
+  { icon: Users, text: "Maintain transparency, reliability, and long-term client partnerships." },
+  { icon: Shield, text: "Create scalable and secure digital products that generate real business impact." },
 ];
 
 export default function About() {
@@ -22,7 +30,7 @@ export default function About() {
   const [founderImgError, setFounderImgError] = useState(false);
 
   useEffect(() => {
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 50;
     const stepTime = duration / steps;
 
@@ -33,7 +41,7 @@ export default function About() {
         projects: Math.floor((stats[0].value / steps) * currentStep),
         tech: Math.floor((stats[1].value / steps) * currentStep),
         satisfaction: Math.floor((stats[2].value / steps) * currentStep),
-        support: 24, // Keep static 24
+        support: 24,
       });
 
       if (currentStep >= steps) {
@@ -52,8 +60,12 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
+
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-light-purple blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-light-violet blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[30rem] h-[30rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Title */}
@@ -63,7 +75,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3"
+            className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3"
           >
             About Company
           </motion.h2>
@@ -76,7 +88,7 @@ export default function About() {
           >
             Pioneering Smart Tech Infrastructures
           </motion.h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
 
         {/* Info Grid */}
@@ -98,7 +110,7 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              Nexavora Technologies is a software development and digital solutions company based in Kallakurichi, Tamil Nadu. We specialize in web applications, mobile applications, healthcare technology solutions, educational platforms, ERP systems, business automation, professional training, and internship programs. The company delivers innovative, scalable, and industry-focused technology solutions while empowering students through practical learning and real-world project experience.
+              Nexavora Technologies is an innovative technology company specializing in Artificial Intelligence, custom software development, web and mobile applications, cloud solutions, and digital transformation. We help businesses, startups, educational institutions, and organizations leverage modern technologies to solve real-world challenges and accelerate growth.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -107,20 +119,11 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-text-secondary leading-relaxed font-light"
             >
-              As a remote-first, distributed technology startup, we coordinate high-caliber engineering teams globally. Operating without heavy physical offices allows us to run a lean, agile workflow that provides round-the-clock development and deployment cycles.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-text-secondary leading-relaxed font-light"
-            >
-              Fueled by intelligence and driven by performance, we partner with visionary clients to build secure, highly scalable, cloud-native infrastructures. Our mission is to accelerate digital growth through clean engineering, custom branding, and premium user experience design.
+              With expertise across AI, full-stack development, cloud computing, automation, and UI/UX design, we transform ideas into reliable, high-performance products that deliver measurable business value. Our mission is to build intelligent, scalable, and user-centric digital solutions that empower organizations to work smarter, innovate faster, and achieve lasting success.
             </motion.p>
 
             {/* Stats row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -128,9 +131,9 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-4 rounded-2xl glass-card border border-white/5 text-center flex flex-col justify-center"
+                  className="p-4 rounded-2xl glass-card-premium text-center flex flex-col justify-center"
                 >
-                  <span className="text-2xl sm:text-3xl font-extrabold text-accent-cyan">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-gradient-primary">
                     {counts[stat.id as keyof typeof counts]}{stat.suffix}
                   </span>
                   <span className="text-[10px] sm:text-xs text-text-secondary mt-1 font-semibold uppercase tracking-wider">
@@ -148,13 +151,14 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full max-w-[380px] rounded-3xl glass-card border border-white/10 p-6 flex flex-col items-center text-center overflow-hidden"
+              className="relative w-full max-w-[380px] rounded-3xl glass-card-premium p-6 flex flex-col items-center text-center overflow-hidden"
             >
               {/* Outer decorative light */}
-              <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-accent-purple/20 blur-xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-accent-violet/15 blur-xl" />
+              <div className="absolute bottom-0 left-0 w-20 h-20 rounded-full bg-accent-cyan/10 blur-xl" />
 
               {/* Founder Avatar with neon gradient border */}
-              <div className="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-accent-cyan via-accent-blue to-accent-purple mb-6 shadow-xl shadow-accent-cyan/15 group">
+              <div className="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-accent-violet via-accent-cyan to-accent-amber mb-6 shadow-xl shadow-accent-violet/15 group">
                 <div className="w-full h-full rounded-full bg-bg-dark flex items-center justify-center overflow-hidden relative">
                   {!founderImgError ? (
                     <img
@@ -180,12 +184,12 @@ export default function About() {
                       <path d="M50 60C30 60 10 72 10 90H90C90 72 70 60 50 60Z" fill="url(#founder-grad-dark)" />
                       <defs>
                         <linearGradient id="founder-grad-light" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#06B6D4" />
-                          <stop offset="100%" stopColor="#3b82f6" />
+                          <stop offset="0%" stopColor="#8B5CF6" />
+                          <stop offset="100%" stopColor="#06B6D4" />
                         </linearGradient>
                         <linearGradient id="founder-grad-dark" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#3b82f6" />
-                          <stop offset="100%" stopColor="#9d4edd" />
+                          <stop offset="0%" stopColor="#06B6D4" />
+                          <stop offset="100%" stopColor="#A855F7" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -195,20 +199,31 @@ export default function About() {
 
               {/* Details */}
               <span className="font-extrabold text-white text-xl">Manjunath</span>
-              <span className="text-xs font-semibold text-accent-cyan uppercase tracking-widest mt-1">
+              <span className="text-xs font-semibold text-accent-violet uppercase tracking-widest mt-1">
                 Founder & CEO
               </span>
-              <span className="text-[10px] text-text-secondary font-medium tracking-wide mt-1">
-                AI Engineer & Vibe Coder | B.Tech AI & Data Science
+
+              {/* Student Entrepreneur Badge */}
+              <span className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-accent-amber/10 border border-accent-amber/20 text-accent-amber text-[9px] font-bold uppercase tracking-wider">
+                Student Entrepreneur
               </span>
 
+              {/* Expertise Tags */}
+              <div className="flex flex-wrap gap-1.5 justify-center mt-4">
+                {["AI & ML", "Full-Stack", "Cloud", "UI/UX"].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] text-text-secondary font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
               {/* CEO Quote */}
-              <p className="text-sm text-text-secondary mt-6 italic font-light relative px-4">
-                &quot;My mission is to engineer AI-driven products that simplify technology, accelerate learning, and automate complex digital workflows, converting technical intricacy into guided, accessible intelligent experiences.&quot;
+              <p className="text-sm text-text-secondary mt-5 italic font-light relative px-4 border-l-2 border-accent-violet/30 text-left">
+                &quot;Technology is not just about writing code—it&apos;s about creating meaningful solutions that empower people, simplify businesses, and shape the future.&quot;
               </p>
 
-              {/* Signature lookalike */}
-              <span className="font-serif text-white/50 text-lg mt-6 tracking-widest font-semibold block">
+              {/* Signature */}
+              <span className="font-serif text-white/40 text-lg mt-5 tracking-widest font-semibold block">
                 Manjunath
               </span>
             </motion.div>
@@ -216,23 +231,38 @@ export default function About() {
         </div>
 
         {/* Mission & Vision Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Mission Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-3xl glass-card border border-white/5 p-8 flex flex-col md:flex-row gap-6 items-start group"
+            className="rounded-3xl glass-card-premium p-8 group"
           >
-            <div className="p-4 rounded-2xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 group-hover:scale-110 transition-transform duration-300">
-              <Compass className="w-6 h-6" />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-4 rounded-2xl bg-accent-violet/10 text-accent-violet border border-accent-violet/20 group-hover:scale-110 transition-transform duration-300">
+                <Compass className="w-6 h-6" />
+              </div>
+              <h5 className="font-extrabold text-white text-xl">Our Mission</h5>
             </div>
             <div className="space-y-3">
-              <h5 className="font-extrabold text-white text-xl">Our Mission</h5>
-              <p className="text-text-secondary leading-relaxed font-light text-sm">
-                To build high-performance, secure, and user-centric digital products that optimize enterprise efficiency and generate sustainable competitive advantages for businesses worldwide.
-              </p>
+              {missionPoints.map((point, i) => {
+                const Icon = point.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 + i * 0.08 }}
+                    className="flex items-start gap-3"
+                  >
+                    <Icon className="w-4 h-4 text-accent-violet mt-0.5 shrink-0" />
+                    <p className="text-text-secondary leading-relaxed font-light text-sm">{point.text}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -242,16 +272,23 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl glass-card border border-white/5 p-8 flex flex-col md:flex-row gap-6 items-start group glass-card-purple"
+            className="rounded-3xl glass-card-premium p-8 group glass-card-cyan"
           >
-            <div className="p-4 rounded-2xl bg-accent-purple/10 text-accent-purple border border-accent-purple/20 group-hover:scale-110 transition-transform duration-300">
-              <Eye className="w-6 h-6" />
-            </div>
-            <div className="space-y-3">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-4 rounded-2xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 group-hover:scale-110 transition-transform duration-300">
+                <Eye className="w-6 h-6" />
+              </div>
               <h5 className="font-extrabold text-white text-xl">Our Vision</h5>
-              <p className="text-text-secondary leading-relaxed font-light text-sm">
-                To stand as the leading globally recognized software agency, orchestrating digital transformations driven by advanced AI algorithms, robust cloud infrastructures, and elite user interfaces.
-              </p>
+            </div>
+            <p className="text-text-secondary leading-relaxed font-light text-sm mb-4">
+              To become a globally recognized technology company that drives innovation through Artificial Intelligence and next-generation digital solutions, empowering businesses to thrive in the digital era.
+            </p>
+            <div className="flex flex-wrap gap-2 border-t border-white/5 pt-4 mt-4">
+              {["Global Impact", "AI Innovation", "Digital Transformation", "Next-Gen Solutions"].map((tag) => (
+                <span key={tag} className="px-3 py-1 rounded-full bg-accent-cyan/5 border border-accent-cyan/10 text-accent-cyan text-[10px] font-bold uppercase tracking-wider">
+                  {tag}
+                </span>
+              ))}
             </div>
           </motion.div>
         </div>

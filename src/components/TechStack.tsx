@@ -28,7 +28,9 @@ export default function TechStack() {
   const scrollItems = [...technologies, ...technologies, ...technologies];
 
   return (
-    <section className="py-20 relative overflow-hidden bg-bg-dark border-t border-b border-white/5">
+    <section className="py-20 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Absolute glow points */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-48 h-48 bg-accent-cyan/10 blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-48 h-48 bg-accent-purple/10 blur-3xl pointer-events-none" />
@@ -38,7 +40,7 @@ export default function TechStack() {
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-2"
+          className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-2"
         >
           Our Stack
         </motion.h4>

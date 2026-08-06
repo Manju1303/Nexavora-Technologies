@@ -54,10 +54,12 @@ const cardVariants = {
 
 export default function Industries() {
   return (
-    <section id="industries" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="industries" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Background Neon Lights */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 rounded-full bg-light-blue blur-3xl opacity-10 pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 rounded-full bg-light-violet blur-3xl opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -67,7 +69,7 @@ export default function Industries() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3"
+            className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3"
           >
             Industries We Serve
           </motion.h2>
@@ -80,7 +82,7 @@ export default function Industries() {
           >
             Sectors Powering Our Engineering
           </motion.h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
 
         {/* Industries Grid */}

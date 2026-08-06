@@ -3,165 +3,126 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  Cpu,
   Code2,
   Globe2,
   Smartphone,
-  Building2,
-  GraduationCap,
-  Megaphone,
+  Cloud,
   Palette,
-  Search,
-  ShoppingCart,
-  LineChart,
+  TrendingUp,
 } from "lucide-react";
  
 const categories = [
   { id: "all", name: "All Services" },
-  { id: "development", name: "Development & ERP" },
+  { id: "ai-dev", name: "AI & Development" },
+  { id: "cloud-design", name: "Cloud & Design" },
   { id: "marketing", name: "Marketing & Growth" },
-  { id: "design", name: "Design & Consulting" },
 ];
  
 const services = [
   {
-    title: "Custom Website Development",
-    icon: Globe2,
-    category: "development",
+    title: "Artificial Intelligence",
+    icon: Cpu,
+    category: "ai-dev",
     description:
-      "High-performance, secure, and fully customized web systems, SaaS platforms, and enterprise sites tailored for your business success.",
+      "Building intelligent systems powered by machine learning, computer vision, and generative AI to automate processes and unlock insights from data.",
     list: [
-      "Corporate Websites",
+      "AI Chatbots & Automation",
+      "Machine Learning Solutions",
+      "Computer Vision & OCR Systems",
+      "Predictive Analytics",
+      "Generative AI Applications",
+    ],
+    color: "violet",
+  },
+  {
+    title: "Software Development",
+    icon: Code2,
+    category: "ai-dev",
+    description:
+      "Engineering robust enterprise applications, ERP & CRM systems, SaaS platforms, and custom business software for operational excellence.",
+    list: [
+      "Enterprise Applications",
+      "ERP & CRM Systems",
+      "SaaS Platforms",
+      "Custom Business Software",
+      "Workflow Automation",
+    ],
+    color: "cyan",
+  },
+  {
+    title: "Web Development",
+    icon: Globe2,
+    category: "ai-dev",
+    description:
+      "Designing high-performance, responsive web experiences from corporate websites and e-commerce platforms to progressive web applications.",
+    list: [
+      "Corporate & Portfolio Websites",
+      "E-Commerce Platforms",
+      "Landing Pages",
       "Progressive Web Apps (PWA)",
       "Custom Web Portals",
-      "Responsive Layout Designs",
-    ],
-    color: "cyan",
-  },
-  {
-    title: "Software & SaaS Development",
-    icon: Code2,
-    category: "development",
-    description:
-      "Engineering robust custom software architectures, desktop systems, SaaS frameworks, and business management consoles tailored for operational excellence.",
-    list: [
-      "Custom Software Systems",
-      "SaaS Product Engineering",
-      "Desktop Application Dev",
-      "Management Dashboards",
     ],
     color: "blue",
   },
   {
-    title: "Mobile App Development",
+    title: "Mobile Applications",
     icon: Smartphone,
-    category: "development",
+    category: "ai-dev",
     description:
-      "Designing and deploying feature-rich native Android applications and cross-platform mobile business workflows optimized for high retention.",
+      "Developing feature-rich native and cross-platform mobile applications optimized for performance, engagement, and business growth.",
     list: [
-      "Android Applications",
-      "Business Mobile Solutions",
-      "Educational App Modules",
-      "Healthcare Apps Integration",
+      "Android Development",
+      "iOS Development",
+      "Cross-Platform Apps",
+      "Business Applications",
     ],
     color: "pink",
   },
   {
-    title: "ERP & Management Systems",
-    icon: Building2,
-    category: "development",
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    category: "cloud-design",
     description:
-      "Automating campus administrative workflows, staff monitoring matrices, attendance record engines, and customized enterprise resource software.",
+      "Deploying scalable cloud infrastructure, robust APIs, and containerized workflows with continuous integration and delivery pipelines.",
     list: [
-      "College ERP Solutions",
-      "Staff Monitoring Systems",
-      "Attendance Management Systems",
-      "Workflow Automation Tools",
+      "Cloud Deployment & Migration",
+      "API Development & Integration",
+      "Database Design & Optimization",
+      "Docker & Containerization",
+      "CI/CD Pipelines",
     ],
-    color: "cyan",
+    color: "amber",
   },
   {
-    title: "Digital Marketing & Lead Gen",
-    icon: Megaphone,
-    category: "marketing",
-    description:
-      "Data-driven performance campaigns, high-converting PPC systems, and optimized lead flows designed to explode your pipeline.",
-    list: [
-      "Lead Generation Funnels",
-      "Performance Marketing",
-      "Social Media Campaigns",
-      "PPC Advertising Audits",
-    ],
-    color: "purple",
-  },
-  {
-    title: "SEO & Performance Tuning",
-    icon: Search,
-    category: "marketing",
-    description:
-      "Advanced search engine indexing strategies, organic keyword ranking, and technical speed audits that place you on Google's top page.",
-    list: [
-      "Keyword Ranking & Research",
-      "Technical SEO Audits",
-      "On-Page & Off-Page SEO",
-      "Core Web Vitals Speed Tuning",
-    ],
-    color: "cyan",
-  },
-  {
-    title: "E-Commerce Solutions",
-    icon: ShoppingCart,
-    category: "marketing",
-    description:
-      "Full-featured digital storefronts, checkout flow optimizations, secure gateways, and enterprise integrations that drive massive sales.",
-    list: [
-      "Storefront Customization",
-      "Secure Payment Gateways",
-      "Checkout Flow Optimization",
-      "Inventory & Order Syncing",
-    ],
-    color: "pink",
-  },
-  {
-    title: "Graphic Design & Brand Identity",
+    title: "UI/UX Design",
     icon: Palette,
-    category: "design",
+    category: "cloud-design",
     description:
-      "Distinctive corporate logos, beautiful marketing collaterals, and cohesive visual systems that reflect your company's core values.",
+      "Crafting stunning, user-centric interfaces through deep research, wireframing, interactive prototyping, and responsive design systems.",
     list: [
-      "Corporate Logo Design",
-      "Brand Identity Packages",
-      "Marketing Collaterals",
-      "UI/UX Visual Styling Guidelines",
+      "User Research & Strategy",
+      "Wireframing & Prototyping",
+      "Modern Interface Design",
+      "Responsive Experiences",
+      "Design Systems",
     ],
-    color: "purple",
+    color: "violet",
   },
   {
-    title: "Technology & Business Consulting",
-    icon: LineChart,
-    category: "design",
+    title: "Digital Marketing",
+    icon: TrendingUp,
+    category: "marketing",
     description:
-      "High-agency roadmap guidance, custom software architecture planning, tech-stack consulting, and structural business audit scaling.",
+      "Driving growth through data-driven SEO strategies, social media campaigns, Google Ads management, branding, and content strategy.",
     list: [
-      "Roadmap Guidance",
-      "Architecture Design Plans",
-      "Tech-Stack Evaluations",
-      "Structural Scalability Audits",
+      "Search Engine Optimization (SEO)",
+      "Social Media Marketing",
+      "Google Ads & PPC",
+      "Branding & Identity",
+      "Content Strategy",
     ],
-    color: "blue",
-  },
-  {
-    title: "Professional Training & Internships",
-    icon: GraduationCap,
-    category: "design",
-    description:
-      "Empowering students and aspiring engineers through practical software internships and coding academies in Full-Stack, Python, Java, AI, and UI/UX.",
-    list: [
-      "Full Stack & Python/Java Academy",
-      "AI & Machine Learning Basics",
-      "Web Development Internships",
-      "Mobile App & UI/UX Internships",
-    ],
-    color: "blue",
+    color: "cyan",
   },
 ];
  
@@ -173,10 +134,13 @@ export default function Services() {
   );
  
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="services" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
+
       {/* Glow Backdrops */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-light-cyan blur-3xl opacity-15 pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 rounded-full bg-light-purple blur-3xl opacity-15 pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-light-violet blur-3xl opacity-15 pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 rounded-full bg-light-cyan blur-3xl opacity-15 pointer-events-none" />
  
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Title */}
@@ -186,9 +150,9 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3"
+            className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3"
           >
-            Our Expertise
+            What We Do
           </motion.h2>
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
@@ -200,9 +164,9 @@ export default function Services() {
             Services that Drive Growth
           </motion.h3>
           <p className="text-text-secondary text-sm mt-4 font-light max-w-xl mx-auto">
-            From concept to deployment, we deliver end-to-end technology solutions that transform how businesses engage with their audiences.
+            From concept to deployment, we deliver end-to-end technology solutions across AI, software, cloud, and digital marketing.
           </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
  
         {/* Interactive Categories Tabs */}
@@ -215,14 +179,14 @@ export default function Services() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`relative px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border cursor-pointer ${
                   isActive
-                    ? "text-white border-accent-cyan bg-accent-cyan/10 shadow-lg shadow-accent-cyan/15"
+                    ? "text-white border-accent-violet bg-accent-violet/10 shadow-lg shadow-accent-violet/15"
                     : "text-text-secondary border-white/5 hover:text-white hover:border-white/20 bg-white/5"
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeCategoryIndicator"
-                    className="absolute inset-0 rounded-full border border-accent-cyan bg-accent-cyan/5 z-[-1]"
+                    className="absolute inset-0 rounded-full border border-accent-violet bg-accent-violet/5 z-[-1]"
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   />
                 )}
@@ -241,19 +205,28 @@ export default function Services() {
             {filteredServices.map((service) => {
               const Icon = service.icon;
  
-              // Color theme class names
               const glowColors = {
-                cyan: "group-hover:border-accent-cyan/40 group-hover:shadow-accent-cyan/5 text-accent-cyan bg-accent-cyan/5 border-accent-cyan/10",
-                purple: "group-hover:border-accent-purple/40 group-hover:shadow-accent-purple/5 text-accent-purple bg-accent-purple/5 border-accent-purple/10",
-                blue: "group-hover:border-accent-blue/40 group-hover:shadow-accent-blue/5 text-accent-blue bg-accent-blue/5 border-accent-blue/10",
-                pink: "group-hover:border-accent-pink/40 group-hover:shadow-accent-pink/5 text-accent-pink bg-accent-pink/5 border-accent-pink/10",
+                violet: "group-hover:border-accent-violet/30 group-hover:shadow-accent-violet/5",
+                cyan: "group-hover:border-accent-cyan/30 group-hover:shadow-accent-cyan/5",
+                blue: "group-hover:border-accent-blue/30 group-hover:shadow-accent-blue/5",
+                pink: "group-hover:border-accent-pink/30 group-hover:shadow-accent-pink/5",
+                amber: "group-hover:border-accent-amber/30 group-hover:shadow-accent-amber/5",
               };
  
               const iconColors = {
+                violet: "bg-accent-violet/10 text-accent-violet group-hover:bg-accent-violet group-hover:text-white",
                 cyan: "bg-accent-cyan/10 text-accent-cyan group-hover:bg-accent-cyan group-hover:text-white",
-                purple: "bg-accent-purple/10 text-accent-purple group-hover:bg-accent-purple group-hover:text-white",
                 blue: "bg-accent-blue/10 text-accent-blue group-hover:bg-accent-blue group-hover:text-white",
                 pink: "bg-accent-pink/10 text-accent-pink group-hover:bg-accent-pink group-hover:text-white",
+                amber: "bg-accent-amber/10 text-accent-amber group-hover:bg-accent-amber group-hover:text-white",
+              };
+
+              const dotColors = {
+                violet: "bg-accent-violet/60 group-hover:bg-accent-violet",
+                cyan: "bg-accent-cyan/60 group-hover:bg-accent-cyan",
+                blue: "bg-accent-blue/60 group-hover:bg-accent-blue",
+                pink: "bg-accent-pink/60 group-hover:bg-accent-pink",
+                amber: "bg-accent-amber/60 group-hover:bg-accent-amber",
               };
  
               return (
@@ -278,7 +251,7 @@ export default function Services() {
                   </div>
  
                   {/* Title */}
-                  <h4 className="font-extrabold text-white text-lg mb-3 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-colors">
+                  <h4 className="font-extrabold text-white text-lg mb-3 tracking-tight">
                     {service.title}
                   </h4>
  
@@ -293,13 +266,7 @@ export default function Services() {
                       <li key={idx} className="flex items-center gap-1.5 text-left">
                         <span
                           className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                            service.color === "cyan"
-                              ? "bg-accent-cyan/60 group-hover:bg-accent-cyan"
-                              : service.color === "purple"
-                              ? "bg-accent-purple/60 group-hover:bg-accent-purple"
-                              : service.color === "blue"
-                              ? "bg-accent-blue/60 group-hover:bg-accent-blue"
-                              : "bg-accent-pink/60 group-hover:bg-accent-pink"
+                            dotColors[service.color as keyof typeof dotColors]
                           } transition-colors`}
                         />
                         {item}
@@ -308,7 +275,7 @@ export default function Services() {
                   </ul>
  
                   {/* Micro-arrow CTA inside card */}
-                  <div className="mt-6 flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-transparent group-hover:text-accent-cyan transition-all duration-300">
+                  <div className="mt-6 flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-transparent group-hover:text-accent-violet transition-all duration-300">
                     <span>Learn more</span>
                     <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
                       →

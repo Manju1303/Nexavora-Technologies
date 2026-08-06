@@ -26,12 +26,14 @@ export default function Clients() {
   const marqueeItems = [...clients, ...clients, ...clients];
  
   return (
-    <section id="clients" className="py-20 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="clients" className="py-20 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Background glow overlay */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[20rem] bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none" />
  
       <div className="max-w-7xl mx-auto px-6 relative z-10 mb-12 text-center">
-        <h2 className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3">
+        <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
           Trusted By
         </h2>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
@@ -40,7 +42,7 @@ export default function Clients() {
         <p className="text-text-secondary text-sm mt-4 font-light max-w-xl mx-auto">
           Partnering with ambitious businesses across industries to build state-of-the-art digital assets and accelerate growth.
         </p>
-        <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+        <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
       </div>
  
       {/* Infinite scrolling marquee wrapper */}
@@ -67,7 +69,7 @@ export default function Clients() {
             return (
               <div
                 key={idx}
-                className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl glass-card border border-white/5 bg-white/5 shadow-md min-w-[280px] hover:border-accent-cyan/25 hover:shadow-accent-cyan/5 transition-all duration-300 group shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl glass-card border border-white/5 bg-white/5 shadow-md min-w-[280px] hover:border-accent-violet/25 hover:shadow-accent-violet/5 transition-all duration-300 group shrink-0 cursor-pointer"
               >
                 {/* SVG Badge wrapper */}
                 <div
@@ -77,7 +79,7 @@ export default function Clients() {
                 </div>
                 {/* Client detail text */}
                 <div className="flex flex-col text-left">
-                  <span className="text-white text-sm font-extrabold tracking-tight group-hover:text-accent-cyan transition-colors">
+                  <span className="text-white text-sm font-extrabold tracking-tight group-hover:text-accent-violet transition-colors">
                     {client.name}
                   </span>
                   <span className="text-[10px] text-text-secondary mt-0.5 font-medium tracking-wide">

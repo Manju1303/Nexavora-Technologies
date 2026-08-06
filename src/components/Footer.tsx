@@ -59,13 +59,13 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-text-secondary text-xs leading-relaxed font-light max-w-sm">
-              Engineering premium, enterprise-grade digital infrastructures. Specializing in custom website development, digital marketing, SEO, e-commerce, AI solutions, and training programs in Kallakurichi and surrounding areas.
+              Innovating the future through Artificial Intelligence, custom software development, web & mobile applications, cloud solutions, and digital transformation. Empowering organizations to work smarter and innovate faster.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="md:col-span-3 md:col-start-6 space-y-4">
-            <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-cyan">
+            <h5 className="font-bold text-white text-sm uppercase tracking-wider text-accent-violet">
               Quick Navigation
             </h5>
             <ul className="space-y-2">
@@ -75,6 +75,7 @@ export default function Footer() {
                 { name: "Services", id: "services" },
                 { name: "Clients", id: "clients" },
                 { name: "Why Partner Us", id: "why-us" },
+                { name: "Core Values", id: "values" },
                 { name: "Testimonials", id: "testimonials" },
                 { name: "Careers", id: "careers" },
                 { name: "Contact Hub", id: "contact" },
@@ -98,12 +99,13 @@ export default function Footer() {
             </h5>
             <ul className="space-y-2">
               {[
-                "Web Development",
+                "Artificial Intelligence",
+                "Software Development",
+                "Web Applications",
+                "Mobile Applications",
+                "Cloud & DevOps",
+                "UI/UX Design",
                 "Digital Marketing",
-                "SEO Optimization",
-                "E-Commerce Solutions",
-                "ERP & SaaS Systems",
-                "Training & Internships",
               ].map((srv) => (
                 <li key={srv}>
                   <button
@@ -136,7 +138,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={soc.label}
-                    className="p-2 rounded-lg bg-white/5 border border-white/5 text-text-secondary hover:text-accent-cyan hover:border-accent-cyan/20 transition-all duration-300"
+                    className="p-2 rounded-lg bg-white/5 border border-white/5 text-text-secondary hover:text-accent-violet hover:border-accent-violet/20 transition-all duration-300"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -147,7 +149,7 @@ export default function Footer() {
             <button
               onClick={() => handleScroll("home")}
               aria-label="Scroll to top"
-              className="p-2 rounded-lg bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="p-2 rounded-lg bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
             >
               <ArrowUp className="w-4 h-4" />
             </button>

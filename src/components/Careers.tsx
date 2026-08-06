@@ -125,15 +125,17 @@ export default function Careers() {
   };
  
   return (
-    <section id="careers" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="careers" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Background glow backdrops */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-light-purple blur-3xl opacity-10 pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-light-violet blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
  
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3">
+          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
             Join Our Journey
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
@@ -142,7 +144,7 @@ export default function Careers() {
           <p className="text-text-secondary text-sm mt-4 font-light max-w-xl mx-auto">
             We are a team of passionate creators, engineers, and dreamers based in Kallakurichi, building world-class products. We value craft, curiosity, and high agency.
           </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
  
         {/* Job Listings Grid */}
@@ -154,12 +156,12 @@ export default function Careers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-8 rounded-3xl glass-card border border-white/5 bg-white/5 hover:border-accent-cyan/20 hover:shadow-accent-cyan/5 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl glass-card border border-white/5 bg-white/5 hover:border-accent-violet/20 hover:shadow-accent-violet/5 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Header info */}
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-accent-violet/10 border border-accent-violet/20 text-accent-violet text-[10px] font-bold uppercase tracking-wider">
                     {job.department}
                   </span>
                   <span className="flex items-center gap-1 text-[10px] text-text-secondary font-medium uppercase tracking-wider">
@@ -192,7 +194,7 @@ export default function Careers() {
               {/* Action Button */}
               <button
                 onClick={() => handleOpenModal(job)}
-                className="mt-6 flex items-center justify-center gap-2 w-full py-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-accent-cyan hover:text-white border border-white/10 hover:border-transparent transition-all duration-300 cursor-pointer"
+                className="mt-6 flex items-center justify-center gap-2 w-full py-3 rounded-xl text-xs font-bold bg-white/5 hover:bg-accent-violet hover:text-white border border-white/10 hover:border-transparent transition-all duration-300 cursor-pointer"
               >
                 Apply for Position
                 <Briefcase className="w-4 h-4" />
@@ -373,7 +375,7 @@ export default function Careers() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-lg shadow-accent-cyan/15 hover:shadow-accent-cyan/30 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all duration-300 glow-on-hover cursor-pointer mt-2"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-lg shadow-accent-violet/15 hover:shadow-accent-violet/30 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all duration-300 glow-on-hover cursor-pointer mt-2"
                 >
                   {isSubmitting ? (
                     <>

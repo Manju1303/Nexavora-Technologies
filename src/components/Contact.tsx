@@ -79,7 +79,9 @@ export default function Contact() {
   };
  
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Background glow layers */}
       <div className="absolute top-1/4 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
@@ -87,13 +89,13 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3">
+          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
             Get In Touch
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Let's Build Something World-Class
+            Let&apos;s Build Something Extraordinary
           </h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
  
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
@@ -198,7 +200,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-lg shadow-accent-cyan/15 hover:shadow-accent-cyan/30 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all duration-300 glow-on-hover cursor-pointer"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-lg shadow-accent-violet/15 hover:shadow-accent-violet/30 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all duration-300 glow-on-hover cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
@@ -232,14 +234,14 @@ export default function Contact() {
  
               {/* Email */}
               <div className="flex gap-4 items-start">
-                <div className="p-3 rounded-xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/10">
+                <div className="p-3 rounded-xl bg-accent-violet/10 text-accent-violet border border-accent-violet/10">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
                     Sales & Support
                   </span>
-                  <a href="mailto:ceo.nexavora@gmail.com" className="text-white hover:text-accent-cyan text-sm transition-colors mt-0.5 block font-medium">
+                  <a href="mailto:ceo.nexavora@gmail.com" className="text-white hover:text-accent-violet text-sm transition-colors mt-0.5 block font-medium">
                     ceo.nexavora@gmail.com
                   </a>
                 </div>
@@ -323,8 +325,8 @@ export default function Contact() {
               </svg>
  
               {/* Location Scan indicator */}
-              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 flex items-center gap-1.5 font-mono text-[9px] text-accent-cyan">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" />
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 flex items-center gap-1.5 font-mono text-[9px] text-accent-violet">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-violet animate-ping" />
                 <span>Kallakurichi Location Link Active</span>
               </div>
             </motion.div>
@@ -357,7 +359,7 @@ export default function Contact() {
                     animate={{ y: "105vh", rotate: 360 * (Math.random() > 0.5 ? 1 : -1), opacity: 0 }}
                     transition={{ duration: 3 + Math.random() * 2, delay: randomDelay, ease: "easeOut" }}
                     className={`absolute w-3 h-3 rounded-sm ${
-                      i % 3 === 0 ? "bg-accent-cyan" : i % 3 === 1 ? "bg-accent-purple" : "bg-accent-pink"
+                      i % 3 === 0 ? "bg-accent-violet" : i % 3 === 1 ? "bg-accent-cyan" : "bg-accent-pink"
                     }`}
                   />
                 );
@@ -391,7 +393,7 @@ export default function Contact() {
               {/* Success title */}
               <div className="text-white text-2xl font-extrabold mb-2 tracking-tight">
                 We Got Your<br />
-                <span className="bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-accent-violet to-accent-cyan bg-clip-text text-transparent">
                   Message!
                 </span>
               </div>
@@ -403,7 +405,7 @@ export default function Contact() {
  
               {/* Committed Details badges */}
               <div className="flex justify-center gap-3 mb-6">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-cyan tracking-wide">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-violet tracking-wide">
                   <CheckCircle className="w-3 h-3 text-emerald-400" />
                   Response in 24h
                 </div>
@@ -416,7 +418,7 @@ export default function Contact() {
               {/* CTA Back to site */}
               <button
                 onClick={() => setIsSuccess(false)}
-                className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-lg hover:shadow-accent-cyan/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-lg hover:shadow-accent-violet/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
               >
                 Back to Site ✦
               </button>

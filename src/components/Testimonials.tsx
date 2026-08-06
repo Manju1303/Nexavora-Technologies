@@ -124,20 +124,22 @@ export default function Testimonials() {
   };
  
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-bg-dark border-t border-white/5">
+    <section id="testimonials" className="py-24 relative overflow-hidden bg-bg-dark">
+      {/* Section divider */}
+      <div className="section-glow-divider absolute top-0 left-0 right-0" />
       {/* Ambient background light */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-light-blue blur-3xl opacity-10 pointer-events-none" />
  
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-cyan mb-3">
+          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
             Client Success
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
             Endorsed by Tech & Business Leaders
           </h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-cyan to-accent-blue mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
         </div>
  
         {/* Testimonials Slider Area */}
@@ -198,7 +200,7 @@ export default function Testimonials() {
         <div className="flex items-center justify-between mt-8 max-w-xs mx-auto">
           <button
             onClick={handlePrev}
-            className="p-3 rounded-full border border-white/5 bg-white/5 text-text-secondary hover:text-white hover:border-accent-cyan/35 hover:bg-accent-cyan/5 transition-all duration-300 cursor-pointer"
+            className="p-3 rounded-full border border-white/5 bg-white/5 text-text-secondary hover:text-white hover:border-accent-violet/35 hover:bg-accent-violet/5 transition-all duration-300 cursor-pointer"
             aria-label="Previous Testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -214,7 +216,7 @@ export default function Testimonials() {
                   setCurrentIndex(idx);
                 }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === currentIndex ? "bg-accent-cyan w-6" : "bg-white/20 hover:bg-white/40"
+                  idx === currentIndex ? "bg-accent-violet w-6" : "bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
@@ -223,7 +225,7 @@ export default function Testimonials() {
  
           <button
             onClick={handleNext}
-            className="p-3 rounded-full border border-white/5 bg-white/5 text-text-secondary hover:text-white hover:border-accent-cyan/35 hover:bg-accent-cyan/5 transition-all duration-300 cursor-pointer"
+            className="p-3 rounded-full border border-white/5 bg-white/5 text-text-secondary hover:text-white hover:border-accent-violet/35 hover:bg-accent-violet/5 transition-all duration-300 cursor-pointer"
             aria-label="Next Testimonial"
           >
             <ChevronRight className="w-5 h-5" />

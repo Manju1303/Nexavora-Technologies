@@ -7,6 +7,7 @@ import Industries from "@/components/Industries";
 import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import CoreValues from "@/components/CoreValues";
 import Testimonials from "@/components/Testimonials";
 import Careers from "@/components/Careers";
 import Contact from "@/components/Contact";
@@ -25,6 +26,7 @@ export default function Home() {
         <Projects />
         <TechStack />
         <WhyChooseUs />
+        <CoreValues />
         <Testimonials />
         <Careers />
         <Contact />
@@ -33,3 +35,4 @@ export default function Home() {
     </>
   );
 }
+
