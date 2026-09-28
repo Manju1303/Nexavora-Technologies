@@ -85,35 +85,47 @@ export default function Header() {
         />
 
         <div className="container flex items-center justify-between">
-          {/* Prominent Logo */}
+          {/* Prominent Visible Logo & Header Text */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               scrollTo("#");
             }}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3.5 group cursor-pointer"
             aria-label="Nexavora Technologies, back to top"
           >
-            <div className="relative h-9 sm:h-11 w-auto flex items-center">
+            {/* High-Resolution Cropped Emblem */}
+            <div className="relative h-10 w-10 sm:h-11 sm:w-11 shrink-0 flex items-center justify-center">
               <img
-                src="/Nexavora-Technologies/logo.png"
-                alt="Nexavora Technologies Logo"
-                className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,229,255,0.25)]"
+                src="/Nexavora-Technologies/logo-icon.png"
+                alt="Nexavora Emblem"
+                className="h-full w-full object-contain drop-shadow-[0_0_12px_rgba(0,229,255,0.7)] group-hover:scale-110 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (!target.src.endsWith("/logo.png")) {
-                    target.src = "/logo.png";
+                  if (!target.src.endsWith("/logo-icon.png")) {
+                    target.src = "/logo-icon.png";
+                  } else {
+                    target.src = "/Nexavora-Technologies/logo.png";
                   }
                 }}
               />
             </div>
-            <span className="sr-only">Nexavora Technologies</span>
+
+            {/* Clearly Visible Wordmark */}
+            <div className="flex flex-col text-left">
+              <span className="font-display font-bold text-lg sm:text-xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
+                Nexavora
+              </span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[var(--color-cyan)] font-semibold mt-1">
+                Technologies
+              </span>
+            </div>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with High-Contrast Visible Text */}
           <nav
-            className="hidden xl:flex items-center gap-6"
+            className="hidden xl:flex items-center gap-7"
             aria-label="Primary navigation"
           >
             {navLinks.map((link) => {
@@ -129,12 +141,12 @@ export default function Header() {
                   className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-150 relative py-1.5 ${
                     isActive
                       ? "text-[var(--color-cyan)]"
-                      : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-cyan)] rounded-full animate-pulse shadow-[0_0_8px_var(--color-cyan)]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-cyan)] rounded-full shadow-[0_0_10px_var(--color-cyan)]" />
                   )}
                 </a>
               );
@@ -157,7 +169,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="xl:hidden p-2 rounded-lg border border-[var(--color-rule)] text-[var(--color-ink)] hover:border-[var(--color-cyan)] transition-colors"
+              className="xl:hidden p-2.5 rounded-lg border border-[var(--color-rule)] text-white hover:border-[var(--color-cyan)] hover:text-[var(--color-cyan)] transition-colors"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -179,7 +191,7 @@ export default function Header() {
                   e.preventDefault();
                   scrollTo(link.href);
                 }}
-                className="text-lg font-medium text-[var(--color-ink)] py-2 border-b border-[var(--color-rule)] flex items-center justify-between"
+                className="text-lg font-medium text-white py-2 border-b border-[var(--color-rule)] flex items-center justify-between hover:text-[var(--color-cyan)] transition-colors"
               >
                 {link.name}
                 <ArrowUpRight size={16} className="text-[var(--color-cyan)]" />

@@ -46,21 +46,31 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[var(--color-rule)]">
           {/* Brand & Visible Logo */}
           <div className="md:col-span-5 space-y-5">
-            <div className="h-10 w-auto flex items-center">
-              <img
-                src="/Nexavora-Technologies/logo.png"
-                alt="Nexavora Technologies"
-                className="h-full w-auto object-contain"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.endsWith("/logo.png")) {
-                    target.src = "/logo.png";
-                  }
-                }}
-              />
+            <div className="flex items-center gap-3.5">
+              <div className="relative h-11 w-11 shrink-0 flex items-center justify-center">
+                <img
+                  src="/Nexavora-Technologies/logo-icon.png"
+                  alt="Nexavora Emblem"
+                  className="h-full w-full object-contain drop-shadow-[0_0_12px_rgba(0,229,255,0.7)]"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.endsWith("/logo-icon.png")) {
+                      target.src = "/logo-icon.png";
+                    }
+                  }}
+                />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="font-display font-bold text-xl text-white tracking-tight leading-none">
+                  Nexavora
+                </span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[var(--color-cyan)] font-semibold mt-1">
+                  Technologies
+                </span>
+              </div>
             </div>
 
-            <p className="text-sm text-[var(--color-ink-muted)] leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
               Custom software engineering, AI integrations, and high-availability digital systems for hospitals, universities, and commercial enterprises across India.
             </p>
 
