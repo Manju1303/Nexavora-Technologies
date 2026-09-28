@@ -297,3 +297,104 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(139, 92, 246, 0.3);
   color: #fff;
 }
+
+/* ── SPOTLIGHT CARD (Linear & Stripe style) ── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(139, 92, 246, 0.12),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 12px 40px -10px rgba(139, 92, 246, 0.15);
+}
+
+/* ── BORDER BEAM ANIMATION (Linear style) ── */
+@keyframes border-beam {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+/* ── RADAR SWEEP (Supabase / Datadog style) ── */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+  transform-origin: center;
+}
+
+/* ── 3D PERSPECTIVE WRAPPER ── */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* ── AURORA FLOW ── */
+@keyframes aurora-wave {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) rotate(10deg) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(-10deg) scale(0.95);
+  }
+}
+
+.animate-aurora-wave {
+  animation: aurora-wave 20s ease-in-out infinite alternate;
+}
+
+/* ── DATA PIPELINE FLOW ── */
+@keyframes data-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-pipeline {
+  stroke-dasharray: 6 6;
+  animation: data-dash 1.2s linear infinite;
+}
+
+/* ── TERMINAL CURSOR BLINK ── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1s step-start infinite;
+}
