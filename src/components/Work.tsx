@@ -1,5 +1,5 @@
 import FadeIn from "./FadeIn";
-import { ArrowUpRight, Lock, ExternalLink, Activity, GraduationCap, Users, ShieldCheck, Utensils } from "lucide-react";
+import { ArrowUpRight, Lock, Activity, GraduationCap, Users, ShieldCheck, Utensils } from "lucide-react";
 
 const projects = [
   {

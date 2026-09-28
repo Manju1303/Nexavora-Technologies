@@ -25,15 +25,16 @@ export default function FadeIn({
     if (!el) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
+      const timer = setTimeout(() => setVisible(true), 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
+          const timer = setTimeout(() => setVisible(true), delay);
           observer.unobserve(el);
+          return () => clearTimeout(timer);
         }
       },
       { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }

@@ -74,15 +74,21 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--color-header-bg)] backdrop-blur-xl border-b border-[var(--color-rule)] shadow-2xl shadow-[rgba(0,10,30,0.8)] py-3"
-            : "bg-transparent py-4 sm:py-5 border-b border-transparent"
+            ? "bg-[#040817]/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-[rgba(0,10,30,0.85)] py-3"
+            : "bg-[#040817]/45 backdrop-blur-xl py-4 sm:py-5 border-b border-white/5"
         }`}
       >
-        {/* Scroll Progress Bar in Nexavora Logo Cyan & Royal Blue */}
+        {/* Continuous Flowing Ambient Animation Along Header */}
+        <div className="absolute inset-0 animate-flow-header opacity-35 pointer-events-none" />
+
+        {/* Scroll Progress Bar in Animated Flow Gradient */}
         <div
-          className="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-cyan)] to-[var(--color-accent)] transition-all duration-75 pointer-events-none"
+          className="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-cyan)] via-[#8B5CF6] to-[var(--color-cyan)] transition-all duration-75 pointer-events-none"
           style={{ width: `${scrollProgress}%` }}
         />
+
+        {/* Glowing Bottom Line with Flowing Gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-cyan)]/35 to-transparent pointer-events-none" />
 
         <div className="container flex items-center justify-between">
           {/* Official Brand Logo & Name */}

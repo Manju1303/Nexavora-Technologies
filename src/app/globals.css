@@ -317,6 +317,24 @@ h3, h4, h5, h6 {
   box-shadow: 0 0 10px var(--color-cyan);
 }
 
+@keyframes flowHeader {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-flow-header {
+  background: linear-gradient(90deg, rgba(0, 102, 255, 0.15), rgba(0, 229, 255, 0.25), rgba(139, 92, 246, 0.2), rgba(0, 102, 255, 0.15));
+  background-size: 300% 300%;
+  animation: flowHeader 10s ease infinite;
+}
+
 /* ── Seamless Marquee ── */
 @keyframes marquee {
   0% { transform: translateX(0%); }

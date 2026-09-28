@@ -13,23 +13,10 @@ const keyPillars = [
 export default function Hero() {
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-center items-center pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden text-center">
-      {/* 1. Cinematic Ambient Looping Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0 brightness-[0.75] contrast-[1.1]"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/130837c4-0244-4f37-9c61-8d801d93fd29.jpg"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_104303_0c6d60b2-9353-408e-9449-585108a22fb5.mp4"
-      />
+      {/* Central Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[var(--color-cyan)] opacity-10 blur-[140px] pointer-events-none rounded-full" />
 
-      {/* 2. Dual Atmospheric Legibility Veil */}
-      <div className="hero-veil z-[1]" />
-
-      {/* 3. Hero Content */}
+      {/* Hero Content */}
       <div className="container relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center">
         <FadeIn direction="up">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
@@ -69,7 +56,7 @@ export default function Hero() {
           </div>
         </FadeIn>
 
-        {/* 4. Strategic Pillars with Glowing Chevrons */}
+        {/* Strategic Pillars with Glowing Chevrons */}
         <FadeIn delay={320} direction="up">
           <ul className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-3xl w-full">
             {keyPillars.map((pillar) => (
@@ -95,7 +82,7 @@ export default function Hero() {
           </ul>
         </FadeIn>
 
-        {/* 5. Glowing Vertical Divider Rule */}
+        {/* Glowing Vertical Divider Rule */}
         <FadeIn delay={400} direction="up">
           <div className="mt-12 w-[1px] h-12 bg-gradient-to-b from-transparent via-[var(--color-cyan)] to-transparent opacity-75" />
         </FadeIn>
