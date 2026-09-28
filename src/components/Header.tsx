@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Moon, Sun, Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -19,18 +19,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("");
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  /* Restore or set default dark theme */
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (saved === "light" || saved === "dark") {
-      setTheme(saved);
-      document.documentElement.setAttribute("data-theme", saved);
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-  }, []);
 
   /* Track scroll progress and current visible section */
   useEffect(() => {
@@ -71,13 +59,6 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  };
-
   const scrollTo = (href: string) => {
     setMenuOpen(false);
     if (href === "#") {
@@ -93,11 +74,11 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--color-header-bg)] backdrop-blur-xl border-b border-[var(--color-rule)] shadow-lg shadow-black/10 py-3"
+            ? "bg-[var(--color-header-bg)] backdrop-blur-xl border-b border-[var(--color-rule)] shadow-2xl shadow-[rgba(0,10,30,0.8)] py-3"
             : "bg-transparent py-4 sm:py-5 border-b border-transparent"
         }`}
       >
-        {/* Scroll Progress Bar (KPMG / Deloitte signature) */}
+        {/* Scroll Progress Bar in Nexavora Logo Cyan & Royal Blue */}
         <div
           className="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-cyan)] to-[var(--color-accent)] transition-all duration-75 pointer-events-none"
           style={{ width: `${scrollProgress}%` }}
@@ -114,11 +95,11 @@ export default function Header() {
             className="flex items-center gap-3 group"
             aria-label="Nexavora Technologies, back to top"
           >
-            <div className="relative h-9 sm:h-10 w-auto flex items-center">
+            <div className="relative h-9 sm:h-11 w-auto flex items-center">
               <img
                 src="/Nexavora-Technologies/logo.png"
                 alt="Nexavora Technologies Logo"
-                className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,229,255,0.25)]"
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (!target.src.endsWith("/logo.png")) {
@@ -153,7 +134,7 @@ export default function Header() {
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-cyan)] rounded-full animate-pulse" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-cyan)] rounded-full animate-pulse shadow-[0_0_8px_var(--color-cyan)]" />
                   )}
                 </a>
               );
@@ -162,16 +143,6 @@ export default function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-[var(--color-rule)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] hover:border-[var(--color-cyan)] transition-colors cursor-pointer"
-              aria-label={
-                theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
-              }
-            >
-              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
             <a
               href="#contact"
               onClick={(e) => {
@@ -186,7 +157,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="xl:hidden p-2 rounded-lg border border-[var(--color-rule)] text-[var(--color-ink)]"
+              className="xl:hidden p-2 rounded-lg border border-[var(--color-rule)] text-[var(--color-ink)] hover:border-[var(--color-cyan)] transition-colors"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -198,7 +169,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-[var(--color-page)]/95 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 xl:hidden animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-40 bg-[var(--color-page)]/98 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 xl:hidden animate-in fade-in duration-200">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
@@ -211,7 +182,7 @@ export default function Header() {
                 className="text-lg font-medium text-[var(--color-ink)] py-2 border-b border-[var(--color-rule)] flex items-center justify-between"
               >
                 {link.name}
-                <ArrowUpRight size={16} className="text-[var(--color-ink-muted)]" />
+                <ArrowUpRight size={16} className="text-[var(--color-cyan)]" />
               </a>
             ))}
           </nav>
