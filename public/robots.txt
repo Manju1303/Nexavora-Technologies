@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manju1303.github.io/Nexavora-Technologies/sitemap.xml

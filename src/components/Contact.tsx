@@ -1,431 +1,308 @@
 "use client";
- 
+
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, Send, CheckCircle, AlertCircle, Globe, X } from "lucide-react";
- 
+import FadeIn from "./FadeIn";
+
+const servicesList = [
+  "AI & Machine Learning Solutions",
+  "Custom Software & Web Applications",
+  "ERP & SaaS Systems",
+  "Mobile App Development",
+  "Cloud Infrastructure & DevOps",
+  "UI/UX Design",
+  "SEO & Digital Marketing",
+  "General Consultation",
+];
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    service: "Web Development",
+    service: servicesList[0],
+    message: "",
   });
-  
-  // Explicitly separate message state since it is textarea
-  const [message, setMessage] = useState("");
- 
+
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
- 
-  const servicesList = [
-    "Web Development",
-    "App Development",
-    "UI / UX Design",
-    "Branding & Identity",
-    "Digital Marketing",
-    "Tech Consulting",
-    "Other",
-  ];
- 
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!form.name.trim()) newErrors.name = "Name is required";
-    if (!form.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      newErrors.email = "Please enter a valid email";
+    const nextErrors: Record<string, string> = {};
+    if (!form.name.trim()) {
+      nextErrors.name = "Please provide your name.";
     }
-    if (!message.trim()) newErrors.message = "Message is required";
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    if (!form.email.trim()) {
+      nextErrors.email = "Please provide your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      nextErrors.email = "Please enter a valid email address.";
+    }
+    if (!form.message.trim()) {
+      nextErrors.message = "Please describe your project or enquiry.";
+    } else if (form.message.trim().length < 15) {
+      nextErrors.message = "Please include a bit more detail (at least 15 characters).";
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
   };
- 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
- 
+
     setIsSubmitting(true);
+    setStatus("idle");
+    setErrorMessage("");
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/2c0abcf6c78b00c64dd0bbad21dd56bc", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify({
-          Name: form.name,
-          Email: form.email,
-          Service: form.service,
-          Message: message,
-          _subject: `New Nexavora Lead: ${form.name} (${form.service})`,
-        }),
-      });
- 
+      const response = await fetch(
+        "https://formsubmit.co/ajax/2c0abcf6c78b00c64dd0bbad21dd56bc",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            Name: form.name.trim(),
+            Email: form.email.trim(),
+            Service: form.service,
+            Message: form.message.trim(),
+            _subject: `New Project Enquiry: ${form.name} (${form.service})`,
+          }),
+        }
+      );
+
       if (response.ok) {
-        setIsSuccess(true);
-        setForm({ name: "", email: "", service: "Web Development" });
-        setMessage("");
+        setStatus("success");
+        setForm({
+          name: "",
+          email: "",
+          service: servicesList[0],
+          message: "",
+        });
       } else {
-        alert("Form submission failed. Please try again or email us directly at ceo.nexavora@gmail.com");
+        setStatus("error");
+        setErrorMessage(
+          "We could not submit the form. Please email us directly at ceo.nexavora@gmail.com."
+        );
       }
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("An error occurred during submission. Please try again or email us directly at ceo.nexavora@gmail.com");
+    } catch {
+      setStatus("error");
+      setErrorMessage(
+        "A network error occurred. Please reach out via ceo.nexavora@gmail.com."
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
- 
+
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-bg-dark">
-      {/* Section divider */}
-      <div className="section-glow-divider absolute top-0 left-0 right-0" />
-      {/* Background glow layers */}
-      <div className="absolute top-1/4 right-1/4 w-[35rem] h-[35rem] rounded-full bg-light-purple blur-3xl opacity-10 pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[35rem] h-[35rem] rounded-full bg-light-cyan blur-3xl opacity-10 pointer-events-none" />
- 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-xs font-bold tracking-widest uppercase text-accent-violet mb-3">
-            Get In Touch
-          </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Let&apos;s Build Something Extraordinary
-          </h3>
-          <div className="w-16 h-1 bg-gradient-to-r from-accent-violet to-accent-cyan mx-auto mt-5 rounded-full" />
-        </div>
- 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          {/* Left Column: Form */}
+    <section id="contact" className="py-24 border-t border-[var(--border)]">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <FadeIn>
+          <div className="max-w-2xl mb-16">
+            <h2 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-[var(--foreground)]">
+              Start a Project
+            </h2>
+            <p className="mt-4 text-base text-[var(--muted-foreground)] leading-relaxed">
+              Tell us about your organization, current challenges, and project goals. We review every enquiry and reply within 24 hours.
+            </p>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Form */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-8 md:p-10 rounded-3xl glass-card border border-white/5 shadow-2xl relative bg-white/5"
-            >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Name field */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
-                      Your Name *
+            <FadeIn>
+              {status === "success" ? (
+                <div className="p-8 border border-[var(--border)] bg-[var(--card-bg)] text-left">
+                  <h3 className="text-lg font-medium text-[var(--foreground)] mb-2">
+                    Enquiry Received
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-6">
+                    Thank you for reaching out. We will review your requirements and respond via email within 24 hours.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setStatus("idle")}
+                    className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-mono uppercase tracking-wider text-[var(--foreground)] mb-2"
+                    >
+                      Your Name
                     </label>
                     <input
                       id="name"
                       type="text"
                       value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="e.g. Rahul Sharma"
-                      className={`px-4 py-3 rounded-xl text-sm font-light glass-input ${
-                        errors.name ? "border-rose-500/40" : ""
-                      }`}
+                      onChange={(e) => {
+                        setForm({ ...form, name: e.target.value });
+                        if (errors.name) setErrors({ ...errors, name: "" });
+                      }}
+                      className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                      placeholder="e.g. Dr. Rajesh Kumar"
                     />
                     {errors.name && (
-                      <span className="text-rose-400 text-[10px] font-semibold flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" /> {errors.name}
-                      </span>
+                      <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">
+                        {errors.name}
+                      </p>
                     )}
                   </div>
- 
-                  {/* Email field */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
-                      Business Email *
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-xs font-mono uppercase tracking-wider text-[var(--foreground)] mb-2"
+                    >
+                      Email Address
                     </label>
                     <input
                       id="email"
                       type="email"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="e.g. rahul@company.com"
-                      className={`px-4 py-3 rounded-xl text-sm font-light glass-input ${
-                        errors.email ? "border-rose-500/40" : ""
-                      }`}
+                      onChange={(e) => {
+                        setForm({ ...form, email: e.target.value });
+                        if (errors.email) setErrors({ ...errors, email: "" });
+                      }}
+                      className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                      placeholder="name@organization.com"
                     />
                     {errors.email && (
-                      <span className="text-rose-400 text-[10px] font-semibold flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" /> {errors.email}
-                      </span>
+                      <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
-                </div>
- 
-                {/* Service choice */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="service" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
-                    Select Target Service
-                  </label>
-                  <select
-                    id="service"
-                    value={form.service}
-                    onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="px-4 py-3 rounded-xl text-sm font-light glass-input cursor-pointer"
+
+                  <div>
+                    <label
+                      htmlFor="service"
+                      className="block text-xs font-mono uppercase tracking-wider text-[var(--foreground)] mb-2"
+                    >
+                      Area of Interest
+                    </label>
+                    <select
+                      id="service"
+                      value={form.service}
+                      onChange={(e) =>
+                        setForm({ ...form, service: e.target.value })
+                      }
+                      className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                    >
+                      {servicesList.map((svc) => (
+                        <option key={svc} value={svc}>
+                          {svc}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-mono uppercase tracking-wider text-[var(--foreground)] mb-2"
+                    >
+                      Project Details
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={5}
+                      value={form.message}
+                      onChange={(e) => {
+                        setForm({ ...form, message: e.target.value });
+                        if (errors.message) setErrors({ ...errors, message: "" });
+                      }}
+                      className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-y"
+                      placeholder="Describe the problem you are looking to solve, timeline expectations, or existing systems."
+                    />
+                    {errors.message && (
+                      <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {status === "error" && (
+                    <div className="p-4 border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/20 text-xs text-red-700 dark:text-red-300">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-3.5 bg-[var(--foreground)] text-[var(--background)] text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-opacity"
                   >
-                    {servicesList.map((srv) => (
-                      <option key={srv} value={srv} className="bg-bg-dark text-white">
-                        {srv}
-                      </option>
-                    ))}
-                  </select>
-                </div>
- 
-                {/* Message field */}
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs font-bold text-slate-300 uppercase tracking-wider text-left">
-                    Project Requirements *
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Describe your goals, timelines, and business model..."
-                    className={`px-4 py-3 rounded-xl text-sm font-light glass-input resize-none ${
-                      errors.message ? "border-rose-500/40" : ""
-                    }`}
-                  />
-                  {errors.message && (
-                    <span className="text-rose-400 text-[10px] font-semibold flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> {errors.message}
-                    </span>
-                  )}
-                </div>
- 
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-lg shadow-accent-violet/15 hover:shadow-accent-violet/30 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all duration-300 glow-on-hover cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Establishing Uplink...
-                    </>
-                  ) : (
-                    <>
-                      Transmit Request
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              </form>
-            </motion.div>
+                    {isSubmitting ? "Submitting enquiry..." : "Submit Enquiry"}
+                  </button>
+                </form>
+              )}
+            </FadeIn>
           </div>
- 
-          {/* Right Column: Details & Map overlay */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-8">
-            {/* Info panel */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-8 rounded-3xl glass-card border border-white/5 space-y-6 bg-white/5 text-left"
-            >
-              <h4 className="font-extrabold text-white text-lg border-b border-white/5 pb-3">
-                Communications Hub
-              </h4>
- 
-              {/* Email */}
-              <div className="flex gap-4 items-start">
-                <div className="p-3 rounded-xl bg-accent-violet/10 text-accent-violet border border-accent-violet/10">
-                  <Mail className="w-5 h-5" />
-                </div>
+
+          {/* Details sidebar */}
+          <div className="lg:col-span-5 space-y-8">
+            <FadeIn delay={150}>
+              <div className="border border-[var(--border)] p-6 bg-[var(--card-bg)] space-y-6">
                 <div>
-                  <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
-                    Sales & Support
-                  </span>
-                  <a href="mailto:ceo.nexavora@gmail.com" className="text-white hover:text-accent-violet text-sm transition-colors mt-0.5 block font-medium">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted-foreground)] mb-1">
+                    Direct Email
+                  </h3>
+                  <a
+                    href="mailto:ceo.nexavora@gmail.com"
+                    className="text-base font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+                  >
                     ceo.nexavora@gmail.com
                   </a>
                 </div>
-              </div>
- 
-              {/* Phone */}
-              <div className="flex gap-4 items-start">
-                <div className="p-3 rounded-xl bg-accent-blue/10 text-accent-blue border border-accent-blue/10">
-                  <Phone className="w-5 h-5" />
+
+                <div className="border-t border-[var(--border)] pt-4">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted-foreground)] mb-1">
+                    Location
+                  </h3>
+                  <p className="text-sm text-[var(--foreground)]">
+                    Kallakurichi, Tamil Nadu, India
+                  </p>
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                    Engagements managed remotely across India
+                  </p>
                 </div>
-                <div>
-                  <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
+
+                <div className="border-t border-[var(--border)] pt-4">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted-foreground)] mb-1">
                     Response Window
-                  </span>
-                  <span className="text-white text-sm mt-0.5 block font-medium">
-                    Within 24 Hours
-                  </span>
+                  </h3>
+                  <p className="text-sm text-[var(--foreground)]">
+                    Within 24 business hours
+                  </p>
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                    Every message goes directly to our engineering lead
+                  </p>
+                </div>
+
+                <div className="border-t border-[var(--border)] pt-4">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--muted-foreground)] mb-1">
+                    Confidentiality
+                  </h3>
+                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                    We sign mutual Non-Disclosure Agreements (NDAs) prior to detailed architecture reviews upon request.
+                  </p>
                 </div>
               </div>
- 
-              {/* Global Workspace */}
-              <div className="flex gap-4 items-start">
-                <div className="p-3 rounded-xl bg-accent-purple/10 text-accent-purple border border-accent-purple/10">
-                  <Globe className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-text-secondary uppercase tracking-widest font-bold block">
-                    We Serve
-                  </span>
-                  <span className="text-white text-sm mt-0.5 block font-light leading-relaxed">
-                    Kallakurichi · Tamil Nadu · Pan India
-                  </span>
-                </div>
-              </div>
-            </motion.div>
- 
-            {/* Global Coordinates map overlay */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex-grow min-h-[220px] rounded-3xl bg-bg-dark border border-white/10 relative overflow-hidden flex items-center justify-center p-6"
-            >
-              {/* Radial scanner */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.05)_0%,rgba(0,0,0,0)_70%)] pointer-events-none" />
-              <div className="absolute w-[90%] h-[90%] rounded-full border border-white/5 animate-spin-slow" />
-              <div className="absolute w-[60%] h-[60%] rounded-full border border-dashed border-white/5 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "12s" }} />
- 
-              {/* Grid background */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
- 
-              {/* Custom SVG Location Map Vector */}
-              <svg viewBox="0 0 300 150" className="w-full h-full relative z-10 opacity-70">
-                {/* Grid dots/stars background */}
-                <g fill="rgba(255,255,255,0.05)">
-                  <circle cx="20" cy="20" r="1" />
-                  <circle cx="60" cy="30" r="1" />
-                  <circle cx="100" cy="20" r="1" />
-                  <circle cx="140" cy="30" r="1" />
-                  <circle cx="180" cy="20" r="1" />
-                  <circle cx="220" cy="30" r="1" />
-                  <circle cx="260" cy="20" r="1" />
-                  
-                  <circle cx="40" cy="60" r="1" />
-                  <circle cx="80" cy="70" r="1" />
-                  <circle cx="120" cy="60" r="1" />
-                  <circle cx="160" cy="70" r="1" />
-                  <circle cx="200" cy="60" r="1" />
-                  <circle cx="240" cy="70" r="1" />
-                  <circle cx="280" cy="60" r="1" />
-                </g>
- 
-                {/* India (Main hub) */}
-                <g>
-                  <circle cx="215" cy="75" r="3.5" fill="#f72585" />
-                  <circle cx="215" cy="75" r="8" fill="none" stroke="#f72585" strokeWidth="0.5" className="animate-ping" style={{ animationDuration: "2s" }} />
-                </g>
- 
-                <text x="210" y="70" fill="#f72585" fontSize="5.5" fontFamily="monospace" fontWeight="bold">IND</text>
-              </svg>
- 
-              {/* Location Scan indicator */}
-              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 flex items-center gap-1.5 font-mono text-[9px] text-accent-violet">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-violet animate-ping" />
-                <span>Kallakurichi Location Link Active</span>
-              </div>
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </div>
- 
-      {/* ── SUCCESS POPUP MODAL OVERLAY ── */}
-      <AnimatePresence>
-        {isSuccess && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Modal backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsSuccess(false)}
-              className="absolute inset-0 bg-black/75 backdrop-blur-sm"
-            />
- 
-            {/* Confetti simulation particles */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-              {[...Array(20)].map((_, i) => {
-                const randomDelay = Math.random() * 2;
-                const randomX = Math.random() * 100;
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ y: -20, x: `${randomX}%`, scale: 0.5 + Math.random(), rotate: 0, opacity: 1 }}
-                    animate={{ y: "105vh", rotate: 360 * (Math.random() > 0.5 ? 1 : -1), opacity: 0 }}
-                    transition={{ duration: 3 + Math.random() * 2, delay: randomDelay, ease: "easeOut" }}
-                    className={`absolute w-3 h-3 rounded-sm ${
-                      i % 3 === 0 ? "bg-accent-violet" : i % 3 === 1 ? "bg-accent-cyan" : "bg-accent-pink"
-                    }`}
-                  />
-                );
-              })}
-            </div>
- 
-            {/* Modal Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="w-full max-w-md bg-bg-dark border border-white/10 rounded-3xl p-8 text-center shadow-2xl relative z-10 overflow-hidden"
-            >
-              {/* Outer decorative light */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-accent-cyan/10 blur-xl pointer-events-none" />
- 
-              {/* Close X Button */}
-              <button
-                onClick={() => setIsSuccess(false)}
-                className="absolute top-4 right-4 p-2 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
-                aria-label="Close success popup"
-              >
-                <X className="w-4 h-4" />
-              </button>
- 
-              {/* Animated checkmark circle */}
-              <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 animate-pulse" />
-              </div>
- 
-              {/* Success title */}
-              <div className="text-white text-2xl font-extrabold mb-2 tracking-tight">
-                We Got Your<br />
-                <span className="bg-gradient-to-r from-accent-violet to-accent-cyan bg-clip-text text-transparent">
-                  Message!
-                </span>
-              </div>
- 
-              {/* Success description */}
-              <p className="text-text-secondary text-sm font-light leading-relaxed mb-6">
-                Thank you for reaching out. Our team will review your project and get back to you shortly.
-              </p>
- 
-              {/* Committed Details badges */}
-              <div className="flex justify-center gap-3 mb-6">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-violet tracking-wide">
-                  <CheckCircle className="w-3 h-3 text-emerald-400" />
-                  Response in 24h
-                </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] font-semibold text-accent-purple tracking-wide">
-                  <CheckCircle className="w-3 h-3 text-emerald-400" />
-                  Email Confirmation
-                </div>
-              </div>
- 
-              {/* CTA Back to site */}
-              <button
-                onClick={() => setIsSuccess(false)}
-                className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-accent-violet to-accent-cyan text-white shadow-lg hover:shadow-accent-violet/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
-              >
-                Back to Site ✦
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

@@ -1,33 +1,82 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteUrl = "https://manju1303.github.io/Nexavora-Technologies";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nexavora.com"),
-  title: "Nexavora Technologies | Building Smart Digital Solutions",
-  description: "Nexavora Technologies is a premium, futuristic IT company based in Kallakurichi, Tamil Nadu, specializing in custom Software Development, AI Solutions, ERP Systems, SaaS Platforms, Cloud Solutions, and Mobile App Development. Leading digital transformation with next-gen architectures.",
-  keywords: "Nexavora Technologies, Software Development Kallakurichi, AI Solutions Tamil Nadu, ERP Systems, SaaS Platforms, Web Development Kallakurichi, Mobile Apps, Cloud Solutions, digital transformation, Tamil Nadu tech startup, Manjunath CEO",
-  authors: [{ name: "Manjunath", url: "https://nexavora.com" }],
+  metadataBase: new URL(siteUrl),
+  title: "Nexavora Technologies — Custom Software & AI Systems",
+  description:
+    "Engineering-led software studio based in Kallakurichi, Tamil Nadu. We build custom software, web applications, and AI integrations for hospitals, colleges, and growing businesses across India.",
+  keywords: [
+    "Nexavora Technologies",
+    "custom software development India",
+    "AI solutions Tamil Nadu",
+    "hospital management systems",
+    "college ERP software",
+    "Kallakurichi software company",
+    "web application development",
+  ],
+  authors: [{ name: "Manjunath", url: siteUrl }],
   creator: "Nexavora Technologies",
   publisher: "Nexavora Technologies",
+  alternates: {
+    canonical: siteUrl,
+  },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://nexavora.com",
-    title: "Nexavora Technologies | Building Smart Digital Solutions",
-    description: "Futuristic software, AI, ERP, and SaaS solutions engineered for high performance, scalability, and premium experiences.",
+    locale: "en_IN",
+    url: siteUrl,
+    title: "Nexavora Technologies — Custom Software & AI Systems",
+    description:
+      "Engineering-led software studio building reliable custom software, web applications, and AI systems for healthcare, education, and businesses across India.",
     siteName: "Nexavora Technologies",
-    images: [{ url: "/logo.png", width: 800, height: 800, alt: "Nexavora Technologies Logo" }],
+    images: [
+      {
+        url: `${siteUrl}/logo.png`,
+        width: 1200,
+        height: 630,
+        alt: "Nexavora Technologies",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexavora Technologies | Building Smart Digital Solutions",
-    description: "Futuristic software, AI, ERP, and SaaS solutions engineered for high performance, scalability, and premium experiences.",
-    images: ["/logo.png"],
+    title: "Nexavora Technologies — Custom Software & AI Systems",
+    description:
+      "Engineering-led software studio building reliable custom software, web applications, and AI systems for healthcare, education, and businesses across India.",
+    images: [`${siteUrl}/logo.png`],
   },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Nexavora Technologies",
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  founder: {
+    "@type": "Person",
+    name: "Manjunath",
+    jobTitle: "Founder & Engineering Lead",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kallakurichi",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    "https://github.com/Manju1303",
+    "https://www.linkedin.com/in/manjunath-manjunath-248594352",
+    "https://www.instagram.com/mjx_1303",
+  ],
+  description:
+    "Custom software development, AI systems, and digital infrastructure studio based in Kallakurichi, Tamil Nadu, India.",
 };
 
 export default function RootLayout({
@@ -36,10 +85,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-bg-dark text-text-primary antialiased min-h-screen">
-        {children}
-      </body>
+    <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
