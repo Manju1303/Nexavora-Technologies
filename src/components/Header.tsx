@@ -85,42 +85,29 @@ export default function Header() {
         />
 
         <div className="container flex items-center justify-between">
-          {/* Prominent Visible Logo & Header Text */}
+          {/* Official Full Brand Logo */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               scrollTo("#");
             }}
-            className="flex items-center gap-3.5 group cursor-pointer"
+            className="flex items-center group cursor-pointer py-1"
             aria-label="Nexavora Technologies, back to top"
           >
-            {/* High-Resolution Cropped Emblem */}
-            <div className="relative h-10 w-10 sm:h-11 sm:w-11 shrink-0 flex items-center justify-center">
-              <img
-                src="/Nexavora-Technologies/logo-icon.png"
-                alt="Nexavora Emblem"
-                className="h-full w-full object-contain drop-shadow-[0_0_12px_rgba(0,229,255,0.7)] group-hover:scale-110 transition-transform duration-300"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.endsWith("/logo-icon.png")) {
-                    target.src = "/logo-icon.png";
-                  } else {
-                    target.src = "/Nexavora-Technologies/logo.png";
-                  }
-                }}
-              />
-            </div>
-
-            {/* Clearly Visible Wordmark */}
-            <div className="flex flex-col text-left">
-              <span className="font-display font-bold text-lg sm:text-xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
-                Nexavora
-              </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[var(--color-cyan)] font-semibold mt-1">
-                Technologies
-              </span>
-            </div>
+            <img
+              src="/Nexavora-Technologies/logo-full.png"
+              alt="Nexavora Technologies"
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.endsWith("/logo-full.png")) {
+                  target.src = "/logo-full.png";
+                } else {
+                  target.src = "/Nexavora-Technologies/logo.png";
+                }
+              }}
+            />
           </a>
 
           {/* Desktop Navigation with High-Contrast Visible Text */}
