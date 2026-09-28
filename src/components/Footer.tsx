@@ -46,20 +46,31 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[var(--color-rule)]">
           {/* Brand & Visible Logo */}
           <div className="md:col-span-5 space-y-5">
-            <div className="flex items-center">
-              <img
-                src="/Nexavora-Technologies/logo-full.png"
-                alt="Nexavora Technologies"
-                className="h-10 sm:h-11 w-auto object-contain"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.endsWith("/logo-full.png")) {
-                    target.src = "/logo-full.png";
-                  } else {
-                    target.src = "/Nexavora-Technologies/logo.png";
-                  }
-                }}
-              />
+            <div className="flex items-center gap-3">
+              <div className="relative flex items-center justify-center shrink-0">
+                <img
+                  src="/Nexavora-Technologies/logo-icon.png"
+                  alt="Nexavora Logo"
+                  className="h-10 sm:h-11 w-auto object-contain drop-shadow-[0_0_14px_rgba(0,229,255,0.45)]"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.endsWith("/logo-icon.png")) {
+                      target.src = "/logo-icon.png";
+                    }
+                  }}
+                />
+              </div>
+              <div className="flex flex-col select-none text-left">
+                <div className="flex items-center gap-1">
+                  <span className="font-display font-extrabold text-2xl text-white tracking-tight leading-none">
+                    Nexavora
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)] mb-0.5 animate-pulse" />
+                </div>
+                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-0.5 opacity-90">
+                  Technologies
+                </span>
+              </div>
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">

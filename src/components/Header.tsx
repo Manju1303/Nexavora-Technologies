@@ -85,29 +85,40 @@ export default function Header() {
         />
 
         <div className="container flex items-center justify-between">
-          {/* Official Full Brand Logo */}
+          {/* Official Brand Logo & Name */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               scrollTo("#");
             }}
-            className="flex items-center group cursor-pointer py-1"
+            className="flex items-center gap-3 group cursor-pointer py-1"
             aria-label="Nexavora Technologies, back to top"
           >
-            <img
-              src="/Nexavora-Technologies/logo-full.png"
-              alt="Nexavora Technologies"
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (!target.src.endsWith("/logo-full.png")) {
-                  target.src = "/logo-full.png";
-                } else {
-                  target.src = "/Nexavora-Technologies/logo.png";
-                }
-              }}
-            />
+            <div className="relative flex items-center justify-center shrink-0">
+              <img
+                src="/Nexavora-Technologies/logo-icon.png"
+                alt="Nexavora Logo"
+                className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(0,229,255,0.45)]"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith("/logo-icon.png")) {
+                    target.src = "/logo-icon.png";
+                  }
+                }}
+              />
+            </div>
+            <div className="flex flex-col select-none text-left">
+              <div className="flex items-center gap-1">
+                <span className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
+                  Nexavora
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)] mb-0.5 animate-pulse" />
+              </div>
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-0.5 opacity-90">
+                Technologies
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation with High-Contrast Visible Text */}
