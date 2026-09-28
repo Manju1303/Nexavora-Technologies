@@ -1,103 +1,100 @@
 import FadeIn from "./FadeIn";
-import { ArrowUpRight, MapPin, Briefcase, Clock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const jobs = [
   {
     title: "Full-Stack Web Developer",
-    department: "Enterprise Systems",
+    department: "Engineering",
     location: "Kallakurichi, Tamil Nadu / Hybrid",
-    type: "Full-Time",
-    experience: "1–3 Years",
+    type: "Full-time",
     emailSubject: "Application: Full-Stack Web Developer",
   },
   {
     title: "Frontend Developer Intern",
-    department: "Client Engineering",
+    department: "Engineering",
     location: "Remote / Kallakurichi",
     type: "Internship (6 Months)",
-    experience: "Students / Recent Grads",
     emailSubject: "Application: Frontend Developer Intern",
   },
   {
     title: "SEO & Digital Marketing Analyst",
-    department: "Growth Advisory",
+    department: "Growth",
     location: "Kallakurichi / On-site",
-    type: "Full-Time",
-    experience: "1+ Years",
+    type: "Full-time",
     emailSubject: "Application: SEO & Digital Marketing Analyst",
   },
   {
     title: "UI/UX Design Intern",
-    department: "Experience Design",
+    department: "Design",
     location: "Remote / Hybrid",
     type: "Internship (3–6 Months)",
-    experience: "Portfolio Required",
     emailSubject: "Application: UI/UX Design Intern",
   },
 ];
 
 export default function Careers() {
   return (
-    <section id="careers" className="section relative">
+    <section id="careers" className="py-24 border-t border-[var(--color-rule)]">
       <div className="container">
         <FadeIn direction="up">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div>
-              <div className="eyebrow">Talent & Opportunities</div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display max-w-2xl">
-                Build serious software with high agency.
-              </h2>
-            </div>
-            <p className="text-sm md:text-base text-[var(--color-ink-muted)] max-w-md leading-relaxed">
-              We look for engineers and designers passionate about technical craftsmanship, clear writing, and delivering dependable software systems.
+          <div className="max-w-2xl mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white">
+              Careers
+            </h2>
+            <p className="mt-4 text-base text-slate-300 leading-relaxed">
+              We look for engineers and designers who care about software quality, clear communication, and delivering reliable systems.
             </p>
           </div>
         </FadeIn>
 
-        <div className="space-y-4">
-          {jobs.map((job, index) => (
-            <FadeIn key={job.title} delay={index * 70} direction="up">
-              <div className="mnc-card rounded-2xl p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 group">
-                <div className="space-y-2">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-mono text-xs text-[var(--color-cyan)] uppercase tracking-wider font-medium">
-                      {job.department}
-                    </span>
-                    <span className="text-[var(--color-rule-active)]">·</span>
-                    <span className="font-mono text-xs text-[var(--color-ink-subtle)] flex items-center gap-1">
-                      <Clock size={12} /> {job.type}
-                    </span>
-                    <span className="text-[var(--color-rule-active)]">·</span>
-                    <span className="font-mono text-xs text-[var(--color-ink-subtle)]">
-                      {job.experience}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-display font-semibold text-[var(--color-ink)] group-hover:text-[var(--color-cyan)] transition-colors">
+        <div className="border-t border-[var(--color-rule)] overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-[var(--color-rule)] text-xs font-mono uppercase tracking-wider text-slate-400">
+                <th className="py-4 pr-6 font-normal">Role</th>
+                <th className="py-4 px-6 font-normal hidden sm:table-cell">Department</th>
+                <th className="py-4 px-6 font-normal hidden md:table-cell">Location</th>
+                <th className="py-4 px-6 font-normal">Type</th>
+                <th className="py-4 pl-6 text-right font-normal">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.map((job) => (
+                <tr
+                  key={job.title}
+                  className="border-b border-[var(--color-rule)] transition-colors hover:bg-[var(--color-page-alt)]"
+                >
+                  <td className="py-5 pr-6 font-medium text-white">
                     {job.title}
-                  </h3>
-
-                  <div className="flex items-center gap-1.5 text-xs text-[var(--color-ink-muted)]">
-                    <MapPin size={13} className="text-[var(--color-cyan)]" />
-                    <span>{job.location}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <a
-                    href={`mailto:careers@nexavora.com?subject=${encodeURIComponent(
-                      job.emailSubject
-                    )}&body=${encodeURIComponent(
-                      "Hi Nexavora Team,\n\nI would like to apply for the position. Please find my portfolio and resume attached.\n\nName:\nContact Phone:\nLinkedIn / GitHub Profile:\n"
-                    )}`}
-                    className="btn btn-secondary text-xs gap-1.5 py-2.5 px-5 group-hover:border-[var(--color-cyan)] group-hover:text-[var(--color-cyan)] transition-all"
-                  >
-                    Submit Application <ArrowUpRight size={14} />
-                  </a>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+                    <div className="sm:hidden text-xs text-slate-400 mt-1 font-normal">
+                      {job.department} · {job.location}
+                    </div>
+                  </td>
+                  <td className="py-5 px-6 text-sm text-slate-300 hidden sm:table-cell">
+                    {job.department}
+                  </td>
+                  <td className="py-5 px-6 text-sm text-slate-300 hidden md:table-cell">
+                    {job.location}
+                  </td>
+                  <td className="py-5 px-6 text-xs font-mono text-slate-400">
+                    {job.type}
+                  </td>
+                  <td className="py-5 pl-6 text-right">
+                    <a
+                      href={`mailto:careers@nexavora.com?subject=${encodeURIComponent(
+                        job.emailSubject
+                      )}&body=${encodeURIComponent(
+                        "Hi Nexavora Team,\n\nI am writing to apply for the position. Please find my resume and portfolio attached.\n\nName:\nPhone:\nLinkedIn / GitHub:\n"
+                      )}`}
+                      className="inline-flex items-center gap-1 text-xs font-medium text-[var(--color-cyan)] hover:underline"
+                    >
+                      Apply <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
