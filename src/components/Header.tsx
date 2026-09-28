@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Work", href: "#work" },
-  { name: "About", href: "#about" },
+  { name: "Industries", href: "#industries" },
   { name: "Process", href: "#process" },
+  { name: "About", href: "#about" },
+  { name: "Technology", href: "#approach" },
   { name: "Careers", href: "#careers" },
   { name: "Contact", href: "#contact" },
 ];
@@ -15,28 +17,58 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
-  /* Restore saved theme preference */
+  /* Restore or set default dark theme */
   useEffect(() => {
     const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (saved === "dark" || saved === "light") {
+    if (saved === "light" || saved === "dark") {
       setTheme(saved);
       document.documentElement.setAttribute("data-theme", saved);
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
     }
   }, []);
 
-  /* Show subtle bottom border when scrolled */
+  /* Track scroll progress and current visible section */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        const progress = (window.scrollY / totalScroll) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, progress)));
+      }
+      setScrolled(window.scrollY > 20);
+
+      // Determine active section
+      const sections = navLinks.map((l) => l.href.substring(1));
+      let current = "";
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 160 && rect.bottom >= 160) {
+            current = `#${section}`;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   /* Lock body scroll when mobile menu is open */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const toggleTheme = () => {
@@ -57,104 +89,147 @@ export default function Header() {
   };
 
   return (
-    <header
-      style={{ backgroundColor: "var(--color-page)" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-200 ${
-        scrolled ? "shadow-[0_1px_0_0_var(--color-rule)]" : ""
-      }`}
-    >
-      <div className="container flex items-center justify-between h-16 md:h-[72px]">
-        {/* Wordmark */}
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); scrollTo("#"); }}
-          className="font-serif text-lg sm:text-xl tracking-tight font-medium"
-          aria-label="Nexavora Technologies, back to top"
-        >
-          Nexavora Technologies
-        </a>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[var(--color-header-bg)] backdrop-blur-xl border-b border-[var(--color-rule)] shadow-lg shadow-black/10 py-3"
+            : "bg-transparent py-4 sm:py-5 border-b border-transparent"
+        }`}
+      >
+        {/* Scroll Progress Bar (KPMG / Deloitte signature) */}
+        <div
+          className="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-cyan)] to-[var(--color-accent)] transition-all duration-75 pointer-events-none"
+          style={{ width: `${scrollProgress}%` }}
+        />
 
-        {/* Desktop navigation */}
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Primary navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-              className="text-sm font-medium transition-colors duration-150"
-              style={{ color: "var(--color-ink-muted)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-ink-muted)")}
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* Right-side actions */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-md transition-colors duration-150"
-            style={{ color: "var(--color-ink-muted)" }}
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-
+        <div className="container flex items-center justify-between">
+          {/* Prominent Logo */}
           <a
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-            className="btn btn-primary hidden lg:inline-flex text-sm"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#");
+            }}
+            className="flex items-center gap-3 group"
+            aria-label="Nexavora Technologies, back to top"
           >
-            Start a project
+            <div className="relative h-9 sm:h-10 w-auto flex items-center">
+              <img
+                src="/Nexavora-Technologies/logo.png"
+                alt="Nexavora Technologies Logo"
+                className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith("/logo.png")) {
+                    target.src = "/logo.png";
+                  }
+                }}
+              />
+            </div>
+            <span className="sr-only">Nexavora Technologies</span>
           </a>
 
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-md"
-            style={{ color: "var(--color-ink)" }}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
+          {/* Desktop Navigation */}
+          <nav
+            className="hidden xl:flex items-center gap-6"
+            aria-label="Primary navigation"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(link.href);
+                  }}
+                  className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-150 relative py-1.5 ${
+                    isActive
+                      ? "text-[var(--color-cyan)]"
+                      : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+                  }`}
+                >
+                  {link.name}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-cyan)] rounded-full animate-pulse" />
+                  )}
+                </a>
+              );
+            })}
+          </nav>
 
-      {/* Mobile navigation overlay */}
+          {/* Right Actions */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-[var(--color-rule)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] hover:border-[var(--color-cyan)] transition-colors cursor-pointer"
+              aria-label={
+                theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+              }
+            >
+              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#contact");
+              }}
+              className="btn btn-primary text-xs hidden sm:inline-flex items-center gap-1.5"
+            >
+              Start a project <ArrowUpRight size={14} />
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="xl:hidden p-2 rounded-lg border border-[var(--color-rule)] text-[var(--color-ink)]"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer */}
       {menuOpen && (
-        <nav
-          className="lg:hidden fixed inset-0 top-16 z-40"
-          style={{ backgroundColor: "var(--color-page)" }}
-          aria-label="Mobile navigation"
-        >
-          <div className="container flex flex-col gap-1 pt-6 pb-8">
+        <div className="fixed inset-0 z-40 bg-[var(--color-page)]/95 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 xl:hidden animate-in fade-in duration-200">
+          <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                className="py-3 text-lg font-medium"
-                style={{
-                  color: "var(--color-ink)",
-                  borderBottom: "1px solid var(--color-rule)",
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(link.href);
                 }}
+                className="text-lg font-medium text-[var(--color-ink)] py-2 border-b border-[var(--color-rule)] flex items-center justify-between"
               >
                 {link.name}
+                <ArrowUpRight size={16} className="text-[var(--color-ink-muted)]" />
               </a>
             ))}
+          </nav>
+
+          <div className="pt-6">
             <a
               href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
-              className="btn btn-primary mt-6"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#contact");
+              }}
+              className="btn btn-primary w-full text-center"
             >
               Start a project
             </a>
           </div>
-        </nav>
+        </div>
       )}
-    </header>
+    </>
   );
 }

@@ -1,66 +1,91 @@
 import FadeIn from "./FadeIn";
+import { Terminal, Database, Server, Cpu, Cloud, Check } from "lucide-react";
 
 const stackGroups = [
   {
-    category: "Frontend & Interfaces",
-    technologies: "React, Next.js, TypeScript, Tailwind CSS, HTML5/CSS3",
-    note: "Server-rendered, accessible, and fast-loading web applications.",
+    icon: Terminal,
+    category: "Frontend & Digital Interfaces",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"],
+    note: "Server-rendered, accessible, and fast-loading web applications with sub-second time to interactive.",
   },
   {
-    category: "Backend & Systems",
-    technologies: "Node.js, Express, Python, FastAPI, REST APIs",
-    note: "Robust microservices and monolithic architectures built for high uptime.",
+    icon: Server,
+    category: "Backend & Distributed Systems",
+    technologies: ["Node.js", "Express", "Python", "FastAPI", "RESTful APIs", "WebSockets"],
+    note: "High-throughput microservices and modular monoliths designed for resilient uptime.",
   },
   {
-    category: "Data & Storage",
-    technologies: "PostgreSQL, MongoDB, Redis, Firebase",
-    note: "ACID-compliant relational models, document stores, and distributed caching.",
+    icon: Database,
+    category: "Data Architecture & Storage",
+    technologies: ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Prisma ORM"],
+    note: "ACID-compliant transactional databases, NoSQL document stores, and low-latency cache layers.",
   },
   {
-    category: "Machine Learning & AI",
-    technologies: "Python, PyTorch, Scikit-learn, LangChain, OpenAI API",
-    note: "Workflow automation, LLM integration, and practical data classification.",
+    icon: Cpu,
+    category: "Machine Learning & AI Integration",
+    technologies: ["Python", "PyTorch", "Scikit-learn", "LangChain", "OpenAI API", "Hugging Face"],
+    note: "Private LLM workflows, automated OCR parsing, predictive modeling, and RAG architectures.",
   },
   {
-    category: "Cloud & Deployment",
-    technologies: "Docker, Linux, GitHub Actions, AWS, Cloudflare, Nginx",
-    note: "Reproducible CI/CD pipelines, containerized workloads, and SSL security.",
+    icon: Cloud,
+    category: "Cloud, Infrastructure & DevOps",
+    technologies: ["Docker", "Linux", "GitHub Actions", "AWS", "Cloudflare", "Nginx"],
+    note: "Containerized reproducible builds, automated CI/CD deployment pipelines, and global SSL caching.",
   },
 ];
 
 export default function Approach() {
   return (
-    <section id="approach" className="py-24 border-t border-[var(--border)]">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <FadeIn>
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-[var(--foreground)]">
-              Approach & Technology
-            </h2>
-            <p className="mt-4 text-base text-[var(--muted-foreground)] leading-relaxed">
-              We select mature, supported tools with open ecosystems. Every tool is chosen because it solves your problem reliably and leaves you in full control of your codebase.
+    <section id="approach" className="section relative">
+      <div className="container">
+        <FadeIn direction="up">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <div className="eyebrow">Architecture & Tech Stack</div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display max-w-2xl">
+                Open ecosystems. Zero proprietary dependencies.
+              </h2>
+            </div>
+            <p className="text-sm md:text-base text-[var(--color-ink-muted)] max-w-md leading-relaxed">
+              We select battle-tested, active open-source platforms with global support so your engineering teams retain full autonomy over your codebase.
             </p>
           </div>
         </FadeIn>
 
-        <div className="border-t border-[var(--border)]">
-          {stackGroups.map((group, index) => (
-            <FadeIn key={group.category} delay={index * 60}>
-              <div className="py-6 border-b border-[var(--border)] grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
-                <div className="md:col-span-4">
-                  <h3 className="text-base font-medium text-[var(--foreground)]">
-                    {group.category}
-                  </h3>
+        <div className="space-y-4">
+          {stackGroups.map((group, index) => {
+            const Icon = group.icon;
+            return (
+              <FadeIn key={group.category} delay={index * 60} direction="up">
+                <div className="mnc-card rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 group">
+                  <div className="flex items-start sm:items-center gap-4 lg:w-1/3">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-rule)] flex items-center justify-center text-[var(--color-cyan)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all shrink-0">
+                      <Icon size={18} />
+                    </div>
+                    <div>
+                      <h3 className="text-base sm:text-lg font-display font-semibold text-[var(--color-ink)] group-hover:text-[var(--color-cyan)] transition-colors">
+                        {group.category}
+                      </h3>
+                      <p className="text-xs text-[var(--color-ink-muted)] mt-0.5 line-clamp-1">
+                        {group.note}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 lg:w-2/3 lg:justify-end">
+                    {group.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-xs text-[var(--color-ink)] bg-[var(--color-page-alt)] border border-[var(--color-rule)] px-3 py-1 rounded-lg group-hover:border-[var(--color-rule-active)] transition-colors flex items-center gap-1.5"
+                      >
+                        <Check size={12} className="text-[var(--color-cyan)]" /> {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="md:col-span-5 font-mono text-sm text-[var(--foreground)]">
-                  {group.technologies}
-                </div>
-                <div className="md:col-span-3 text-xs text-[var(--muted-foreground)]">
-                  {group.note}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>
