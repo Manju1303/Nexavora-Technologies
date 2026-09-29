@@ -1,117 +1,83 @@
 import FadeIn from "./FadeIn";
-import { Bot, Code2, Database, Smartphone, Cloud, Palette, CheckCircle2 } from "lucide-react";
+import { Brain, Database, Globe, Smartphone, Cloud, Palette, CheckCircle2 } from "lucide-react";
 
 const services = [
   {
-    num: "01",
-    title: "AI & Automation",
+    title: "Autonomous AI & Intelligence Systems",
     theme: "theme-cyan",
-    icon: Bot,
+    icon: Brain,
     description:
-      "We develop AI-powered systems that help organizations automate repetitive processes and work with their information more effectively.",
-    label: "What we build",
-    items: [
-      "AI assistants and chatbots",
-      "AI agents and workflow automation",
-      "Retrieval-Augmented Generation (RAG)",
-      "Knowledge-based AI systems",
-      "Document intelligence",
-      "OCR and information extraction",
-      "Predictive analytics",
-      "AI-powered business tools",
+      "Production-grade generative AI architectures, private retrieval-augmented generation (RAG), and deterministic workflow agents tailored to your institutional data.",
+    capabilities: [
+      "Autonomous workflow agents & LLM orchestration",
+      "Private RAG knowledge retrieval & semantic search",
+      "Document extraction, OCR & multimodal parsing",
+      "Predictive analytics, forecasting & anomaly detection",
     ],
   },
   {
-    num: "02",
-    title: "Web & Software Development",
-    theme: "theme-blue",
-    icon: Code2,
-    description:
-      "We build responsive, secure, and scalable web applications for businesses, institutions, startups, and organizations.",
-    label: "What we build",
-    items: [
-      "Business websites",
-      "Web applications",
-      "SaaS platforms",
-      "Management portals",
-      "Admin dashboards",
-      "Customer portals",
-      "API-driven applications",
-      "Custom software solutions",
-    ],
-  },
-  {
-    num: "03",
-    title: "ERP & Business Systems",
+    title: "Distributed Enterprise ERP & Operations",
     theme: "theme-violet",
     icon: Database,
     description:
-      "We create centralized platforms that help organizations manage their operational workflows from a single system.",
-    label: "Solutions include",
-    items: [
-      "Business ERP systems",
-      "Institution management systems",
-      "Inventory management",
-      "Attendance management",
-      "Billing and reporting",
-      "Workflow management",
-      "Complaint management",
-      "Role-based administration",
-      "Operational dashboards",
+      "High-throughput enterprise operating cores unifying multi-branch billing, inventory supply chains, compliance tracking, and administrative governance.",
+    capabilities: [
+      "Multi-campus & multi-branch ERP architectures",
+      "Real-time ledger reconciliation & automated billing",
+      "Granular role-based security & immutable audit logs",
+      "High-concurrency data models for 100,000+ daily events",
     ],
   },
   {
-    num: "04",
-    title: "Mobile Applications",
+    title: "High-Availability Web Platforms",
+    theme: "theme-blue",
+    icon: Globe,
+    description:
+      "Sub-second, accessible web architectures engineered with Next.js and distributed edge caching, hardened for enterprise security and peak concurrent demand.",
+    capabilities: [
+      "Clinical healthcare & university student portals",
+      "Multi-tenant SaaS platforms & executive dashboards",
+      "Progressive Web Apps with full offline telemetry",
+      "Headless architectures & micro-frontend ecosystems",
+    ],
+  },
+  {
+    title: "Next-Gen Mobile Applications",
     theme: "theme-pink",
     icon: Smartphone,
     description:
-      "We develop mobile experiences that connect users with business services and digital platforms.",
-    label: "Solutions include",
-    items: [
-      "Android applications",
-      "Cross-platform applications",
-      "Business applications",
-      "Field applications",
-      "Notification systems",
-      "API-connected mobile platforms",
+      "Native Android and cross-platform mobile experiences featuring encrypted local caching, biometric security, and low-latency cloud synchronization.",
+    capabilities: [
+      "Native Android & Kotlin systems engineering",
+      "Cross-platform architecture with React Native",
+      "Biometric authentication & hardware sync",
+      "Geofenced field telemetry & real-time notifications",
     ],
   },
   {
-    num: "05",
-    title: "Cloud & DevOps",
+    title: "Cloud Infrastructure & DevOps",
     theme: "theme-emerald",
     icon: Cloud,
     description:
-      "We help applications move from development to reliable production environments.",
-    label: "Services include",
-    items: [
-      "Cloud deployment",
-      "Docker-based environments",
-      "CI/CD workflows",
-      "Database deployment",
-      "API infrastructure",
-      "Monitoring and logging",
-      "Backup strategies",
-      "Application maintenance",
+      "Resilient, auto-scaling cloud deployments with automated zero-downtime CI/CD release pipelines and 24/7 telemetry monitoring to safeguard system uptime.",
+    capabilities: [
+      "Containerized Docker & Kubernetes workloads",
+      "Automated CI/CD pipelines with security scans",
+      "Database clustering, point-in-time recovery & backups",
+      "Proactive cloud monitoring & error telemetry",
     ],
   },
   {
-    num: "06",
-    title: "UI/UX & Digital Experience",
+    title: "Strategic Design & Digital Growth",
     theme: "theme-amber",
     icon: Palette,
     description:
-      "Good technology should also be easy to use. We design clean and intuitive interfaces that make complex workflows easier for users to understand and operate.",
-    label: "Services include",
-    items: [
-      "UI/UX design",
-      "Web interface design",
-      "Design systems",
-      "Responsive interfaces",
-      "Interactive prototypes",
-      "Usability improvements",
-      "Performance-focused interfaces",
+      "Human-centered user experience design paired with technical search engine optimization and Core Web Vitals engineering to establish market authority.",
+    capabilities: [
+      "UI/UX research & high-fidelity interactive prototypes",
+      "Scalable design tokens & component libraries",
+      "Technical SEO & Core Web Vitals optimization",
+      "Conversion funnel analysis & user retention audits",
     ],
   },
 ];
@@ -120,14 +86,13 @@ export default function Services() {
   return (
     <section id="services" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
-        {/* ── Section 4: Our Technology Services ── */}
         <FadeIn direction="up">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Our Technology Services
+              Engineering Capabilities
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-              We design, engineer, and deploy modern software, artificial intelligence, and enterprise systems tailored to your workflows.
+            <p className="mt-4 text-base text-slate-300 leading-relaxed">
+              Bespoke software architectures, autonomous AI pipelines, and distributed digital infrastructure designed for operational resilience, absolute data sovereignty, and long-term maintainability.
             </p>
           </div>
         </FadeIn>
@@ -139,43 +104,26 @@ export default function Services() {
               <FadeIn key={service.title} delay={i * 70} direction="up">
                 <div className={`portfolio-card ${service.theme} p-7 h-full flex flex-col justify-between group`}>
                   <div>
-                    {/* Header with Number and Icon */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 transition-transform duration-300 group-hover:scale-110"
-                        style={{ background: "var(--card-pill)" }}
-                      >
-                        <Icon className="w-6 h-6" style={{ color: "var(--card-text)" }} />
-                      </div>
-                      <span className="font-mono text-sm font-bold text-slate-400">
-                        {service.num}
-                      </span>
+                    {/* Glowing Icon Header */}
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10 bg-white/5 transition-transform duration-300 group-hover:scale-110" style={{ background: "var(--card-pill)" }}>
+                      <Icon className="w-6 h-6 transition-colors" style={{ color: "var(--card-text)" }} />
                     </div>
 
                     <h3 className="text-xl font-display font-semibold text-white mb-3 group-hover:text-white transition-colors">
                       {service.title}
                     </h3>
-
+                    
                     <p className="text-sm text-slate-300 leading-relaxed mb-6">
                       {service.description}
                     </p>
                   </div>
 
                   <div className="pt-4 border-t border-white/5">
-                    <span
-                      className="block text-xs font-mono uppercase tracking-wider font-semibold mb-3"
-                      style={{ color: "var(--card-text)" }}
-                    >
-                      {service.label}
-                    </span>
-                    <ul className="space-y-1.5">
-                      {service.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-xs text-slate-300/90">
-                          <CheckCircle2
-                            className="w-3.5 h-3.5 mt-0.5 shrink-0"
-                            style={{ color: "var(--card-text)" }}
-                          />
-                          <span>{item}</span>
+                    <ul className="space-y-2">
+                      {service.capabilities.map((cap) => (
+                        <li key={cap} className="flex items-center gap-2 text-xs text-slate-400">
+                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--card-text)" }} />
+                          <span>{cap}</span>
                         </li>
                       ))}
                     </ul>
