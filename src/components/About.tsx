@@ -1,118 +1,180 @@
 import FadeIn from "./FadeIn";
-import { Cpu, ShieldCheck, FileCode, Users } from "lucide-react";
+import { Users, Cpu, Lightbulb, TrendingUp, ShieldCheck, ArrowRight } from "lucide-react";
 
-const values = [
+const founderInterests = [
+  "Artificial Intelligence",
+  "AI Agents",
+  "Generative AI",
+  "Software Engineering",
+  "Automation",
+  "ERP Systems",
+  "Full-Stack Development",
+];
+
+const principles = [
   {
-    title: "Direct Engineering Collaboration",
+    title: "Direct Collaboration",
     theme: "theme-cyan",
     icon: Users,
     description:
-      "You collaborate directly with the principal engineers and system architects building your platform. Zero intermediary account handlers, maximum technical clarity.",
+      "We keep communication close to the people actually involved in building the solution.",
   },
   {
-    title: "Resilient Systems Architecture",
-    theme: "theme-violet",
+    title: "Practical Engineering",
+    theme: "theme-blue",
     icon: Cpu,
     description:
-      "We build on battle-tested, high-concurrency technologies designed for decades of maintainability, sub-second latency, and seamless operational handoff.",
+      "We focus on solving the actual business problem instead of adding unnecessary technology.",
   },
   {
-    title: "Security & Governance by Default",
+    title: "Continuous Learning",
+    theme: "theme-violet",
+    icon: Lightbulb,
+    description:
+      "Technology changes quickly. We continuously explore new tools and approaches that can create genuine value.",
+  },
+  {
+    title: "Long-Term Thinking",
     theme: "theme-emerald",
+    icon: TrendingUp,
+    description:
+      "A successful system should remain useful beyond its initial launch.",
+  },
+  {
+    title: "Responsible AI",
+    theme: "theme-pink",
     icon: ShieldCheck,
     description:
-      "From clinical healthcare records to enterprise ledgers, end-to-end encryption, strict role-based access controls, and immutable audit logs are built into the foundation.",
+      "AI should be implemented with attention to reliability, data privacy, security, and the actual needs of the organization.",
   },
-  {
-    title: "Absolute Code & IP Ownership",
-    theme: "theme-pink",
-    icon: FileCode,
-    description:
-      "You receive 100% ownership of your clean git repositories, Docker containers, schemas, and configurations. Zero vendor lock-in, total institutional data sovereignty.",
-  },
+];
+
+const workflowSteps = [
+  "Understand the problem",
+  "Design the right solution",
+  "Build it",
+  "Deploy it",
+  "Improve it",
 ];
 
 export default function About() {
   return (
     <section id="about" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
+        {/* ── Section 3: About Nexavora ── */}
         <FadeIn direction="up">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-14">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Studio & Engineering Ethos
+              Technology With a Purpose
             </h2>
-            <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              An elite software engineering and artificial intelligence studio founded in Tamil Nadu, architecting mission-critical digital infrastructure for institutions nationwide.
+            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+              Nexavora Technologies is a technology company based in Tamil Nadu, India, focused on building practical software and intelligent digital solutions for businesses and institutions.
             </p>
           </div>
         </FadeIn>
 
-        {/* Mission & Leadership */}
+        {/* About Card & Simple Approach Flow */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16 border-b border-[var(--color-rule)] items-stretch">
-          <div className="lg:col-span-8 portfolio-card theme-blue p-8 sm:p-10 flex flex-col justify-center">
-            <FadeIn direction="up">
-              <h3 className="text-2xl font-display font-bold text-white mb-5">
-                Technical Manifesto & Purpose
+          <div className="lg:col-span-7 portfolio-card theme-blue p-8 sm:p-10 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-4">
+                Practical Software & Intelligent Digital Solutions
               </h3>
-              <div className="space-y-5 text-sm sm:text-base text-slate-300 leading-relaxed">
-                <p>
-                  Nexavora Technologies was founded to bridge the critical divide between cutting-edge computational engineering and everyday enterprise operations. Far too many hospitals, universities, and commercial enterprises are trapped with bloated legacy software that forces rigid workflows and creates fragile data silos. We build purpose-crafted, high-performance web platforms, autonomous AI pipelines, and distributed ERP systems that solve exact operational bottlenecks.
-                </p>
-                <p>
-                  Our vision is to equip institutions across India with resilient digital systems that execute deterministically under heavy concurrent loads, protect sensitive institutional records with zero-trust architectures, and scale sustainably for the decades ahead.
-                </p>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+                We combine software engineering, artificial intelligence, automation, and modern cloud technologies to solve operational problems and create better digital experiences.
+              </p>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                We believe technology should not add complexity. It should make work simpler, faster, and more manageable.
+              </p>
+            </div>
+
+            {/* Approach Flow Sequence */}
+            <div className="mt-8 pt-6 border-t border-white/10">
+              <span className="block text-xs font-mono uppercase tracking-wider text-[var(--color-cyan)] mb-3">
+                Our Approach Is Simple
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                {workflowSteps.map((step, idx) => (
+                  <div key={step} className="flex items-center gap-2">
+                    <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 border border-white/10 text-slate-200">
+                      {step}
+                    </span>
+                    {idx < workflowSteps.length - 1 && (
+                      <ArrowRight className="w-3.5 h-3.5 text-[var(--color-cyan)] opacity-70 shrink-0" />
+                    )}
+                  </div>
+                ))}
               </div>
-            </FadeIn>
+            </div>
           </div>
 
-          <div className="lg:col-span-4 flex">
-            <FadeIn delay={100} direction="up" className="w-full h-full flex">
-              <div className="portfolio-card theme-cyan p-8 w-full flex flex-col justify-between group">
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10"
-                    style={{ background: "var(--card-pill)" }}
-                  >
-                    <Users className="w-6 h-6" style={{ color: "var(--card-text)" }} />
-                  </div>
-                  <h4 className="text-2xl font-display font-bold text-white">
-                    Manjunath
-                  </h4>
-                  <p
-                    className="text-xs font-mono font-semibold tracking-wider uppercase mt-1"
-                    style={{ color: "var(--card-text)" }}
-                  >
-                    Founder & Principal Systems Architect
-                  </p>
-                  <p className="mt-4 text-sm text-slate-300 leading-relaxed">
-                    Specializing in Distributed Systems, Generative AI Architectures, and Cloud Operations. Directs software architecture, systems engineering, and deployment delivery across all client ecosystems.
-                  </p>
-                </div>
+          {/* ── Section 11: Founder ── */}
+          <div className="lg:col-span-5 flex">
+            <div className="portfolio-card theme-cyan p-8 w-full flex flex-col justify-between group">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-cyan)] block mb-4">
+                  Meet the Founder
+                </span>
+                <h4 className="text-2xl sm:text-3xl font-display font-bold text-white">
+                  Manjunath K.
+                </h4>
+                <p className="text-xs font-mono font-semibold tracking-wider uppercase mt-1 text-[var(--card-text)]">
+                  Founder — Nexavora Technologies
+                </p>
 
-                <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-                  <span>Tamil Nadu, India</span>
-                  <span className="text-[var(--color-cyan)] font-semibold">Active Deployments</span>
+                <p className="mt-5 text-sm text-slate-300 leading-relaxed">
+                  Manjunath is an AI & Data Science student and technology developer focused on software engineering, artificial intelligence, automation, and modern web systems.
+                </p>
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+                  He works across the development lifecycle—from understanding requirements and designing system architecture to building, deploying, and improving digital products.
+                </p>
+
+                {/* Interests Pills */}
+                <div className="mt-6">
+                  <span className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+                    Interests & Focus
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {founderInterests.map((interest) => (
+                      <span
+                        key={interest}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300 bg-white/5 border border-white/10"
+                      >
+                        {interest}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </FadeIn>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span className="italic text-slate-300">
+                  Building technology that solves practical problems.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Operating Values as Dynamic Cards */}
+        {/* ── Section 12: Our Principles ── */}
         <div className="pt-16">
           <FadeIn direction="up">
-            <div className="mb-8">
+            <div className="max-w-2xl mb-10">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">
-                Operating Principles
+                How We Work
               </h3>
+              <p className="mt-2 text-sm text-slate-300">
+                Our core operating principles guide every system we design and deliver.
+              </p>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v, i) => {
-              const Icon = v.icon;
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {principles.map((p, i) => {
+              const Icon = p.icon;
               return (
-                <FadeIn key={v.title} delay={i * 60} direction="up">
-                  <div className={`portfolio-card ${v.theme} p-6 h-full flex flex-col justify-between group`}>
+                <FadeIn key={p.title} delay={i * 60} direction="up">
+                  <div className={`portfolio-card ${p.theme} p-6 h-full flex flex-col justify-between group`}>
                     <div>
                       <div
                         className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 border border-white/10"
@@ -121,10 +183,10 @@ export default function About() {
                         <Icon className="w-5 h-5" style={{ color: "var(--card-text)" }} />
                       </div>
                       <h4 className="text-base font-display font-semibold text-white mb-2 group-hover:text-white transition-colors">
-                        {v.title}
+                        {p.title}
                       </h4>
                       <p className="text-xs text-slate-300 leading-relaxed">
-                        {v.description}
+                        {p.description}
                       </p>
                     </div>
                   </div>

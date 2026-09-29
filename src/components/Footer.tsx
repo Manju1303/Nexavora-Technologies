@@ -25,15 +25,20 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const navLinks = [
-  { name: "Services & Practices", href: "#services" },
-  { name: "Production Case Studies", href: "#work" },
-  { name: "Industry Verticals", href: "#industries" },
-  { name: "Delivery Methodology", href: "#process" },
-  { name: "Studio & Leadership", href: "#about" },
-  { name: "Architecture & Stack", href: "#approach" },
-  { name: "Careers & Talent", href: "#careers" },
-  { name: "Start a Project", href: "#contact" },
+const companyLinks = [
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#work" },
+  { name: "Careers", href: "#careers" },
+  { name: "Contact", href: "#contact" },
+];
+
+const serviceLinks = [
+  { name: "AI & Automation", href: "#services" },
+  { name: "Software Development", href: "#services" },
+  { name: "ERP Solutions", href: "#services" },
+  { name: "Mobile Applications", href: "#services" },
+  { name: "Cloud & DevOps", href: "#services" },
+  { name: "UI/UX", href: "#services" },
 ];
 
 export default function Footer() {
@@ -42,11 +47,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[var(--color-rule)] bg-[var(--color-page)] pt-20 pb-12 relative">
+    <footer className="border-t border-[var(--color-rule)] bg-[#040817] pt-20 pb-12 relative">
       <div className="container">
+        {/* ── Section 18: Footer ── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[var(--color-rule)]">
-          {/* Brand & Visible Logo */}
-          <div className="md:col-span-5 space-y-5">
+          {/* Brand Column */}
+          <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
               <div className="relative flex items-center justify-center shrink-0">
                 <img
@@ -71,47 +77,71 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              Architecting mission-critical software ecosystems, distributed ERP networks, and autonomous AI systems for healthcare networks, universities, and enterprises across India.
+            <p className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] font-semibold pt-1">
+              AI. Software. Automation. Built for Real-World Operations.
             </p>
 
-            <div className="font-mono text-xs text-[var(--color-ink-subtle)] space-y-1">
-              <p>HEADQUARTERS: Kallakurichi, Tamil Nadu, India</p>
-              <p>DIRECT: ceo.nexavora@gmail.com</p>
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
+              Building practical digital solutions for businesses, institutions, and emerging technology ventures.
+            </p>
+
+            <div className="font-mono text-xs text-slate-400 space-y-1 pt-2">
+              <p>Location: Tamil Nadu, India</p>
+              <p>Direct: ceo.nexavora@gmail.com</p>
             </div>
           </div>
 
-          {/* Directory */}
-          <div className="md:col-span-4">
-            <h4 className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] mb-5">
-              Practice Directory
+          {/* Company Links */}
+          <div className="md:col-span-2">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] mb-4 font-semibold">
+              Company
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 text-xs font-medium">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-[var(--color-ink-muted)] hover:text-[var(--color-cyan)] transition-colors py-1"
-                >
-                  {link.name}
-                </a>
+            <ul className="space-y-2.5 text-xs font-medium">
+              {companyLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-slate-300 hover:text-[var(--color-cyan)] transition-colors py-0.5 inline-block"
+                  >
+                    {link.name}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          {/* Services Links */}
+          <div className="md:col-span-2">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] mb-4 font-semibold">
+              Services
+            </h4>
+            <ul className="space-y-2.5 text-xs font-medium">
+              {serviceLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-slate-300 hover:text-[var(--color-cyan)] transition-colors py-0.5 inline-block"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Connect & Back-to-Top */}
           <div className="md:col-span-3 flex flex-col justify-between">
             <div>
-              <h4 className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] mb-5">
-                Executive Channels
+              <h4 className="font-mono text-xs uppercase tracking-wider text-[var(--color-cyan)] mb-4 font-semibold">
+                Connect
               </h4>
-              <div className="flex items-center gap-3 text-[var(--color-ink-muted)] mb-5">
+              <div className="flex items-center gap-3 text-slate-300 mb-4">
                 <a
                   href="https://github.com/Manju1303"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="GitHub Repository Profile"
-                  className="w-9 h-9 rounded-lg bg-[var(--color-rule)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all"
+                  aria-label="GitHub Profile"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[var(--color-cyan)] hover:text-black transition-all"
                 >
                   <GithubIcon />
                 </a>
@@ -119,8 +149,8 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/manjunath-manjunath-248594352"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn Executive Profile"
-                  className="w-9 h-9 rounded-lg bg-[var(--color-rule)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all"
+                  aria-label="LinkedIn Profile"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[var(--color-cyan)] hover:text-black transition-all"
                 >
                   <LinkedinIcon />
                 </a>
@@ -129,14 +159,14 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram Profile"
-                  className="w-9 h-9 rounded-lg bg-[var(--color-rule)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[var(--color-cyan)] hover:text-black transition-all"
                 >
                   <InstagramIcon />
                 </a>
               </div>
               <a
                 href="mailto:ceo.nexavora@gmail.com"
-                className="font-mono text-xs text-[var(--color-ink-muted)] hover:text-[var(--color-cyan)] transition-colors"
+                className="font-mono text-xs text-slate-300 hover:text-[var(--color-cyan)] transition-colors"
               >
                 ceo.nexavora@gmail.com
               </a>
@@ -154,10 +184,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--color-ink-subtle)] gap-4">
-          <p>© {new Date().getFullYear()} Nexavora Technologies. All rights reserved.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+          <p>© 2026 Nexavora Technologies. All rights reserved.</p>
           <p className="font-mono text-[11px]">
-            Engineering from Kallakurichi, Tamil Nadu · Pan-India Operations
+            Engineering from Tamil Nadu · Global Reach
           </p>
         </div>
       </div>

@@ -8,6 +8,7 @@ import Process from "@/components/Process";
 import About from "@/components/About";
 import Approach from "@/components/Approach";
 import Careers from "@/components/Careers";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -50,6 +51,7 @@ export default function Home() {
         <About />
         <Approach />
         <Careers />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

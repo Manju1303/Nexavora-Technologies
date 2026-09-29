@@ -1,45 +1,94 @@
 import FadeIn from "./FadeIn";
+import { CheckCircle2 } from "lucide-react";
 
 const steps = [
   {
     step: "01",
     theme: "theme-cyan",
-    title: "Strategic Discovery & Audit",
-    duration: "Weeks 1–2",
+    title: "Discover",
     description:
-      "Deep technical audit of existing workflows, legacy data topology, regulatory constraints, and architectural feasibility to formulate a deterministic execution blueprint.",
+      "We understand your business, users, existing processes, challenges, and objectives.",
   },
   {
     step: "02",
     theme: "theme-blue",
-    title: "System Architecture & Schema",
-    duration: "Week 2–3",
+    title: "Plan",
     description:
-      "Formalizing low-level entity-relationship schemas, API contracts, zero-trust security postures, and high-concurrency database models before writing production code.",
+      "We define the project scope, technical approach, architecture, milestones, and development priorities.",
   },
   {
     step: "03",
     theme: "theme-violet",
-    title: "Interface Systems & UX",
-    duration: "Weeks 3–4",
+    title: "Design",
     description:
-      "Translating complex operational workflows into high-fidelity, accessible UI prototypes and design token systems validated against real user scenarios.",
+      "We transform requirements into user flows, interface designs, database structures, and system architecture.",
   },
   {
     step: "04",
     theme: "theme-pink",
-    title: "Iterative Agile Engineering",
-    duration: "Weeks 5–10",
+    title: "Develop",
     description:
-      "Rapid bi-weekly sprints deployed to staging environments with continuous integration, automated regression testing, database stress tests, and security audits.",
+      "Our team builds the application in iterative stages, integrating the required features, APIs, databases, and AI capabilities.",
   },
   {
     step: "05",
     theme: "theme-emerald",
-    title: "Production Cutover & SLA Support",
-    duration: "Continuous",
+    title: "Test",
     description:
-      "Zero-downtime deployment, automated encrypted disaster backups, telemetry observability dashboards, staff operational onboarding, and SLA-backed maintenance.",
+      "We validate functionality, usability, performance, security requirements, and real-world workflows.",
+  },
+  {
+    step: "06",
+    theme: "theme-amber",
+    title: "Deploy",
+    description:
+      "The completed system is deployed to the appropriate production environment and prepared for operational use.",
+  },
+  {
+    step: "07",
+    theme: "theme-cyan",
+    title: "Improve",
+    description:
+      "Technology evolves. We can continue improving the system through maintenance, new features, integrations, and optimization.",
+  },
+];
+
+const whyNexavora = [
+  {
+    title: "Problem First",
+    theme: "theme-cyan",
+    description:
+      "We begin by understanding the actual problem before choosing the technology.",
+  },
+  {
+    title: "Custom Solutions",
+    theme: "theme-blue",
+    description:
+      "Your business processes determine the system architecture—not the other way around.",
+  },
+  {
+    title: "AI When It Makes Sense",
+    theme: "theme-violet",
+    description:
+      "We use AI and automation where they can provide meaningful value rather than adding AI simply for the sake of it.",
+  },
+  {
+    title: "Modern Technology",
+    theme: "theme-emerald",
+    description:
+      "We work with modern development frameworks, databases, APIs, AI technologies, and cloud platforms.",
+  },
+  {
+    title: "Transparent Development",
+    theme: "theme-pink",
+    description:
+      "We maintain clear communication throughout the development process and keep project requirements visible.",
+  },
+  {
+    title: "Built to Evolve",
+    theme: "theme-amber",
+    description:
+      "We design systems with future improvements and changing business requirements in mind.",
   },
 ];
 
@@ -47,33 +96,30 @@ export default function Process() {
   return (
     <section id="process" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
+        {/* ── Section 8: Our Development Process ── */}
         <FadeIn direction="up">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Engineering Delivery Methodology
+              From Idea to Production
             </h2>
-            <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              A disciplined, milestone-governed lifecycle engineered to eliminate technical ambiguity, enforce strict architectural standards, and guarantee on-time deployment.
+            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+              Our Development Process: A structured, transparent pathway from requirements to continuous improvement.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+        {/* 7-Step Horizontal / Grid Flow */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 mb-20">
           {steps.map((item, index) => (
-            <FadeIn key={item.step} delay={index * 60} direction="up">
-              <div className={`portfolio-card ${item.theme} p-6 h-full flex flex-col justify-between group`}>
+            <FadeIn key={item.step} delay={index * 50} direction="up">
+              <div className={`portfolio-card ${item.theme} p-5 h-full flex flex-col justify-between group`}>
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span
-                      className="font-mono text-lg font-bold px-2.5 py-1 rounded-md border border-white/10"
-                      style={{ color: "var(--card-text)", background: "var(--card-pill)" }}
-                    >
-                      {item.step}
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      {item.duration}
-                    </span>
-                  </div>
+                  <span
+                    className="font-mono text-sm font-bold px-2 py-1 rounded-md border border-white/10 inline-block mb-3"
+                    style={{ color: "var(--card-text)", background: "var(--card-pill)" }}
+                  >
+                    {item.step}
+                  </span>
                   <h3 className="text-base font-display font-semibold text-white mb-2 group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
@@ -86,17 +132,37 @@ export default function Process() {
           ))}
         </div>
 
-        {/* Investment & Timeline Governance Callout */}
-        <FadeIn delay={200} direction="up">
-          <div className="mt-12 portfolio-card theme-cyan p-6 sm:p-8">
-            <h3 className="text-lg font-display font-semibold text-white mb-2">
-              Architectural Predictability & Investment Governance
+        {/* ── Section 7: Why Nexavora ── */}
+        <FadeIn direction="up">
+          <div className="max-w-3xl mb-12">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
+              Built Around Your Requirements
             </h3>
-            <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
-              Every project follows transparent, milestone-gated deliverables. Investment parameters are governed strictly by integration depth (connecting to legacy EHR/ERP protocols), concurrency thresholds (100,000+ daily operational records), and regulatory compliance standards (NABH/HIPAA clinical audit trails).
+            <p className="mt-3 text-sm sm:text-base text-slate-300">
+              Why organizations choose Nexavora Technologies to engineer their systems.
             </p>
           </div>
         </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {whyNexavora.map((item, index) => (
+            <FadeIn key={item.title} delay={index * 60} direction="up">
+              <div className={`portfolio-card ${item.theme} p-6 h-full flex flex-col justify-between group`}>
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle2 className="w-5 h-5" style={{ color: "var(--card-text)" }} />
+                    <h4 className="text-lg font-display font-semibold text-white group-hover:text-white transition-colors">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
