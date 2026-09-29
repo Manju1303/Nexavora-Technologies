@@ -58,7 +58,7 @@ export default function Process() {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
           {steps.map((item, index) => (
             <FadeIn key={item.step} delay={index * 60} direction="up">
               <div className={`portfolio-card ${item.theme} p-6 h-full flex flex-col justify-between group`}>

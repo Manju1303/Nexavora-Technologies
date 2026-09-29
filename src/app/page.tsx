@@ -1,4 +1,3 @@
-import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -14,9 +13,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#040817] text-white selection:bg-[#00E5FF] selection:text-[#040817]">
-      {/* ── Luxury Animated Preloader with Telemetry ── */}
-      <Preloader />
-
       {/* ── Global Cinematic Looping Ambient Video Background for Entire Website ── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <video

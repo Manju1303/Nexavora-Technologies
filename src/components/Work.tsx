@@ -129,8 +129,8 @@ export default function Work() {
 
         {/* JKKMCT Entry Glass Card */}
         <FadeIn delay={200} direction="up">
-          <div className="mt-8 portfolio-card theme-amber p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
+          <div className="mt-8 portfolio-card theme-amber p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-start sm:items-center gap-4">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/10" style={{ background: "var(--card-pill)" }}>
                 <Utensils className="w-5 h-5" style={{ color: "var(--card-text)" }} />
               </div>

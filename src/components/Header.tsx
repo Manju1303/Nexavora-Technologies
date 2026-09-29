@@ -116,10 +116,10 @@ export default function Header() {
               />
             </div>
             <div className="flex flex-col select-none text-left">
-              <span className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
+              <span className="font-display font-extrabold text-lg sm:text-xl md:text-2xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
                 Nexavora
               </span>
-              <span className="font-mono text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-1 opacity-90">
+              <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase font-bold tracking-[0.2em] sm:tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-1 opacity-90">
                 Technologies
               </span>
             </div>
@@ -183,8 +183,8 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-[var(--color-page)]/98 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 xl:hidden animate-in fade-in duration-200">
-          <nav className="flex flex-col gap-4">
+        <div className="fixed inset-0 z-40 bg-[var(--color-page)]/98 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 xl:hidden animate-in fade-in duration-200 overflow-y-auto">
+          <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -193,7 +193,7 @@ export default function Header() {
                   e.preventDefault();
                   scrollTo(link.href);
                 }}
-                className="text-lg font-medium text-white py-2 border-b border-[var(--color-rule)] flex items-center justify-between hover:text-[var(--color-cyan)] transition-colors"
+                className="text-base sm:text-lg font-medium text-white py-2 border-b border-[var(--color-rule)] flex items-center justify-between hover:text-[var(--color-cyan)] transition-colors"
               >
                 {link.name}
                 <ArrowUpRight size={16} className="text-[var(--color-cyan)]" />
@@ -201,7 +201,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="pt-6">
+          <div className="pt-6 shrink-0">
             <a
               href="#contact"
               onClick={(e) => {
