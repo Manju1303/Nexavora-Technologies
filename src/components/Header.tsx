@@ -163,7 +163,7 @@ export default function Header() {
                 e.preventDefault();
                 scrollTo("#contact");
               }}
-              className="btn btn-primary text-xs hidden sm:inline-flex items-center gap-1.5"
+              className="btn btn-primary text-xs hidden xl:inline-flex items-center gap-1.5"
             >
               Start a project <ArrowUpRight size={14} />
             </a>
