@@ -5,14 +5,13 @@ import FadeIn from "./FadeIn";
 import { Send, CheckCircle2 } from "lucide-react";
 
 const servicesList = [
-  "AI & Machine Learning Solutions",
-  "Custom Software & Web Applications",
-  "ERP & SaaS Systems",
-  "Mobile App Development",
-  "Cloud Infrastructure & DevOps",
-  "UI/UX Design Systems",
-  "SEO & Digital Marketing",
-  "General Consultation",
+  "Autonomous AI & Intelligence Systems",
+  "Distributed Enterprise ERP & Operations",
+  "High-Availability Web Platforms & Portals",
+  "Next-Gen Mobile Applications",
+  "Cloud Infrastructure, DevOps & Zero-Trust",
+  "Strategic UX Architecture & Systems Design",
+  "Technical Architecture Audit & Consultation",
 ];
 
 export default function Contact() {
@@ -31,7 +30,7 @@ export default function Contact() {
   const validate = () => {
     const nextErrors: Record<string, string> = {};
     if (!form.name.trim()) {
-      nextErrors.name = "Please enter your name.";
+      nextErrors.name = "Please enter your name and organization.";
     }
     if (!form.email.trim()) {
       nextErrors.email = "Please enter your email.";
@@ -39,9 +38,9 @@ export default function Contact() {
       nextErrors.email = "Please provide a valid email address.";
     }
     if (!form.message.trim()) {
-      nextErrors.message = "Please describe your project.";
+      nextErrors.message = "Please describe your project scope and objectives.";
     } else if (form.message.trim().length < 15) {
-      nextErrors.message = "Please include a bit more detail (minimum 15 characters).";
+      nextErrors.message = "Please provide additional architectural context (minimum 15 characters).";
     }
 
     setErrors(nextErrors);
@@ -68,9 +67,9 @@ export default function Contact() {
           body: JSON.stringify({
             Name: form.name.trim(),
             Email: form.email.trim(),
-            Service: form.service,
+            Domain: form.service,
             Message: form.message.trim(),
-            _subject: `New Project Enquiry: ${form.name} (${form.service})`,
+            _subject: `Architectural Consultation Enquiry: ${form.name} (${form.service})`,
           }),
         }
       );
@@ -86,13 +85,13 @@ export default function Contact() {
       } else {
         setStatus("error");
         setErrorMessage(
-          "We could not submit the form. Please email us directly at ceo.nexavora@gmail.com."
+          "We could not submit the brief automatically. Please reach out directly to ceo.nexavora@gmail.com."
         );
       }
     } catch {
       setStatus("error");
       setErrorMessage(
-        "A network error occurred. Please contact us directly at ceo.nexavora@gmail.com."
+        "A network communication error occurred. Please contact us directly at ceo.nexavora@gmail.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -103,12 +102,12 @@ export default function Contact() {
     <section id="contact" className="py-24 border-t border-[var(--color-rule)]">
       <div className="container">
         <FadeIn direction="up">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white">
-              Start a Project
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+              Initiate Consultation & Engagement
             </h2>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              Tell us about your organization, current challenges, and project goals. We review every enquiry and reply within 24 hours.
+              Partner with our principal engineering team to architect, deploy, and scale mission-critical digital systems. We review every technical brief and reply with an initial architectural perspective within 24 hours.
             </p>
           </div>
         </FadeIn>
@@ -123,17 +122,17 @@ export default function Contact() {
                     <CheckCircle2 size={28} />
                   </div>
                   <h3 className="text-xl font-display font-semibold text-white">
-                    Enquiry Received
+                    Consultation Brief Received
                   </h3>
                   <p className="text-sm text-slate-300 leading-relaxed max-w-md mx-auto">
-                    Thank you for reaching out. We will review your requirements and respond via email within 24 hours.
+                    Thank you for submitting your architectural brief. Our lead systems engineer will review your specifications and contact you within 24 business hours.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
                     className="btn btn-secondary text-xs mt-2"
                   >
-                    Send another message
+                    Submit another brief
                   </button>
                 </div>
               ) : (
@@ -143,7 +142,7 @@ export default function Contact() {
                       htmlFor="name"
                       className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2"
                     >
-                      Your Name
+                      Full Name & Organization
                     </label>
                     <input
                       id="name"
@@ -154,7 +153,7 @@ export default function Contact() {
                         if (errors.name) setErrors({ ...errors, name: "" });
                       }}
                       className="w-full px-4 py-3 bg-[var(--color-page-alt)] border border-[var(--color-rule)] rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--color-cyan)] transition-colors"
-                      placeholder="e.g. Dr. Rajesh Kumar"
+                      placeholder="e.g. Dr. Rajesh Kumar, Hospital Director"
                     />
                     {errors.name && (
                       <p className="mt-1.5 text-xs text-rose-400 font-mono">
@@ -168,7 +167,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2"
                     >
-                      Email Address
+                      Institutional / Work Email
                     </label>
                     <input
                       id="email"
@@ -179,7 +178,7 @@ export default function Contact() {
                         if (errors.email) setErrors({ ...errors, email: "" });
                       }}
                       className="w-full px-4 py-3 bg-[var(--color-page-alt)] border border-[var(--color-rule)] rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--color-cyan)] transition-colors"
-                      placeholder="name@organization.com"
+                      placeholder="director@institution.org"
                     />
                     {errors.email && (
                       <p className="mt-1.5 text-xs text-rose-400 font-mono">
@@ -193,7 +192,7 @@ export default function Contact() {
                       htmlFor="service"
                       className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2"
                     >
-                      Area of Interest
+                      Primary Architectural Domain
                     </label>
                     <select
                       id="service"
@@ -216,7 +215,7 @@ export default function Contact() {
                       htmlFor="message"
                       className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2"
                     >
-                      Project Details
+                      Project Scope & Technical Objectives
                     </label>
                     <textarea
                       id="message"
@@ -227,7 +226,7 @@ export default function Contact() {
                         if (errors.message) setErrors({ ...errors, message: "" });
                       }}
                       className="w-full px-4 py-3 bg-[var(--color-page-alt)] border border-[var(--color-rule)] rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--color-cyan)] transition-colors resize-y"
-                      placeholder="Describe the problem you are looking to solve, timeline expectations, or existing systems."
+                      placeholder="Describe your operational bottleneck, concurrency requirements, target deployment timeline, or legacy systems to integrate..."
                     />
                     {errors.message && (
                       <p className="mt-1.5 text-xs text-rose-400 font-mono">
@@ -247,9 +246,9 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className="btn btn-primary w-full sm:w-auto px-8 py-3.5 gap-2 text-sm"
                   >
-                    {isSubmitting ? "Submitting enquiry..." : (
+                    {isSubmitting ? "Transmitting brief..." : (
                       <>
-                        Submit Enquiry <Send size={15} />
+                        Submit Architectural Brief <Send size={15} />
                       </>
                     )}
                   </button>
@@ -264,7 +263,7 @@ export default function Contact() {
               <div className="border border-[var(--color-rule)] p-6 bg-[var(--color-page-alt)] rounded-2xl space-y-6">
                 <div>
                   <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    Direct Email
+                    Direct Executive Channel
                   </h3>
                   <a
                     href="mailto:ceo.nexavora@gmail.com"
@@ -272,29 +271,32 @@ export default function Contact() {
                   >
                     ceo.nexavora@gmail.com
                   </a>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Direct routing to Principal Systems Architect
+                  </p>
                 </div>
 
                 <div className="border-t border-[var(--color-rule)] pt-4">
                   <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    Location
+                    Engineering Headquarters
                   </h3>
                   <p className="text-sm text-white">
                     Kallakurichi, Tamil Nadu, India
                   </p>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Engagements managed remotely across India
+                    Nationwide client engagements & remote deployments
                   </p>
                 </div>
 
                 <div className="border-t border-[var(--color-rule)] pt-4">
                   <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    Response Window
+                    Response SLA
                   </h3>
                   <p className="text-sm text-white">
                     Within 24 business hours
                   </p>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Every message goes directly to our engineering lead
+                    Every inquiry receives an engineering assessment
                   </p>
                 </div>
               </div>

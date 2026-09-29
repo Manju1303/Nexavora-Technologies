@@ -3,39 +3,39 @@ import { Layout, Server, Database, Brain, Cloud } from "lucide-react";
 
 const stackGroups = [
   {
-    category: "Frontend & Interfaces",
+    category: "Frontend & Real-Time Interfaces",
     theme: "theme-cyan",
     icon: Layout,
-    technologies: "React, Next.js, TypeScript, Tailwind CSS, HTML5/CSS3",
-    note: "Server-rendered, accessible, and fast-loading web applications.",
+    technologies: "Next.js, React 19, TypeScript, Tailwind CSS, WebSockets",
+    note: "Sub-second server-rendered architectures, zero-shift hydration, and real-time event telemetry.",
   },
   {
-    category: "Backend & Systems",
+    category: "Distributed Backend & Systems",
     theme: "theme-blue",
     icon: Server,
-    technologies: "Node.js, Express, Python, FastAPI, REST APIs, WebSockets",
-    note: "Robust microservices and monolithic architectures built for high uptime.",
+    technologies: "Node.js, Express, Python, FastAPI, Go, REST, GraphQL",
+    note: "High-throughput asynchronous runtimes engineered for deterministic low-latency processing.",
   },
   {
-    category: "Data & Storage",
+    category: "Relational & High-Speed Data",
     theme: "theme-violet",
     icon: Database,
-    technologies: "PostgreSQL, MongoDB, Redis, Firebase",
-    note: "ACID-compliant relational models, document stores, and low-latency cache layers.",
+    technologies: "PostgreSQL, MongoDB, Redis Cluster, ClickHouse, Prisma",
+    note: "ACID-compliant transactional schemas, sub-millisecond memory caching, and immutable audit logs.",
   },
   {
-    category: "Machine Learning & AI",
+    category: "Autonomous AI & Intelligence",
     theme: "theme-pink",
     icon: Brain,
-    technologies: "Python, PyTorch, Scikit-learn, LangChain, OpenAI API",
-    note: "Workflow automation, LLM integration, OCR parsing, and private knowledge retrieval.",
+    technologies: "Python, PyTorch, LangChain, LlamaIndex, OpenAI, Vector DBs",
+    note: "Private retrieval-augmented generation (RAG), autonomous workflow agents, and multimodal extraction.",
   },
   {
-    category: "Cloud & Deployment",
+    category: "Cloud Infrastructure & Zero-Trust",
     theme: "theme-emerald",
     icon: Cloud,
-    technologies: "Docker, Linux, GitHub Actions, AWS, Cloudflare, Nginx",
-    note: "Reproducible CI/CD pipelines, containerized workloads, and SSL security.",
+    technologies: "Docker, Kubernetes, AWS, Cloudflare Edge, GitHub Actions CI/CD",
+    note: "Reproducible container topologies, zero-downtime rolling deploys, and edge security.",
   },
 ];
 
@@ -44,12 +44,12 @@ export default function Approach() {
     <section id="approach" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
         <FadeIn direction="up">
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Approach & Technology
+              Technology Stack & Architecture
             </h2>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              We select battle-tested tools with vibrant ecosystems. Every piece of tech is chosen because it solves your problem reliably and leaves you with complete code ownership.
+              We curate battle-tested, open-source technologies with vibrant global foundations. Every component is chosen for horizontal scalability, zero runtime lock-in, and uncompromising system reliability.
             </p>
           </div>
         </FadeIn>
@@ -60,8 +60,11 @@ export default function Approach() {
             return (
               <FadeIn key={group.category} delay={index * 50} direction="up">
                 <div className={`portfolio-card ${group.theme} p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 group`}>
-                  <div className="flex items-center gap-4 md:w-1/3">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/10" style={{ background: "var(--card-pill)" }}>
+                  <div className="flex items-center gap-4 md:w-2/5">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/10"
+                      style={{ background: "var(--card-pill)" }}
+                    >
                       <Icon className="w-5 h-5" style={{ color: "var(--card-text)" }} />
                     </div>
                     <div>
@@ -74,7 +77,7 @@ export default function Approach() {
                     </div>
                   </div>
 
-                  <div className="md:w-2/3 flex flex-wrap gap-2 md:justify-end">
+                  <div className="md:w-3/5 flex flex-wrap gap-2 md:justify-end">
                     {group.technologies.split(", ").map((tech) => (
                       <span
                         key={tech}

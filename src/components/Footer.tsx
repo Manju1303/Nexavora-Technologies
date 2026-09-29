@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { ArrowUp } from "lucide-react";
 
@@ -71,7 +72,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              Custom software engineering, AI integrations, and high-availability digital systems for hospitals, universities, and commercial enterprises across India.
+              Architecting mission-critical software ecosystems, distributed ERP networks, and autonomous AI systems for healthcare networks, universities, and enterprises across India.
             </p>
 
             <div className="font-mono text-xs text-[var(--color-ink-subtle)] space-y-1">

@@ -3,36 +3,44 @@ import { ArrowUpRight, Briefcase, MapPin } from "lucide-react";
 
 const jobs = [
   {
-    title: "Full-Stack Web Developer",
+    title: "Senior Full-Stack Systems Engineer",
     theme: "theme-cyan",
-    department: "Engineering",
+    department: "Distributed Engineering",
     location: "Kallakurichi, Tamil Nadu / Hybrid",
-    type: "Full-time",
-    emailSubject: "Application: Full-Stack Web Developer",
+    type: "Full-Time",
+    emailSubject: "Application: Senior Full-Stack Systems Engineer",
+    summary:
+      "Architect high-concurrency enterprise web portals, real-time WebSocket pipelines, and distributed PostgreSQL data models using Next.js, Node.js, and Python.",
   },
   {
-    title: "Frontend Developer Intern",
-    theme: "theme-violet",
-    department: "Engineering",
-    location: "Remote / Kallakurichi",
-    type: "Internship (6 Months)",
-    emailSubject: "Application: Frontend Developer Intern",
-  },
-  {
-    title: "SEO & Digital Marketing Analyst",
-    theme: "theme-amber",
-    department: "Growth",
-    location: "Kallakurichi / On-site",
-    type: "Full-time",
-    emailSubject: "Application: SEO & Digital Marketing Analyst",
-  },
-  {
-    title: "UI/UX Design Intern",
+    title: "Applied AI & Machine Learning Engineer",
     theme: "theme-pink",
-    department: "Design",
+    department: "AI & Intelligence Systems",
     location: "Remote / Hybrid",
-    type: "Internship (3–6 Months)",
-    emailSubject: "Application: UI/UX Design Intern",
+    type: "Full-Time",
+    emailSubject: "Application: Applied AI & Machine Learning Engineer",
+    summary:
+      "Design private retrieval-augmented generation (RAG) engines, deterministic workflow agents, and multimodal document processing pipelines using PyTorch and LangChain.",
+  },
+  {
+    title: "Frontend Engineering Intern",
+    theme: "theme-violet",
+    department: "Interface Engineering",
+    location: "Kallakurichi / Remote",
+    type: "Internship (6 Months)",
+    emailSubject: "Application: Frontend Engineering Intern",
+    summary:
+      "Craft fluid, accessible, high-performance UI components with Next.js, TypeScript, Tailwind CSS, and modern interactive animation systems.",
+  },
+  {
+    title: "Product UI/UX Design Lead",
+    theme: "theme-amber",
+    department: "Product Design",
+    location: "Remote / Hybrid",
+    type: "Full-Time / Contract",
+    emailSubject: "Application: Product UI/UX Design Lead",
+    summary:
+      "Lead user research, design token architectures, ergonomic clinical and educational workflows, and interactive design systems in Figma.",
   },
 ];
 
@@ -41,12 +49,12 @@ export default function Careers() {
     <section id="careers" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
         <FadeIn direction="up">
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Careers
+              Careers & Engineering Talent
             </h2>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              We look for engineers and designers who care about software quality, clear communication, and delivering reliable systems.
+              We invite ambitious systems engineers, AI practitioners, and interface designers to build mission-critical digital infrastructure with uncompromising technical standards.
             </p>
           </div>
         </FadeIn>
@@ -69,11 +77,15 @@ export default function Careers() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-white transition-colors">
                     {job.title}
                   </h3>
 
-                  <div className="flex items-center gap-2 text-xs text-slate-400 mb-6">
+                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                    {job.summary}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-xs text-slate-400 mb-4">
                     <MapPin className="w-3.5 h-3.5 shrink-0 text-slate-500" />
                     <span>{job.location}</span>
                   </div>
@@ -84,12 +96,14 @@ export default function Careers() {
                     href={`mailto:careers@nexavora.com?subject=${encodeURIComponent(
                       job.emailSubject
                     )}&body=${encodeURIComponent(
-                      "Hi Nexavora Team,\n\nI am writing to apply for the position. Please find my resume and portfolio attached.\n\nName:\nPhone:\nLinkedIn / GitHub:\n"
+                      "Hi Nexavora Team,\n\nI am writing to apply for the position of " +
+                        job.title +
+                        ". Please find my resume and portfolio attached.\n\nName:\nPhone:\nLinkedIn / GitHub:\n"
                     )}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200"
                     style={{ color: "var(--card-text)" }}
                   >
-                    <span>Apply for role</span>
+                    <span>Submit Application</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </div>

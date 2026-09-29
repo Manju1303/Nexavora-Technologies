@@ -4,10 +4,10 @@ import FadeIn from "./FadeIn";
 import { ArrowRight } from "lucide-react";
 
 const keyPillars = [
-  "Strategic Partner",
-  "End-to-End Delivery",
-  "Enterprise Scalability",
-  "Full Code Ownership",
+  "Autonomous AI Architecture",
+  "High-Throughput ERPs",
+  "Zero-Trust Security",
+  "100% Code Ownership",
 ];
 
 export default function Hero() {
@@ -20,23 +20,23 @@ export default function Hero() {
       <div className="container relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center">
         <FadeIn direction="up">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight font-display font-bold text-white leading-[1.12] max-w-4xl">
-            Software and AI systems built for{" "}
+            Architecting Intelligent Systems for the{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-cyan)] via-[#60A5FA] to-white">
-              how your organisation actually works.
+              Next Era of Enterprise.
             </span>
           </h1>
         </FadeIn>
 
         <FadeIn delay={120} direction="up">
           <p className="mt-8 text-lg sm:text-xl text-slate-300 leading-relaxed font-normal max-w-2xl mx-auto">
-            Nexavora Technologies partners with hospitals, educational institutions, and businesses across India to build reliable custom software, ERPs, and AI integrations.
+            Nexavora Technologies engineers mission-critical custom software, distributed ERP networks, and autonomous AI integrations for hospitals, universities, and high-growth commercial enterprises across India.
           </p>
         </FadeIn>
 
         <FadeIn delay={220} direction="up">
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a href="#contact" className="cta-luxury group">
-              <span>Start a project</span>
+              <span>Initiate consultation</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
@@ -44,7 +44,7 @@ export default function Hero() {
               href="#work"
               className="px-7 py-3 rounded-full text-sm font-semibold text-white/90 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 transition-all duration-200 backdrop-blur-md"
             >
-              View selected work
+              Explore production systems
             </a>
           </div>
         </FadeIn>

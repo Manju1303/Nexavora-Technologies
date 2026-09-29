@@ -4,42 +4,42 @@ const steps = [
   {
     step: "01",
     theme: "theme-cyan",
-    title: "Discover",
-    duration: "1–2 weeks",
+    title: "Strategic Discovery & Audit",
+    duration: "Weeks 1–2",
     description:
-      "We interview key stakeholders to understand your workflows, existing technical debt, and business goals. No generic proposals—only tailored roadmaps.",
+      "Deep technical audit of existing workflows, legacy data topology, regulatory constraints, and architectural feasibility to formulate a deterministic execution blueprint.",
   },
   {
     step: "02",
     theme: "theme-blue",
-    title: "Scope",
-    duration: "1 week",
+    title: "System Architecture & Schema",
+    duration: "Week 2–3",
     description:
-      "Detailed technical specifications, architecture diagrams, data models, and milestone-based cost and time estimates with clear deliverables.",
+      "Formalizing low-level entity-relationship schemas, API contracts, zero-trust security postures, and high-concurrency database models before writing production code.",
   },
   {
     step: "03",
     theme: "theme-violet",
-    title: "Design",
-    duration: "2–3 weeks",
+    title: "Interface Systems & UX",
+    duration: "Weeks 3–4",
     description:
-      "Accessible, responsive UI/UX prototypes tested against real user requirements before writing production code.",
+      "Translating complex operational workflows into high-fidelity, accessible UI prototypes and design token systems validated against real user scenarios.",
   },
   {
     step: "04",
     theme: "theme-pink",
-    title: "Build",
-    duration: "4–10 weeks",
+    title: "Iterative Agile Engineering",
+    duration: "Weeks 5–10",
     description:
-      "Agile 2-week sprints with staging environments. Continuous testing, database validation, and security auditing at each release.",
+      "Rapid bi-weekly sprints deployed to staging environments with continuous integration, automated regression testing, database stress tests, and security audits.",
   },
   {
     step: "05",
     theme: "theme-emerald",
-    title: "Support",
-    duration: "Ongoing",
+    title: "Production Cutover & SLA Support",
+    duration: "Continuous",
     description:
-      "Production deployment, automated backups, documentation handoff, staff onboarding, and ongoing maintenance with direct developer access.",
+      "Zero-downtime deployment, automated encrypted disaster backups, telemetry observability dashboards, staff operational onboarding, and SLA-backed maintenance.",
   },
 ];
 
@@ -48,12 +48,12 @@ export default function Process() {
     <section id="process" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
         <FadeIn direction="up">
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              Our Process
+              Engineering Delivery Methodology
             </h2>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              Predictable, transparent engineering from requirements gathering to long-term operations.
+              A disciplined, milestone-governed lifecycle engineered to eliminate technical ambiguity, enforce strict architectural standards, and guarantee on-time deployment.
             </p>
           </div>
         </FadeIn>
@@ -63,7 +63,7 @@ export default function Process() {
             <FadeIn key={item.step} delay={index * 60} direction="up">
               <div className={`portfolio-card ${item.theme} p-6 h-full flex flex-col justify-between group`}>
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-5">
                     <span
                       className="font-mono text-lg font-bold px-2.5 py-1 rounded-md border border-white/10"
                       style={{ color: "var(--card-text)", background: "var(--card-pill)" }}
@@ -74,7 +74,7 @@ export default function Process() {
                       {item.duration}
                     </span>
                   </div>
-                  <h3 className="text-lg font-display font-semibold text-white mb-2 group-hover:text-white transition-colors">
+                  <h3 className="text-base font-display font-semibold text-white mb-2 group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-300 leading-relaxed">
@@ -86,14 +86,14 @@ export default function Process() {
           ))}
         </div>
 
-        {/* Short What Affects Cost and Timeline */}
+        {/* Investment & Timeline Governance Callout */}
         <FadeIn delay={200} direction="up">
           <div className="mt-12 portfolio-card theme-cyan p-6 sm:p-8">
             <h3 className="text-lg font-display font-semibold text-white mb-2">
-              What affects project cost and delivery timelines
+              Architectural Predictability & Investment Governance
             </h3>
             <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
-              Project investment depends primarily on legacy integration complexity (connecting to existing hospital systems or proprietary APIs), regulatory data requirements (HIPAA/NABH compliance, encryption, audit logging), and whether the engagement is delivered as a rapid MVP or full enterprise rollout.
+              Every project follows transparent, milestone-gated deliverables. Investment parameters are governed strictly by integration depth (connecting to legacy EHR/ERP protocols), concurrency thresholds (100,000+ daily operational records), and regulatory compliance standards (NABH/HIPAA clinical audit trails).
             </p>
           </div>
         </FadeIn>

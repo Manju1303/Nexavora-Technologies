@@ -3,81 +3,81 @@ import { Brain, Database, Globe, Smartphone, Cloud, Palette, CheckCircle2 } from
 
 const services = [
   {
-    title: "AI and Machine Learning",
+    title: "Autonomous AI & Intelligence Systems",
     theme: "theme-cyan",
     icon: Brain,
     description:
-      "Custom AI systems that automate operations and extract insights from your data, not off-the-shelf tools with a new label.",
+      "Production-grade generative AI architectures, private retrieval-augmented generation (RAG), and deterministic workflow agents tailored to your institutional data.",
     capabilities: [
-      "Conversational AI & workflow agents",
-      "Document extraction, OCR & parsing",
-      "Predictive analytics & forecasting",
-      "Private RAG knowledge retrieval",
+      "Autonomous workflow agents & LLM orchestration",
+      "Private RAG knowledge retrieval & semantic search",
+      "Document extraction, OCR & multimodal parsing",
+      "Predictive analytics, forecasting & anomaly detection",
     ],
   },
   {
-    title: "Custom Software and ERP",
+    title: "Distributed Enterprise ERP & Operations",
     theme: "theme-violet",
     icon: Database,
     description:
-      "Business operating systems tailored to your workflows: inventory, billing, attendance, approvals, and reporting in one place.",
+      "High-throughput enterprise operating cores unifying multi-branch billing, inventory supply chains, compliance tracking, and administrative governance.",
     capabilities: [
-      "Multi-branch ERP systems",
-      "Client portals & approval flows",
-      "Role-based access & audit logs",
-      "High-concurrency data models",
+      "Multi-campus & multi-branch ERP architectures",
+      "Real-time ledger reconciliation & automated billing",
+      "Granular role-based security & immutable audit logs",
+      "High-concurrency data models for 100,000+ daily events",
     ],
   },
   {
-    title: "Web Applications",
+    title: "High-Availability Web Platforms",
     theme: "theme-blue",
     icon: Globe,
     description:
-      "Fast, accessible web platforms built with modern frameworks, optimised for search engines, security, and real users.",
+      "Sub-second, accessible web architectures engineered with Next.js and distributed edge caching, hardened for enterprise security and peak concurrent demand.",
     capabilities: [
-      "Institutional & healthcare portals",
-      "Multi-tenant SaaS architectures",
-      "Progressive Web Applications",
-      "Headless content management",
+      "Clinical healthcare & university student portals",
+      "Multi-tenant SaaS platforms & executive dashboards",
+      "Progressive Web Apps with full offline telemetry",
+      "Headless architectures & micro-frontend ecosystems",
     ],
   },
   {
-    title: "Mobile Applications",
+    title: "Next-Gen Mobile Applications",
     theme: "theme-pink",
     icon: Smartphone,
     description:
-      "Android and cross-platform mobile apps with offline capability, push notifications, and clean native interfaces.",
+      "Native Android and cross-platform mobile experiences featuring encrypted local caching, biometric security, and low-latency cloud synchronization.",
     capabilities: [
-      "Native Android development",
-      "Cross-platform with React Native",
-      "Biometric security & hardware sync",
-      "Real-time geolocation & tracking",
+      "Native Android & Kotlin systems engineering",
+      "Cross-platform architecture with React Native",
+      "Biometric authentication & hardware sync",
+      "Geofenced field telemetry & real-time notifications",
     ],
   },
   {
-    title: "Cloud and DevOps",
+    title: "Cloud Infrastructure & DevOps",
     theme: "theme-emerald",
     icon: Cloud,
     description:
-      "Infrastructure that scales with your business: cloud deployment, automated pipelines, and monitoring that catches issues early.",
+      "Resilient, auto-scaling cloud deployments with automated zero-downtime CI/CD release pipelines and 24/7 telemetry monitoring to safeguard system uptime.",
     capabilities: [
-      "Containerized Docker deployments",
-      "Automated CI/CD release pipelines",
-      "Database tuning & automated backups",
-      "Cloud monitoring & error alerts",
+      "Containerized Docker & Kubernetes workloads",
+      "Automated CI/CD pipelines with security scans",
+      "Database clustering, point-in-time recovery & backups",
+      "Proactive cloud monitoring & error telemetry",
     ],
   },
   {
-    title: "Design and Digital Marketing",
+    title: "Strategic Design & Digital Growth",
     theme: "theme-amber",
     icon: Palette,
     description:
-      "User interfaces people actually want to use, paired with search and content strategies that bring the right visitors to your site.",
+      "Human-centered user experience design paired with technical search engine optimization and Core Web Vitals engineering to establish market authority.",
     capabilities: [
-      "UI/UX research & interactive prototypes",
-      "Design systems & component libraries",
-      "Technical SEO & Core Web Vitals",
-      "Conversion funnels & performance audits",
+      "UI/UX research & high-fidelity interactive prototypes",
+      "Scalable design tokens & component libraries",
+      "Technical SEO & Core Web Vitals optimization",
+      "Conversion funnel analysis & user retention audits",
     ],
   },
 ];
@@ -87,12 +87,12 @@ export default function Services() {
     <section id="services" className="py-24 border-t border-[var(--color-rule)] relative">
       <div className="container">
         <FadeIn direction="up">
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-3xl mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-              What we build
+              Engineering Capabilities
             </h2>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              Custom software and AI systems designed for institutional scale, operational reliability, and long-term maintainability.
+              Bespoke software architectures, autonomous AI pipelines, and distributed digital infrastructure designed for operational resilience, absolute data sovereignty, and long-term maintainability.
             </p>
           </div>
         </FadeIn>
