@@ -208,6 +208,16 @@ h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
+.btn.hidden {
+  display: none !important;
+}
+
+@media (min-width: 1280px) {
+  .btn.xl\:inline-flex {
+    display: inline-flex !important;
+  }
+}
+
 .btn-primary {
   background: linear-gradient(135deg, var(--color-accent) 0%, #003B95 100%);
   color: #FFFFFF;
