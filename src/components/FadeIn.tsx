@@ -15,7 +15,7 @@ export default function FadeIn({
   className = "",
   delay = 0,
   direction = "up",
-  distance = 24,
+  distance = 32,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -37,7 +37,7 @@ export default function FadeIn({
           return () => clearTimeout(timer);
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -50px 0px" }
     );
 
     observer.observe(el);
@@ -59,8 +59,10 @@ export default function FadeIn({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translate3d(0, 0, 0)" : getInitialTransform(),
-        transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-        willChange: "transform, opacity",
+        filter: visible ? "blur(0px)" : "blur(6px)",
+        transition:
+          "opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1)",
+        willChange: "transform, opacity, filter",
       }}
     >
       {children}

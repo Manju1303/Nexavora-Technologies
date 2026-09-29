@@ -19,13 +19,6 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="container relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center">
         <FadeIn direction="up">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-cyan)] shadow-[0_0_10px_var(--color-cyan)] animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-widest text-slate-200 font-medium">
-              Next-Gen Software & AI Studio
-            </span>
-          </div>
-
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight font-display font-bold text-white leading-[1.12] max-w-4xl">
             Software and AI systems built for{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-cyan)] via-[#60A5FA] to-white">
@@ -62,7 +55,7 @@ export default function Hero() {
             {keyPillars.map((pillar) => (
               <li
                 key={pillar}
-                className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-slate-300 py-2 px-3 rounded-lg border border-white/5 bg-black/20 backdrop-blur-sm"
+                className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-slate-300/90"
               >
                 <svg
                   className="w-3 h-3 text-[var(--color-cyan)] shrink-0"

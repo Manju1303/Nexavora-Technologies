@@ -61,13 +61,10 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col select-none text-left">
-                <div className="flex items-center gap-1">
-                  <span className="font-display font-extrabold text-2xl text-white tracking-tight leading-none">
-                    Nexavora
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)] mb-0.5 animate-pulse" />
-                </div>
-                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-0.5 opacity-90">
+                <span className="font-display font-extrabold text-2xl text-white tracking-tight leading-none">
+                  Nexavora
+                </span>
+                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-1 opacity-90">
                   Technologies
                 </span>
               </div>

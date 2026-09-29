@@ -88,7 +88,6 @@ export default function Services() {
       <div className="container">
         <FadeIn direction="up">
           <div className="max-w-2xl mb-16">
-            <span className="eyebrow">Enterprise Capabilities</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
               What we build
             </h2>

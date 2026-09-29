@@ -34,7 +34,6 @@ export default function About() {
       <div className="container">
         <FadeIn direction="up">
           <div className="max-w-2xl mb-16">
-            <span className="eyebrow">Studio & Leadership</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
               About Nexavora
             </h2>
@@ -93,7 +92,6 @@ export default function About() {
         <div className="pt-16">
           <FadeIn direction="up">
             <div className="mb-8">
-              <span className="eyebrow">Core Standards</span>
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">
                 Operating Principles
               </h3>

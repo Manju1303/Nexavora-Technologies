@@ -385,10 +385,32 @@ h3, h4, h5, h6 {
   transition: opacity 0.35s ease;
 }
 
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 0.85s ease;
+  pointer-events: none;
+}
+
 .portfolio-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--card-border-hover, rgba(0, 229, 255, 0.45));
-  box-shadow: 0 20px 40px -15px var(--card-glow, rgba(0, 229, 255, 0.25));
+  transform: translateY(-8px);
+  border-color: var(--card-border-hover, rgba(0, 229, 255, 0.5));
+  box-shadow: 0 24px 48px -15px var(--card-glow, rgba(0, 229, 255, 0.35));
+}
+
+.portfolio-card:hover::after {
+  transform: translateX(300%) skewX(-20deg);
 }
 
 .portfolio-card:hover::before {

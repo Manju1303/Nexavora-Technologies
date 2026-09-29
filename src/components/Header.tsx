@@ -115,13 +115,10 @@ export default function Header() {
               />
             </div>
             <div className="flex flex-col select-none text-left">
-              <div className="flex items-center gap-1">
-                <span className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
-                  Nexavora
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)] mb-0.5 animate-pulse" />
-              </div>
-              <span className="font-mono text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-0.5 opacity-90">
+              <span className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-none group-hover:text-[var(--color-cyan)] transition-colors">
+                Nexavora
+              </span>
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.24em] text-[var(--color-cyan)] leading-tight mt-1 opacity-90">
                 Technologies
               </span>
             </div>

@@ -42,7 +42,6 @@ export default function Industries() {
       <div className="container">
         <FadeIn direction="up">
           <div className="max-w-2xl mb-16">
-            <span className="eyebrow">Target Domains</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
               Sectors we serve
             </h2>
